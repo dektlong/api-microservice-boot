@@ -1,6 +1,6 @@
-package io.todos.api.data;
+package io.store-backend.api.data;
 
-public class Todo {
+public class StoreObject {
 
     private String id;
     private String title;
