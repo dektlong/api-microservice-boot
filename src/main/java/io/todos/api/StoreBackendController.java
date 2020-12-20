@@ -63,7 +63,7 @@ public class StoreBackendController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.title cannot be null on put");
         }
 
-        LOG.debug("Creating TODO: " + storeObject);
+        LOG.debug("Creating StoreObject: " + storeObject);
         StoreObject obj = new StoreObject();
         if(ObjectUtils.isEmpty(storeObject.getId())) {
             obj.setId(UUID.randomUUID().toString());
@@ -200,7 +200,7 @@ public class StoreBackendController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id cannot be null on put");
         }
         if(!storeObject.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id ${todo.id} and id $id are inconsistent");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id ${storeObject.id} and id $id are inconsistent");
         }
 
         StoreObject obj = new StoreObject();
