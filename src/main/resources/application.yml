@@ -15,6 +15,11 @@ spring:
   application:
     name: store-backend-api
 management:
+  #observability
+  metrics:
+    export:
+      wavefront:
+        uri: "http://wavefront.default.svc.cluster.local:9411"
   # Actuators
   # see https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints
   # exposing endpoints config options
@@ -30,7 +35,7 @@ management:
 info:
   app:
     name: store-backend-api - Spring Boot Application
-    description: TODOs - API - business logic w/ DB and cache access
+    description: Business logic sample for backend apis for online stores
 # Use default 8080 port
 # server:
 #   port: 8082
