@@ -1,6 +1,6 @@
 package io.storebackend.api;
 
-import io.todos.api.data.Todo;
+import io.storebackend.api.data.StoreObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
