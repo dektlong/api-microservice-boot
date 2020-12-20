@@ -73,7 +73,7 @@ public class StoreBackendController {
         if(!ObjectUtils.isEmpty(storeObject.getTitle())) {
             obj.setTitle(storeObject.getTitle());
         }
-        if(!ObjectUtils.isEmpty(todo.isComplete())) {
+        if(!ObjectUtils.isEmpty(storeObject.isComplete())) {
             obj.setComplete(storeObject.isComplete());
         }
         if(ObjectUtils.isEmpty(storeObject.getCategory())) {
