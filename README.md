@@ -1,5 +1,5 @@
 # Introduction
-A base repo for a Starter template to create backend APIs for online stores
+Example repo an architect will compose as a source for a Starter template to create store-backend-api
 
 The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
 
