@@ -1,4 +1,4 @@
-package io.todos.api.data;
+package io.storebackend.api.data;
 
 public class Limit {
 
