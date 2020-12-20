@@ -11,7 +11,7 @@
 	<groupId>io.store-backend-api</groupId>
 	<artifactId>store-backend-api</artifactId>
 	<version>dev-starter</version>
-	<name>store-backend-api/name>
+	<name>store-backend-api</name>
 	<description>Business logic sample for backend apis for online stores</description>
 
 	<properties>
