@@ -12,7 +12,7 @@
 	<artifactId>store-backend-api</artifactId>
 	<version>dev-starter</version>
 	<name>store-backend-api/name>
-	<description>Business logic sample for backend apis for online stores/description>
+	<description>Business logic sample for backend apis for online stores</description>
 
 	<properties>
 		<java.version>1.8</java.version>
