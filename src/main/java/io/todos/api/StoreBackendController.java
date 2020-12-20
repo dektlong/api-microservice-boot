@@ -1,4 +1,4 @@
-package io.store-backend.api;
+package io.storebackend.api;
 
 import io.todos.api.data.Todo;
 import org.slf4j.Logger;
