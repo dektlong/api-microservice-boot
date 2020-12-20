@@ -1,4 +1,4 @@
-package io.todos.api.actuator;
+package io.storebackend.api.actuator;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
