@@ -1,4 +1,4 @@
-package io.todos.api.actuator;
+package io.storebackend.api.actuator;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
