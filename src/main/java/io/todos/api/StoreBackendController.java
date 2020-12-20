@@ -18,7 +18,7 @@ import java.util.*;
 @RestController
 public class StoreBackendController {
 
-    private static Logger LOG = LoggerFactory.getLogger(TodosController.class);
+    private static Logger LOG = LoggerFactory.getLogger(StoreBackendController.class);
 
     @Value("${store-backend.api.limit:100}")
     long _limit;
@@ -43,9 +43,9 @@ public class StoreBackendController {
         //if cache is empty, hydrate
         if(cached.length < 1) {
             LOG.debug("Cache empty, retrieving from backend service");
-            Todo[] backendResp = _backendTemplate.getForEntity(_backendUrl, Todo[].class).getBody();
+            StoreObject[] backendResp = _backendTemplate.getForEntity(_backendUrl, StoreObject[].class).getBody();
             if(backendResp.length > 0)    Arrays.stream(backendResp)
-                    .forEach(e->_cacheTemplate.postForObject(_cacheUrl, e, Todo.class));
+                    .forEach(e->_cacheTemplate.postForObject(_cacheUrl, e, StoreObject.class));
             return Arrays.asList(backendResp);
         } else {
             //Return cached list
@@ -71,10 +71,10 @@ public class StoreBackendController {
             obj.setId(storeObject.getId());
         }
         if(!ObjectUtils.isEmpty(storeObject.getTitle())) {
-            obj.setTitle(todo.getTitle());
+            obj.setTitle(storeObject.getTitle());
         }
         if(!ObjectUtils.isEmpty(todo.isComplete())) {
-            obj.setComplete(todo.isComplete());
+            obj.setComplete(storeObject.isComplete());
         }
         if(ObjectUtils.isEmpty(storeObject.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
@@ -116,7 +116,7 @@ public class StoreBackendController {
         if(ObjectUtils.isEmpty(storeObject.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
         } else {
-            obj.setCategory(todo.getCategory());
+            obj.setCategory(storeObject.getCategory());
         }
         if(ObjectUtils.isEmpty(storeObject.getDeadline())) {
             obj.setDeadline(dtf.format(LocalDateTime.now()));
@@ -148,7 +148,7 @@ public class StoreBackendController {
     public StoreObject retrieve(@PathVariable("id") String id) {
         LOG.debug("Retrieving StoreObject: " + id);
         //Check cache + DB
-        Todo cached = null;
+        StoreObject cached = null;
         try {
             cached = _cacheTemplate.getForEntity(_cacheUrl + "/" + id, StoreObject.class).getBody();
         } catch (HttpStatusCodeException ex) {
@@ -165,7 +165,7 @@ public class StoreBackendController {
         } else {
             LOG.debug("Not in cache, retrieving from backend");
 
-            Todo source = null;
+            StoreObject source = null;
             try{
                 source = _backendTemplate.getForEntity(_backendUrl + "/" + id, StoreObject.class).getBody();
             } catch (HttpStatusCodeException ex) {
@@ -234,7 +234,7 @@ public class StoreBackendController {
     }
 
     private void throwIfOverLimit() {
-        StoreObject[] cached = _cacheTemplate.getForEntity(_cacheUrl, Todo[].class).getBody();
+        StoreObject[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreObject[].class).getBody();
         if(cached.length >= _limit) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.api.limit=$limit, storeObject.size=$count");
         } else {
