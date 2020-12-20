@@ -1,4 +1,4 @@
-package io.todos.api;
+package io.store-backend.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 //@EnableAspectJAutoProxy(proxyTargetClass=true)
-public class TodosApi {
+public class StoreBackendApi {
 
     public static void main(String[] args) {
-        SpringApplication.run(TodosApi.class, args);
+        SpringApplication.run(StoreBackendApi.class, args);
     }
 }
