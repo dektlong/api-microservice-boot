@@ -1,4 +1,4 @@
-package io.store-backend.api;
+package io.storebackend.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
