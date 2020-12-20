@@ -1,4 +1,4 @@
-package io.store-backend.api.data;
+package io.storebackend.api.data;
 
 public class StoreObject {
 
