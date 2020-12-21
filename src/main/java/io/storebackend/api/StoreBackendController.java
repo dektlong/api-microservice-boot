@@ -130,10 +130,10 @@ public class StoreBackendController {
     }
 
     @GetMapping("/{id}")
-    public StoreObject retrieve(@PathVariable("id") String id) {
+    public StoreItem retrieve(@PathVariable("id") String id) {
         LOG.debug("Retrieving StoreItem: " + id);
         //Check cache + DB
-        StoreObject cached = null;
+        StoreItem cached = null;
         try {
             cached = _cacheTemplate.getForEntity(_cacheUrl + "/" + id, StoreItem.class).getBody();
         } catch (HttpStatusCodeException ex) {
@@ -150,7 +150,7 @@ public class StoreBackendController {
         } else {
             LOG.debug("Not in cache, retrieving from backend");
 
-            StoreObject source = null;
+            StoreItem source = null;
             try{
                 source = _backendTemplate.getForEntity(_backendUrl + "/" + id, StoreItem.class).getBody();
             } catch (HttpStatusCodeException ex) {
@@ -167,7 +167,7 @@ public class StoreBackendController {
             }
         }
 
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "storeObject.id = " + id);
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "item.id = " + id);
     }
 
     @DeleteMapping("/{id}")
@@ -180,11 +180,11 @@ public class StoreBackendController {
     }
 
     @PatchMapping("/{id}")
-    public StoreItem update(@PathVariable("id") String id, @RequestBody StoreItem storeObject) {
+    public StoreItem update(@PathVariable("id") String id, @RequestBody StoreItem item) {
         if(item.getId() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id cannot be null on put");
         }
-        if(!storeObject.getId().equals(id)) {
+        if(!item.getId().equals(id)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${storeObject.id} and id $id are inconsistent");
         }
 
@@ -194,10 +194,10 @@ public class StoreBackendController {
         if(!ObjectUtils.isEmpty(item.getTitle())) {
             obj.setTitle(item.getTitle());
         }
-        if(ObjectUtils.isEmpty(storeObject.getCategory())) {
+        if(ObjectUtils.isEmpty(item.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
         } else {
-            obj.setCategory(storeObject.getCategory());
+            obj.setCategory(item.getCategory());
         }
        
         //Write to DB
