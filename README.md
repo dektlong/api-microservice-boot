@@ -1,12 +1,12 @@
 # Introduction
-Example repo an architect will compose as a source for a Starter template to create store-backend-api
+Example soure repo for a Starter to create store-backend-api
 
 The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
 
 The service can be accessed from a Web UI or directly at the endpoints it exposes.
 
 ## The Domain Model
-The Domain Model is a StoreObject which has an id, a title, a category, the deadline and the status.
+The Domain Model is a StoreItem object which has an id, a title and a category
 ```json
 ex.:
 {
