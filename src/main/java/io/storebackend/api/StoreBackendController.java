@@ -1,6 +1,6 @@
 package io.storebackend.api;
 
-import io.storebackend.api.data.StoreObject;
+import io.storebackend.api.data.StoreItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,15 +37,15 @@ public class StoreBackendController {
     private static String DEFAULT_GROUP = "Default group";
 
     @GetMapping("/")
-    public List<StoreObject> retrieve() {
-        LOG.debug("Retrieving all StoreObjects");
-        StoreObject[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreObject[].class).getBody();
+    public List<StoreItem> retrieve() {
+        LOG.debug("Retrieving all StoreItems");
+        StoreItem[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreObject[].class).getBody();
         //if cache is empty, hydrate
         if(cached.length < 1) {
             LOG.debug("Cache empty, retrieving from backend service");
-            StoreObject[] backendResp = _backendTemplate.getForEntity(_backendUrl, StoreObject[].class).getBody();
+            StoreItem[] backendResp = _backendTemplate.getForEntity(_backendUrl, StoreItem[].class).getBody();
             if(backendResp.length > 0)    Arrays.stream(backendResp)
-                    .forEach(e->_cacheTemplate.postForObject(_cacheUrl, e, StoreObject.class));
+                    .forEach(e->_cacheTemplate.postForObject(_cacheUrl, e, StoreItem.class));
             return Arrays.asList(backendResp);
         } else {
             //Return cached list
@@ -55,88 +55,73 @@ public class StoreBackendController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/")
-    public StoreObject create(@RequestBody StoreObject storeObject) {
+    public StoreItem create(@RequestBody StoreItem item) {
         // check if cache size is not over the limit
         throwIfOverLimit();
 
-        if(storeObject.getTitle() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.title cannot be null on put");
+        if(item.getTitle() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.title cannot be null on put");
         }
 
-        LOG.debug("Creating StoreObject: " + storeObject);
-        StoreObject obj = new StoreObject();
-        if(ObjectUtils.isEmpty(storeObject.getId())) {
+        LOG.debug("Creating StoreItem: " + item);
+        StoreItem obj = new StoreItem();
+        if(ObjectUtils.isEmpty(item.getId())) {
             obj.setId(UUID.randomUUID().toString());
         } else {
-            obj.setId(storeObject.getId());
+            obj.setId(item.getId());
         }
-        if(!ObjectUtils.isEmpty(storeObject.getTitle())) {
-            obj.setTitle(storeObject.getTitle());
+        if(!ObjectUtils.isEmpty(item.getTitle())) {
+            obj.setTitle(item.getTitle());
         }
-        if(!ObjectUtils.isEmpty(storeObject.isComplete())) {
-            obj.setComplete(storeObject.isComplete());
-        }
-        if(ObjectUtils.isEmpty(storeObject.getCategory())) {
+        if(ObjectUtils.isEmpty(item.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
         } else {
-            obj.setCategory(storeObject.getCategory());
+            obj.setCategory(item.getCategory());
         }
-        if(ObjectUtils.isEmpty(storeObject.getDeadline())) {
-            obj.setDeadline(dtf.format(LocalDateTime.now()));
-        } else {
-            obj.setDeadline(storeObject.getDeadline());
-        }
+        
 
         //Write to DB
-        StoreObject saved = _backendTemplate.postForObject(_backendUrl, obj, StoreObject.class);
+        StoreItem saved = _backendTemplate.postForObject(_backendUrl, obj, StoreItem.class);
         LOG.debug("Created in Backend");
 
         //Invalidate/Add Cache
-        StoreObject cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreObject.class);
+        StoreItem cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreItem.class);
         LOG.debug("Created in Cache");
         return saved;
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/{id}")
-    public StoreObject put(@PathVariable String id, @RequestBody StoreObject storeObject) {
-        if(storeObject.getId() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id cannot be null on put");
+    public StoreItem put(@PathVariable String id, @RequestBody StoreItem item) {
+        if(item.getId() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id cannot be null on put");
         }
-        if(!storeObject.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id ${storeObject.id} and id $id are inconsistent");
+        if(!item.getId().equals(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${storeObject.id} and id $id are inconsistent");
         }
 
-        StoreObject obj = new StoreObject();
-        obj.setId(storeObject.getId());
+        StoreItem obj = new StoreItem();
+        obj.setId(item.getId());
 
-        if(!ObjectUtils.isEmpty(storeObject.isComplete())) {
-            obj.setComplete(storeObject.isComplete());
-        }
-        if(ObjectUtils.isEmpty(storeObject.getCategory())) {
+        if(ObjectUtils.isEmpty(item.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
         } else {
-            obj.setCategory(storeObject.getCategory());
+            obj.setCategory(item.getCategory());
         }
-        if(ObjectUtils.isEmpty(storeObject.getDeadline())) {
-            obj.setDeadline(dtf.format(LocalDateTime.now()));
-        } else {
-            obj.setDeadline(storeObject.getDeadline());
-        }
-
+      
         //Write to DB
-        StoreObject saved = _backendTemplate.postForObject(_backendUrl, obj, StoreObject.class);
+        StoreItem saved = _backendTemplate.postForObject(_backendUrl, obj, StoreItem.class);
         LOG.debug("Created in Backend");
 
         //Invalidate/Add Cache
-        StoreObject cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreObject.class);
+        StoreItem cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreItem.class);
         LOG.debug("Created in Cache");
         return saved;
     }
 
     @DeleteMapping("/")
     public void deleteAll() {
-        LOG.debug("Removing all StoreObjects");
+        LOG.debug("Removing all StoreItems");
 
         //Remove from DB
         _backendTemplate.delete(_backendUrl);
@@ -146,11 +131,11 @@ public class StoreBackendController {
 
     @GetMapping("/{id}")
     public StoreObject retrieve(@PathVariable("id") String id) {
-        LOG.debug("Retrieving StoreObject: " + id);
+        LOG.debug("Retrieving StoreItem: " + id);
         //Check cache + DB
         StoreObject cached = null;
         try {
-            cached = _cacheTemplate.getForEntity(_cacheUrl + "/" + id, StoreObject.class).getBody();
+            cached = _cacheTemplate.getForEntity(_cacheUrl + "/" + id, StoreItem.class).getBody();
         } catch (HttpStatusCodeException ex) {
             if(ex.getRawStatusCode() != 404) {
                 LOG.error("Caching service error downstream", ex);
@@ -167,7 +152,7 @@ public class StoreBackendController {
 
             StoreObject source = null;
             try{
-                source = _backendTemplate.getForEntity(_backendUrl + "/" + id, StoreObject.class).getBody();
+                source = _backendTemplate.getForEntity(_backendUrl + "/" + id, StoreItem.class).getBody();
             } catch (HttpStatusCodeException ex) {
                 if(ex.getRawStatusCode() != 404) {
                     LOG.error("Database service error downstream", ex);
@@ -177,7 +162,7 @@ public class StoreBackendController {
 
             if(source != null) {
                 LOG.debug("Found in backend");
-                cached = _cacheTemplate.postForObject(_cacheUrl, source, StoreObject.class);
+                cached = _cacheTemplate.postForObject(_cacheUrl, source, StoreItem.class);
                 return source;
             }
         }
@@ -195,48 +180,40 @@ public class StoreBackendController {
     }
 
     @PatchMapping("/{id}")
-    public StoreObject update(@PathVariable("id") String id, @RequestBody StoreObject storeObject) {
-        if(storeObject.getId() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id cannot be null on put");
+    public StoreItem update(@PathVariable("id") String id, @RequestBody StoreItem storeObject) {
+        if(item.getId() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id cannot be null on put");
         }
         if(!storeObject.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.id ${storeObject.id} and id $id are inconsistent");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${storeObject.id} and id $id are inconsistent");
         }
 
-        StoreObject obj = new StoreObject();
-        obj.setId(storeObject.getId());
+        StoreItem obj = new StoreItem();
+        obj.setId(item.getId());
 
-        if(!ObjectUtils.isEmpty(storeObject.getTitle())) {
-            obj.setTitle(storeObject.getTitle());
-        }
-        if(!ObjectUtils.isEmpty(storeObject.isComplete())) {
-            obj.setComplete(storeObject.isComplete());
+        if(!ObjectUtils.isEmpty(item.getTitle())) {
+            obj.setTitle(item.getTitle());
         }
         if(ObjectUtils.isEmpty(storeObject.getCategory())) {
             obj.setCategory(DEFAULT_GROUP);
         } else {
             obj.setCategory(storeObject.getCategory());
         }
-        if(ObjectUtils.isEmpty(storeObject.getDeadline())) {
-            obj.setDeadline(dtf.format(LocalDateTime.now()));
-        } else {
-            obj.setDeadline(storeObject.getDeadline());
-        }
-
+       
         //Write to DB
-        StoreObject saved = _backendTemplate.postForObject(_backendUrl, obj, StoreObject.class);
+        StoreItem saved = _backendTemplate.postForObject(_backendUrl, obj, StoreItem.class);
         LOG.debug("Created in Backend");
 
         //Invalidate/Add Cache
-        StoreObject cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreObject.class);
+        StoreItem cached = _cacheTemplate.postForObject(_cacheUrl, saved, StoreItem.class);
         LOG.debug("Created in Cache");
         return saved;
     }
 
     private void throwIfOverLimit() {
-        StoreObject[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreObject[].class).getBody();
+        StoreItem[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreItem[].class).getBody();
         if(cached.length >= _limit) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "storeObject.api.limit=$limit, storeObject.size=$count");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.api.limit=$limit, item.size=$count");
         } else {
             return;
         }
