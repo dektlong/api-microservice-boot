@@ -97,7 +97,7 @@ public class StoreBackendController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id cannot be null on put");
         }
         if(!item.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${storeObject.id} and id $id are inconsistent");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${item.id} and id $id are inconsistent");
         }
 
         StoreItem obj = new StoreItem();
@@ -185,7 +185,7 @@ public class StoreBackendController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id cannot be null on put");
         }
         if(!item.getId().equals(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${storeObject.id} and id $id are inconsistent");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "item.id ${item.id} and id $id are inconsistent");
         }
 
         StoreItem obj = new StoreItem();
