@@ -1,5 +1,5 @@
 # Introduction
-Example soure repo for a Starter to create store-backend-api
+Source repo a Starter to create store-backend-api
 
 The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
 
