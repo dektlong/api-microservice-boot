@@ -39,7 +39,7 @@ public class StoreBackendController {
     @GetMapping("/")
     public List<StoreItem> retrieve() {
         LOG.debug("Retrieving all StoreItems");
-        StoreItem[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreObject[].class).getBody();
+        StoreItem[] cached = _cacheTemplate.getForEntity(_cacheUrl, StoreItem[].class).getBody();
         //if cache is empty, hydrate
         if(cached.length < 1) {
             LOG.debug("Cache empty, retrieving from backend service");
