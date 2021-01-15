@@ -1,5 +1,5 @@
 # Introduction
-Source repo a Starter to create store-backend-api
+Starter template to create internal APIs for online stores.
 
 The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
 
@@ -21,13 +21,13 @@ ex.:
 
 `store-backend-api` exposes multiple endpoints, by default running at port `8082`:
 
-* `/` - [GET] returns all TODO items 
-* `/{id}` - [GET] returns a TODO items for the specified id
-* `/` - [POST] creates a new TODO item
-* `/{id}` - [POST] creates a new TODO item with a specified id, in lieu of an auto-generated id
-* `/{id}` - [PATCH] updates an existing TODO item 
-* `/` - [DELETE] - deletes all TODOs in the database and evicts the cache
-* `/{id}` - [DELETE] - deletes a TODO for the specified id
+* `/` - [GET] returns all store-items 
+* `/{id}` - [GET] returns a store-items  for the specified id
+* `/` - [POST] creates a new store-item
+* `/{id}` - [POST] creates a new store-item  with a specified id, in lieu of an auto-generated id
+* `/{id}` - [PATCH] updates an existing store-items 
+* `/` - [DELETE] - deletes all store-items in the database and evicts the cache
+* `/{id}` - [DELETE] - deletes a store-item  for the specified id
 
 `store-backend-api` exposes additionally a separate set of endpoints for introspection, out-of-the-box and customized
 
