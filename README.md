@@ -18,7 +18,7 @@ ex.:
 ```
 ## Endpoints
 
-`store-backend-api` implementations should support at the minimum these API route endpoints
+All internal APIs implementations of `store-backend-api` should support at the minimum these API route endpoints
 
     Retrieve all store items
     {
@@ -28,19 +28,25 @@ ex.:
         filters: RateLimit
     }
 
-* Retrieve current authenticated user's information
-    path: /api/whoami
-    method: GET
-    secured: yes, token-relay and sso
+    Retrieve current authenticated user's information
+    {
+        path: /api/whoami
+        method: GET
+        secured: yes, token-relay and sso
+    }
     
-* Manage a request to transact a given store-item
-    path: /api/store-item/*/transaction-requests/**",
-    method: POST,PUT,DELETE
-    secured: yes, token-relay and sso
+    Manage a request to transact a given store-item
+    {
+        path: /api/store-item/*/transaction-requests/**",
+        method: POST,PUT,DELETE
+        secured: yes, token-relay and sso
+    }
     
-* API Actuator endpoints
-    path: /api/actuator/**
-    
+    API Actuator endpoints
+    {
+        path: /api/actuator/**
+        secured: no
+    }
     
 ## Pre-requisites for using store-backend-api 
 Building and running the application assumes that you have installed a number of pre-requisites:
