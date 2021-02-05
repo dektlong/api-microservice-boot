@@ -15,7 +15,7 @@ spec:
     - ssoEnabled: true
       tokenRelay: true
       predicates:
-        - Path=/api/store-item
+        - Path=/api/user-info
         - Method=GET
       filters:
         - StripPrefix=1
