@@ -5,20 +5,9 @@ The backend service fits into a larger Online Store application, which includes 
 
 The service can be accessed from a Web UI or directly at the endpoints it exposes.
 
-## The Domain Model
-The Domain Model is a StoreItem object which has an id, a title and a category
-```json
-ex.:
-{
-    "id": "4d0918be-36fa-4dcd-b7b8-14200ef31d4c",
-    "title": "paprika"
-    "category": "pet"
-    
-}
-```
-## Endpoints
+## Internal API Endpoints
 
-All internal APIs implementations of `store-backend-api` should support at the minimum these API route endpoints
+Implementations of `store-backend-api` should support at the minimum these route endpoints
 
     Retrieve all store items
     {
@@ -48,6 +37,18 @@ All internal APIs implementations of `store-backend-api` should support at the m
         secured: no
     }
     
+## The Domain Model
+The Domain Model is a StoreItem object which has an id, a title and a category
+```json
+ex.:
+{
+    "id": "4d0918be-36fa-4dcd-b7b8-14200ef31d4c",
+    "title": "paprika"
+    "category": "pet"
+    
+}
+```
+
 ## Pre-requisites for using store-backend-api 
 Building and running the application assumes that you have installed a number of pre-requisites:
 
