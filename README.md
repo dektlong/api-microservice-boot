@@ -18,23 +18,28 @@ ex.:
 ```
 ## Endpoints
 
-`store-backend-api` exposes multiple endpoints, by default running at port `8082`:
+`store-backend-api` implementations should support at the minimum these API route endpoints
 
-* `/` - [GET] returns all store-items 
-* `/{id}` - [GET] returns a store-items  for the specified id
-* `/` - [POST] creates a new store-item
-* `/{id}` - [POST] creates a new store-item  with a specified id, in lieu of an auto-generated id
-* `/{id}` - [PATCH] updates an existing store-items 
-* `/` - [DELETE] - deletes all store-items in the database and evicts the cache
-* `/{id}` - [DELETE] - deletes a store-item  for the specified id
+* Retrieve all store items
+    path: /api/store-items
+    method: GET
+    secured: no
+    filters: RateLimit
 
-`store-backend-api` exposes additionally a separate set of endpoints for introspection, out-of-the-box and customized
-
-* `/actuator` - [GET] returns all actuators enabled in the application; by default almost all available actuators have been enabled, for educational purposes
-* `/actuator/health` - [GET] returns the OOB health info + customized health info collected from the service
-* `/actuator/custom` - [GET] implements a custom actuator
-* `/actuator/info` - [GET] collects customized info from the application
-
+* Retrieve current authenticated user's information
+    path: /api/whoami
+    method: GET
+    secured: yes, token-relay and sso
+    
+* Manage a request to transact a given store-item
+    path: /api/store-item/*/transaction-requests/**",
+    method: POST,PUT,DELETE
+    secured: yes, token-relay and sso
+    
+* API Actuator endpoints
+    path: /api/actuator/**
+    
+    
 ## Pre-requisites for using store-backend-api 
 Building and running the application assumes that you have installed a number of pre-requisites:
 
