@@ -11,18 +11,21 @@ spec:
         - Method=GET
       filters:
         - StripPrefix=1
-#        - RateLimit=2,10s
+        - RateLimit=2,10s
     - ssoEnabled: true
       tokenRelay: true
       predicates:
-        - Path=/api/user-info
+        - Path=/api/whoami
         - Method=GET
       filters:
         - StripPrefix=1
     - ssoEnabled: true
       tokenRelay: true
       predicates:
-        - Path=/api/animals/*/adoption-requests/**
+        - Path=/api/store-item/*/transaction-requests/**
         - Method=POST,PUT,DELETE
       filters:
         - StripPrefix=1
+    - predicates:
+        - Path=/api/actuator/**
+        - Method=GET
