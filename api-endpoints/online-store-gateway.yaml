@@ -1,0 +1,13 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGateway
+metadata:
+  name: online-store-gateway
+spec:
+  api:
+    serverUrl: https://animals.apps.dekt.io
+    title: Online Store Gateway
+    description: Gateway to control internal APIs for building microservices of an online store. 
+    version: 0.1.0
+  count: 2
+  sso:
+    secret: online-store-secret
