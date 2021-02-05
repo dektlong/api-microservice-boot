@@ -1,0 +1,9 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayMapping
+metadata:
+  name: online-store-backend-routes
+spec:
+  gatewayRef:
+    name: online-store-api-gateway
+  routeConfigRef:
+    name: online-store-backend-route-config
