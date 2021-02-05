@@ -40,11 +40,11 @@ Implementations of `store-backend-api` should support at the minimum these route
 ## The Domain Model
 The Domain Model is a StoreItem object which has an id, a title and a category
 
-{
-    "id": store-item-category-unique-id,
-    "title": store-item-name
-    "category": store-item-category
-}
+    {
+        "id": store-item-category-unique-id,
+        "title": store-item-name
+        "category": store-item-category
+    }
 
 ## Pre-requisites for using store-backend-api 
 Building and running the application assumes that you have installed a number of pre-requisites:
