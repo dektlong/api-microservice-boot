@@ -9,34 +9,34 @@ The service can be accessed from a Web UI or directly at the endpoints it expose
 
 Implementations of `store-backend-api` should support at the minimum these route endpoints
 
-    Retrieve all store items:
     {
+        title: Retrieve all store items
         path: /api/store-items
         method: GET
         secured: no
         filters: RateLimit
     }
 
-    Retrieve current authenticated user's information:
     {
+        title: Retrieve current authenticated user's information
         path: /api/whoami
         method: GET
         secured: yes, token-relay and sso
     }
     
-    Manage a request to transact a given store-item:
     {
+        title: Manage a request to transact a given store-item
         path: /api/store-item/*/transaction-requests/**",
         method: POST,PUT,DELETE
         secured: yes, token-relay and sso
     }
     
-    API Actuator endpoints:
     {
+        title: API Actuator endpoints
         path: /api/actuator/**
         secured: no
     }
-    
+
 ## The Domain Model
 The Domain Model is a StoreItem object which has an id, a title and a category
 
