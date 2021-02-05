@@ -9,7 +9,7 @@ The service can be accessed from a Web UI or directly at the endpoints it expose
 
 Implementations of `store-backend-api` should support at the minimum these route endpoints
 
-    Retrieve all store items
+    Retrieve all store items:
     {
         path: /api/store-items
         method: GET
@@ -17,21 +17,21 @@ Implementations of `store-backend-api` should support at the minimum these route
         filters: RateLimit
     }
 
-    Retrieve current authenticated user's information
+    Retrieve current authenticated user's information:
     {
         path: /api/whoami
         method: GET
         secured: yes, token-relay and sso
     }
     
-    Manage a request to transact a given store-item
+    Manage a request to transact a given store-item:
     {
         path: /api/store-item/*/transaction-requests/**",
         method: POST,PUT,DELETE
         secured: yes, token-relay and sso
     }
     
-    API Actuator endpoints
+    API Actuator endpoints:
     {
         path: /api/actuator/**
         secured: no
