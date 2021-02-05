@@ -20,11 +20,13 @@ ex.:
 
 `store-backend-api` implementations should support at the minimum these API route endpoints
 
-* Retrieve all store items
-    path: /api/store-items
-    method: GET
-    secured: no
-    filters: RateLimit
+    Retrieve all store items
+    {
+        path: /api/store-items
+        method: GET
+        secured: no
+        filters: RateLimit
+    }
 
 * Retrieve current authenticated user's information
     path: /api/whoami
