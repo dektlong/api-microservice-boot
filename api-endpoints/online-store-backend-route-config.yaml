@@ -10,22 +10,14 @@ spec:
         - Path=/api/store-items
         - Method=GET
       filters:
-        - StripPrefix=1
         - RateLimit=2,10s
-    - ssoEnabled: true
-      tokenRelay: true
-      predicates:
+    - predicates:
         - Path=/api/whoami
         - Method=GET
-      filters:
-        - StripPrefix=1
-    - ssoEnabled: true
+      ssoEnabled: true
       tokenRelay: true
-      predicates:
+    - predicates:
         - Path=/api/store-item/*/transaction-requests/**
         - Method=POST,PUT,DELETE
-      filters:
-        - StripPrefix=1
-    - predicates:
-        - Path=/api/actuator/**
-        - Method=GET
+      ssoEnabled: true
+      tokenRelay: true
