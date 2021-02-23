@@ -6,4 +6,4 @@ spec:
   gatewayRef:
     name: online-store-api-gateway
   routeConfigRef:
-    name: online-store-backend-route-config
+    name: online-store-backend-routes
