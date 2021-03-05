@@ -2,18 +2,18 @@ command:
   name: new
   description: Create a new backend API for online Stores
   options:
-    - name: use-spring-boot-observer
+    - name: boot-oserver
       description: Add sidecar integration to Spring Boot Observer
       dataType: boolean
       defaultValue: true
       inputType: toggle
-    - name: use-tanzu-observability
-      description: Add proxy local integration to Tanzu Observability
+    - name: tanzu-observability
+      description: Add local proxy integration to Tanzu Observability
       dataType: boolean
       defaultValue: false
       inputType: toggle
-    - name: use-tanzu-observability
-      description: Add proxy local integration to Tanzu Observability
+    - name: my-string
+      description: test a string param
       dataType: string
       defaultValue: ""
       inputType: textbox
