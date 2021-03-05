@@ -1,12 +1,22 @@
 command:
   name: new
-  description: Create a new project using Spring, JPA, and MySQL
+  description: Create a new backend API for online Stores
   options:
-    - name: use-test-containers
-      description: Add Unit Test using Test Containers
+    - name: use-spring-boot-observer
+      description: Add sidecar integration to Spring Boot Observer
       dataType: boolean
       defaultValue: true
       inputType: toggle
+    - name: use-tanzu-observability
+      description: Add proxy local integration to Tanzu Observability
+      dataType: boolean
+      defaultValue: false
+      inputType: toggle
+    - name: use-tanzu-observability
+      description: Add proxy local integration to Tanzu Observability
+      dataType: string
+      defaultValue: ""
+      inputType: textbox
 
 sources:
   include:
