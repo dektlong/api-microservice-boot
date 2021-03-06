@@ -10,7 +10,7 @@ command:
     - name: api-version
       description: Add the following version to all api routes
       dataType: string
-      defaultValue: "a","b",c"
+      defaultValue: ""
       inputType: dropdown
 
 sources:
