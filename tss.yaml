@@ -7,11 +7,15 @@ command:
       dataType: boolean
       defaultValue: true
       inputType: toggle
-    - name: api-version
-      description: Add the following version to all api routes
+    - name: api-scorecard
+      description: API validaton level 
       dataType: string
-      defaultValue: ""
-      inputType: menu
+      defaultValue: internal
+      inputType: select    # SELECT (single option)
+      choices:
+        project: APIs used for project level components 
+        internal: APIs used for collaboration between internal teams
+        external: APIs can be accessed from external enpoints 
 
 sources:
   include:
