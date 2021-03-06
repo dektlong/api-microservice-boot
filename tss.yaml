@@ -10,7 +10,7 @@ command:
     - name: api-scorecard
       description: API validaton level 
       dataType: string
-      defaultValue: internal
+      defaultValue: project
       inputType: select    # SELECT (single option)
       choices:
         project: APIs used for project level components 
