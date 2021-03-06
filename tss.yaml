@@ -11,7 +11,7 @@ command:
       description: Add the following version to all api routes
       dataType: string
       defaultValue: ""
-      inputType: dropdown
+      inputType: menu
 
 sources:
   include:
