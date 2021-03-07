@@ -16,16 +16,13 @@ command:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: beverage
-      description: What to drink
+    - name: pipeline-initial-label
+      description: What label to use for this project in the delivery pipelines 
       dataType: string
-      defaultValue: water
-      inputType: radio     # RADIO (single option)
-      choices:
-        water: Water
-        milk: Milk
-        coke: Coke
-        coffee: Coffee
+      defaultValue: my-backend-service
+      paramLabel: WORD
+      inputType: text     # TEXT
+#
 
 sources:
   include:
