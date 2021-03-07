@@ -8,14 +8,24 @@ command:
       defaultValue: true
       inputType: toggle
     - name: api-scorecard
-      description: API validaton level 
+      description:  How to score the APIs included in this project
       dataType: string
       defaultValue: project
       inputType: select    # SELECT (single option)
       choices:
-        project: APIs used for project level components 
-        internal: APIs used for collaboration between internal teams
-        external: APIs can be accessed from external enpoints 
+        project: Project level access 
+        internal: Internal teams collabolartion 
+        external: Extenral facing APIs
+    - name: beverage
+      description: What to drink
+      dataType: string
+      defaultValue: water
+      inputType: radio     # RADIO (single option)
+      choices:
+        water: Water
+        milk: Milk
+        coke: Coke
+        coffee: Coffee
 
 sources:
   include:
