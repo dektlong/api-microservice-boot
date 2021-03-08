@@ -16,13 +16,13 @@ command:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: commit-action
-      description:  What to do when commiting changes 
+    - name: code-change-action
+      description:  Action taken upon code changes 
       dataType: string
       defaultValue: build
       inputType: select    #single options
       choices:
-        local: Local build only (commit cannot be done to shared repos)
+        local: Local build (commit is blocked)
         build-pipeline: Build and trigger pipeline
         pipeline: Trigger pipeline
         
