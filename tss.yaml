@@ -11,21 +11,21 @@ command:
       description:  How to score the APIs included in this project
       dataType: string
       defaultValue: project
-      inputType: select    # SELECT (single option)
+      inputType: checkbox    #multiple options
       choices:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: testing-frameworks
-      description: Choose testing frameworks to be configured in this project
+    - name: commit-action
+      description:  What to do when commiting changes 
       dataType: string
-      defaultValue: mockuser
-      inputType: checkbox    # CHECKBOX (multiple options)
+      defaultValue: build
+      inputType: select    #single options
       choices:
-        webtestclient: Auto configure web test client
-        testcontainers: JUnit with Testcontainers
-        mockito: Mockito testing framework
-        mockuser: Mock User with security context
+        local: Local build only (commit cannot be done to shared repos)
+        build-pipeline: Build and trigger pipeline
+        pipeline: Trigger pipeline
+        
 #
 
 sources:
