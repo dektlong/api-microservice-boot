@@ -8,6 +8,7 @@ spec:
     title: Online Store Gateway
     description: Gateway to control internal APIs for building microservices of an online store. 
     version: 0.1.0
+    #validator: internal
   count: 2
   sso:
     secret: online-store-secret
