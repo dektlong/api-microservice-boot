@@ -8,8 +8,8 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.store-backend-api</groupId>
-	<artifactId>store-backend-api</artifactId>
+	<groupId>io.online-store-backend</groupId>
+	<artifactId>online-store-backend</artifactId>
 	<version>0.0.1</version>
 	<name>store-backend-api</name>
 	<description>Business logic sample for backend apis for online stores</description>
