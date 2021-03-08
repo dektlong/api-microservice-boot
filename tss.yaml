@@ -16,12 +16,16 @@ command:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: pipeline-initial-label
-      description: What label to use for this project in the delivery pipelines 
+    - name: testing-frameworks
+      description: Choose testing frameworks to be configured in this project
       dataType: string
-      defaultValue: my-backend-service
-      paramLabel: WORD
-      inputType: text     # TEXT
+      defaultValue: mockuser
+      inputType: checkbox    # CHECKBOX (multiple options)
+      choices:
+        webtestcleint: Auto configure web test client
+        testcontainers: JUnit with Testcontainers
+        mockito: Mockito testing framework
+        mockuser: Mock User with security context
 #
 
 sources:
