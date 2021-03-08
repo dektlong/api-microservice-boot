@@ -1,5 +1,5 @@
 # Introduction
-Starter template to create internal APIs for online stores.
+An Accelerator to create internal APIs for online stores.
 
 The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
 
