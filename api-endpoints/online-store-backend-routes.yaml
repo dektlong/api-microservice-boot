@@ -1,0 +1,23 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: online-store-backend-routes
+spec:
+  service: 
+    name: online-store-backend-service
+  routes:
+    - predicates:
+        - Path=/api/store-items
+        - Method=GET
+      filters:
+        - RateLimit=2,10s
+    - predicates:
+        - Path=/api/whoami
+        - Method=GET
+      ssoEnabled: true
+      tokenRelay: true
+    - predicates:
+        - Path=/api/store-item/*/transaction-requests/**
+        - Method=POST,PUT,DELETE
+      ssoEnabled: true
+      tokenRelay: true
