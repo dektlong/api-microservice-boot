@@ -1,0 +1,32 @@
+{
+  "routes": [
+    {
+      "title": "Retrieve store items",
+      "description": "Retrieve a list of all available store items.",
+      "path": "/api/store-items",
+      "method": "GET",
+      "filters": [ "RateLimit=2,10s" ]
+    },
+    {
+      "title": "API Actuator endpoints",
+      "description": "Access API actuator endpoints to provide current status of backend service.",
+      "path": "/api/actuator/**"
+    },
+    {
+      "title": "Retrieve user information",
+      "description": "Retrieve the current authenticated user's information.",
+      "path": "/api/whoami",
+      "method": "GET",
+      "token-relay": true,
+      "sso-enabled": true
+    },
+    {
+      "title": "Updage a store item",
+      "description": "Updae an item in your online store",
+      "path": "/api/store-item/*/transaction-requests/**"
+      "method": "POST,PUT,DELETE",
+      "token-relay": true,
+      "sso-enabled": true
+    }
+  ]
+}
