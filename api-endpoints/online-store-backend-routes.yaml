@@ -3,9 +3,6 @@ kind: SpringCloudGatewayRouteConfig
 metadata:
   name: online-store-backend-routes
 spec:
-  #validators:
-    #  - project
-    #  - internal
   service: 
     name: online-store-backend-service
   routes:
