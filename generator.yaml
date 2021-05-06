@@ -8,7 +8,7 @@ command:
       defaultValue: true
       inputType: toggle
     - name: api-scorecard
-      description:  How to score the APIs included in this project
+      description:  How to score and validate APIs spec
       dataType: string
       defaultValue: project
       inputType: checkbox    #multiple options
@@ -16,15 +16,15 @@ command:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: code-change-action
-      description:  Action taken upon code changes 
+    - name: api-tagging
+      description:  How to group APIs in the API Portal
       dataType: string
-      defaultValue: build
+      defaultValue: functionality
       inputType: select    #single options
       choices:
-        local: Local build (commit is blocked)
-        build-pipeline: Build and trigger pipeline
-        pipeline: Trigger pipeline
+        access-level: Access level (e.g restricted, public, etc..)
+        functionality: Functional purpose (e.g. store-items, users, etc..)
+        on-off-platform: Execution location (e.g. on-platform, 3rd party, etc..)
         
 #
 
