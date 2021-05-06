@@ -2,13 +2,8 @@ command:
   name: new
   description: Create a new backend API for online Stores
   options:
-    - name: boot-observer
-      description: Add sidecar integration to Spring Boot Observer
-      dataType: boolean
-      defaultValue: true
-      inputType: toggle
     - name: api-scorecard
-      description:  How to score and validate APIs spec
+      description:  How to score and validate APIs spec and performance
       dataType: string
       defaultValue: project
       inputType: checkbox    #multiple options
@@ -16,7 +11,7 @@ command:
         project: Project level access 
         internal: Internal teams collabolartion 
         external: Extenral facing APIs
-    - name: api-tagging
+    - name: api-grouping
       description:  How to group APIs in the API Portal
       dataType: string
       defaultValue: functionality
@@ -25,6 +20,11 @@ command:
         access-level: Access level (e.g restricted, public, etc..)
         functionality: Functional purpose (e.g. store-items, users, etc..)
         on-off-platform: Execution location (e.g. on-platform, 3rd party, etc..)
+    - name: boot-observer
+      description: Add sidecar integration to Spring Boot Observer
+      dataType: boolean
+      defaultValue: true
+      inputType: toggle
         
 #
 
