@@ -11,13 +11,36 @@ spec:
         - Method=GET
       filters:
         - RateLimit=2,10s
+      tags:
+        - Items
     - predicates:
-        - Path=/api/whoami
+        - Path=/api/customer-id
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
+      tags:
+        - Customers
     - predicates:
         - Path=/api/store-item/*/transaction-requests/**
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
+      tags:
+        - Items
+      model:
+        requestBody:
+          description: Manage item requests
+          content:
+            'application/json':
+              schema:
+                type: object
+                description: item request schema
+                properties:
+                  itemName:
+                    type: string
+                  description:
+                    type: string
+                    format: email
+                  notes:
+                    type: string
+                required: [ "item", "description" ]
