@@ -14,7 +14,7 @@ command:
     - name: api-grouping
       description:  How to group APIs in the API Portal
       dataType: string
-      defaultValue: functionality
+      #defaultValue: functionality
       inputType: select    #single options
       choices:
         access-level: Access level (e.g restricted, public, etc..)
