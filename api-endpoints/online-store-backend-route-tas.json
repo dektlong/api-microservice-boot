@@ -21,8 +21,8 @@
       "sso-enabled": true
     },
     {
-      "title": "Updage a store item",
-      "description": "Updae an item in your online store",
+      "title": "Update a store item",
+      "description": "Update an item in your online store",
       "path": "/api/store-item/*/transaction-requests/**"
       "method": "POST,PUT,DELETE",
       "token-relay": true,

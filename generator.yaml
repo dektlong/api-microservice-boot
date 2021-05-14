@@ -10,7 +10,6 @@ command:
       choices:
         project: Project level access 
         internal: Internal teams collabolartion 
-        external: Extenral facing APIs
     - name: api-grouping
       description:  How to group APIs in the API Portal
       dataType: string
