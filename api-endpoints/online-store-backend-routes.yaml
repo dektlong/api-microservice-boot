@@ -12,21 +12,21 @@ spec:
       filters:
         - RateLimit=2,10s
       tags:
-        - Items
+        - {PARAM1}
     - predicates:
         - Path=/api/customer-id
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - Customers
+        - {PARAM2}
     - predicates:
         - Path=/api/store-item/*/transaction-requests/**
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - Items
+        - {PARAM1}
       model:
         requestBody:
           description: Manage item requests

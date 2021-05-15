@@ -6,7 +6,7 @@ command:
       description:  How to score and validate APIs spec and performance
       dataType: string
       defaultValue: project
-      inputType: checkbox    #multiple options
+      inputType: select    #single options
       choices:
         project: Project level access 
         internal: Internal teams collabolartion 
@@ -16,9 +16,9 @@ command:
       #defaultValue: functionality
       inputType: select    #single options
       choices:
-        access-level: Access level (e.g restricted, public, etc..)
-        functionality: Functional purpose (e.g. store-items, users, etc..)
-        on-off-platform: Execution location (e.g. on-platform, 3rd party, etc..)
+        access-level: Access level (e.g Restricted, Public, etc..)
+        functionality: Functional purpose (e.g. Items, Customers, etc..)
+        on-off-platform: Execution location (e.g. On-platform, 3rd party, etc..)
     - name: boot-observer
       description: Add sidecar integration to Spring Boot Observer
       dataType: boolean
@@ -29,9 +29,13 @@ command:
 
 transformations:
   replace:
-    - name: 'replace api-tags'
-      regex: '1 January 1970 00:00:00 UT'
-      with: '#now'
+    - name: 'replace api-tags leve1'
+      regex: '{PARAM1}'
+      with: 'Items'
+    - name: 'replace api-tags leve2'
+      regex: '{PARAM2}'
+      with: 'Customers'
+      
 
 
 
