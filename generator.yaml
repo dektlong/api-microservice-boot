@@ -27,33 +27,12 @@ command:
         
 #
 
-sources:
-  include:
-    - name: everything
-      condition: true
-      patterns: [ '**/*' ]
-  exclude:
-    - name: test-container-filers
-      condition: "!#useTestContainers"
-      patterns: [ '**/*TestContainer*' ]
-    - name: hidden-files
-      condition: true
-      patterns:
-        - ".idea/**"
-        - ".git/**"
-        - "target/**"
-
-symbols:
-  derived:
-    - name: camelCaseProjectName
-      expression: "#helper.camelCase(#projectName)"
-
-
 transformations:
   replace:
-    - name: 'Replace - project creation time in version controller'
+    - name: 'replace api-tags'
       regex: '1 January 1970 00:00:00 UT'
       with: '#now'
-    - name: 'Replace - project name in version controller'
-      regex: 'name-mysqlapp'
-      with: '#camelCaseProjectName'
+
+
+
+
