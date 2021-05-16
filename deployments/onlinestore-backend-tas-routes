@@ -22,7 +22,7 @@
     },
     {
       "title": "Update a store item",
-      "description": "Update an item in your online store",
+      "description": "Update an item in your onlinestore",
       "path": "/api/store-item/*/transaction-requests/**",
       "method": "POST,PUT,DELETE",
       "token-relay": true,
