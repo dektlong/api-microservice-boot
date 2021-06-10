@@ -3,19 +3,18 @@ accelerator:
   description: Accelerator to create Backend API service for online stores
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
-    - online-store
-
+    - online-store-devs
   options:
   - name: api-scorecard
     description:  How to score and validate APIs spec and performance
     dataType: string
     defaultValue: project
-    inputType: select    #single options
+    inputType: select
     choices:
       project: Project level access 
       internal: Internal teams collabolartion 
   - name: api-group1
-    description:  First level of API grouping
+    description: First level of API grouping
     dataType: string
     inputType: select
     choices:
@@ -23,14 +22,14 @@ accelerator:
       functionality: Items
       on-off-platform: On-platform
   - name: api-group2
-    description:  Second level of API grouping
+    description: Second level of API grouping
     dataType: string
     inputType: select
     choices:
       access-level: Public
       functionality: Customers
       on-off-platform: Off-platform
- - name: boot-observer
+  - name: boot-observer
     description: Add sidecar integration to Spring Boot Observer
     dataType: boolean
     defaultValue: true
@@ -38,20 +37,20 @@ accelerator:
 
 engine:
   resources:
-    - name: routes
-      includes: ["deployment/onlinestore-backend-routes.yaml"]
-      transformations:
-        replace:
-          - token: "API-group1"
-            with: '#api-group1'
-          - token: ""API-group2"
-            with: '#api-group2'
-    - name: workload
-      includes: ["deployment/workload.yaml"]
-      transformations:
-        replace:
-          - token: "api-validation-level-token"
-            with: '#api-scorecard'
-    - name: the-rest
-      includes: ["**"]
-      excludes: ["skaffold.yaml"]
+  - name: routes
+    includes: ["deployment/onlinestore-backend-routes.yaml"]
+    transformations:
+      replace:
+      - token: "API-group1"
+        with: '#api-group1'
+      - token: ""API-group2"
+        with: '#api-group2'
+  - name: workload
+    includes: ["deployment/workload.yaml"]
+    transformations:
+      replace:
+      - token: "api-validation-level-token"
+        with: '#api-scorecard'
+   - name: the-rest
+     includes: ["**"]
+     excludes: ["skaffold.yaml"]
