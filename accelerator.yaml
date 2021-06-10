@@ -5,17 +5,27 @@ accelerator:
   tags:
     - online-store
 
-  # options for the UI
   options:
-  - name: appName
-    description: Name of the app
+  - name: api-scorecard
+    description:  How to score and validate APIs spec and performance
     dataType: string
-    defaultValue: hello-fun
-    inputType: text
-  - name: includeSkaffold
-    description: Include a skaffold configuration file
+    defaultValue: project
+    inputType: select    #single options
+    choices:
+      project: Project level access 
+      internal: Internal teams collabolartion 
+  - name: api-grouping
+    description:  How to group APIs in the API Portal
+    dataType: string
+    inputType: select    #single options
+    choices:
+      access-level: Access level (e.g Restricted, Public, etc..)
+      functionality: Functional purpose (e.g. Items, Customers, etc..)
+      on-off-platform: Execution location (e.g. On-platform, 3rd party, etc..)
+  - name: boot-observer
+    description: Add sidecar integration to Spring Boot Observer
     dataType: boolean
-    defaultValue: false
+    defaultValue: true
     inputType: toggle
 
 engine:
