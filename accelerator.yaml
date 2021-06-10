@@ -14,15 +14,23 @@ accelerator:
     choices:
       project: Project level access 
       internal: Internal teams collabolartion 
-  - name: api-grouping
-    description:  How to group APIs in the API Portal
+  - name: api-group1
+    description:  First level of API grouping
     dataType: string
-    inputType: select    #single options
+    inputType: select
     choices:
-      access-level: Access level (e.g Restricted, Public, etc..)
-      functionality: Functional purpose (e.g. Items, Customers, etc..)
-      on-off-platform: Execution location (e.g. On-platform, 3rd party, etc..)
-  - name: boot-observer
+      access-level: Restricted
+      functionality: Items
+      on-off-platform: On-platform
+  - name: api-group2
+    description:  Second level of API grouping
+    dataType: string
+    inputType: select
+    choices:
+      access-level: Public
+      functionality: Customers
+      on-off-platform: Off-platform
+ - name: boot-observer
     description: Add sidecar integration to Spring Boot Observer
     dataType: boolean
     defaultValue: true
@@ -30,27 +38,20 @@ accelerator:
 
 engine:
   resources:
-    - name: pom-xml
-      includes: ["pom.xml"]
+    - name: routes
+      includes: ["deployment/onlinestore-backend-routes.yaml"]
       transformations:
         replace:
-          - token: "hello-fun"
-            with: '#projectName'
-          - token: "Demo of a Spring Cloud Function"
-            with: '#projectDescription'
-    - name: kubernetes-yaml
-      includes: ["kubernetes/*.yaml"]
+          - token: "API-group1"
+            with: '#api-group1'
+          - token: ""API-group2"
+            with: '#api-group2'
+    - name: workload
+      includes: ["deployment/workload.yaml"]
       transformations:
         replace:
-          - token: "{{appName}}"
-            with: '#appName'
-    - name: skaffold
-      includes: ["skaffold.yaml"]
-      condition: '#includeSkaffold'
-      transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#appName'
+          - token: "api-validation-level-token"
+            with: '#api-scorecard'
     - name: the-rest
       includes: ["**"]
       excludes: ["skaffold.yaml"]
