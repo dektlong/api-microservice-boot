@@ -4,31 +4,8 @@ accelerator:
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
   - online-store-devs
-  
-  options:
-  - name: api-scorecard
-    description:  How to score and validate APIs spec and performance
-    dataType: string
-    defaultValue: project
-    inputType: select
-    choices:
-      project: Project level access 
-      internal: Internal teams collabolartion 
-  - name: api-grouping
-    description:  How to group APIs in the API Portal
-    dataType: string
-    inputType: select    #single options
-    choices:
-      access-level: Access level (e.g Restricted, Public, etc..)
-      functionality: Functional purpose (e.g. Items, Customers, etc..)
-      on-off-platform: Execution location (e.g. On-platform, 3rd party, etc..)
-  - name: boot-observer
-    description: Add sidecar integration to Spring Boot Observer
-    dataType: boolean
-    defaultValue: true
-    inputType: toggle
 
 engine:
   resources:
-    - name: the-rest
+    - name: all
       includes: ["**"]
