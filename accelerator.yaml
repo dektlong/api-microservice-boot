@@ -38,20 +38,27 @@ accelerator:
 
 engine:
   resources:
-  - name: routes
-    includes: ["deployment/onlinestore-backend-routes.yaml"]
-    transformations:
-      replace:
-        - token: "API-group1"
-          with: '#api-group1'
-        - token: ""API-group2"
-          with: '#api-group2'
-  - name: workload
-    includes: ["deployment/workload.yaml"]
-    transformations:
-      replace:
-        - token: "api-validation-level-token"
-          with: '#api-scorecard'
-   - name: the-rest
-     includes: ["**"]
-     excludes: ["skaffold.yaml"]
+    - name: pom-xml
+      includes: ["pom.xml"]
+      transformations:
+        replace:
+          - token: "hello-fun"
+            with: '#projectName'
+          - token: "Demo of a Spring Cloud Function"
+            with: '#projectDescription'
+    - name: kubernetes-yaml
+      includes: ["kubernetes/*.yaml"]
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#appName'
+    - name: skaffold
+      includes: ["skaffold.yaml"]
+      condition: '#includeSkaffold'
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#appName'
+    - name: the-rest
+      includes: ["**"]
+      excludes: ["skaffold.yaml"]
