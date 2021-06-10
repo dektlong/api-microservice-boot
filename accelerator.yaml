@@ -30,7 +30,7 @@ accelerator:
 
 engine:
   resources:
-    - name: pom-xml
+    - name: route-tag
       includes: ["pom.xml"]
       transformations:
         replace:
