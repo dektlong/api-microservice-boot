@@ -1,0 +1,52 @@
+apiVersion: accelerator.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+accelerator:
+  displayName: Hello Fun
+  description: A simple Spring Cloud Function serverless app
+  iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-cloud.png
+  tags:
+  - java
+  - spring
+  - cloud
+  - function
+  - serverless
+
+  # options for the UI
+  options:
+  - name: appName
+    description: Name of the app
+    dataType: string
+    defaultValue: hello-fun
+    inputType: text
+  - name: includeSkaffold
+    description: Include a skaffold configuration file
+    dataType: boolean
+    defaultValue: false
+    inputType: toggle
+
+engine:
+  resources:
+    - name: pom-xml
+      includes: ["pom.xml"]
+      transformations:
+        replace:
+          - token: "hello-fun"
+            with: '#projectName'
+          - token: "Demo of a Spring Cloud Function"
+            with: '#projectDescription'
+    - name: kubernetes-yaml
+      includes: ["kubernetes/*.yaml"]
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#appName'
+    - name: skaffold
+      includes: ["skaffold.yaml"]
+      condition: '#includeSkaffold'
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#appName'
+    - name: the-rest
+      includes: ["**"]
+      excludes: ["skaffold.yaml"]
