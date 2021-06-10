@@ -12,4 +12,4 @@ metadata:
           branch: main
     env:
       name: API_VALIDATION_LEVEL
-      value: api-validation-level-token
+      value: internal
