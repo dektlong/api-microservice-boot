@@ -31,11 +31,11 @@ accelerator:
 engine:
   resources:
     - name: route-tag
-      includes: ["pom.xml"]
+      includes: ["deployment/onlinestore-backend-routes.yaml"]
       transformations:
         replace:
-          - token: "hello-fun"
-            with: '#projectName'
+          - token: "{{api-group1}}"
+            with: '#api-grouping'
           - token: "Demo of a Spring Cloud Function"
             with: '#projectDescription'
     - name: kubernetes-yaml
