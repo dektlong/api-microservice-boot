@@ -30,27 +30,5 @@ accelerator:
 
 engine:
   resources:
-    - name: route-tag
-      includes: ["deployment/onlinestore-backend-routes.yaml"]
-      transformations:
-        replace:
-          - token: "{{api-group1}}"
-            with: '#api-grouping'
-          - token: "Demo of a Spring Cloud Function"
-            with: '#projectDescription'
-    - name: kubernetes-yaml
-      includes: ["kubernetes/*.yaml"]
-      transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#appName'
-    - name: skaffold
-      includes: ["skaffold.yaml"]
-      condition: '#includeSkaffold'
-      transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#appName'
     - name: the-rest
       includes: ["**"]
-      excludes: ["skaffold.yaml"]
