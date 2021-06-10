@@ -14,22 +14,14 @@ accelerator:
     choices:
       project: Project level access 
       internal: Internal teams collabolartion 
-  - name: api-group1
-    description: First level of API grouping
+  - name: api-grouping
+    description:  How to group APIs in the API Portal
     dataType: string
-    inputType: select
+    inputType: select    #single options
     choices:
-      access-level: Restricted
-      functionality: Items
-      on-off-platform: On-platform
-  - name: api-group2
-    description: Second level of API grouping
-    dataType: string
-    inputType: select
-    choices:
-      access-level: Public
-      functionality: Customers
-      on-off-platform: Off-platform
+      access-level: Access level (e.g Restricted, Public, etc..)
+      functionality: Functional purpose (e.g. Items, Customers, etc..)
+      on-off-platform: Execution location (e.g. On-platform, 3rd party, etc..)
   - name: boot-observer
     description: Add sidecar integration to Spring Boot Observer
     dataType: boolean
