@@ -15,7 +15,6 @@ wavefront:
   application:
     name: {{appName}}
     service: backend
-    management.
 
 logging.level:
   org.springframework.data: debug
