@@ -34,7 +34,7 @@ accelerator:
 
 engine:
   resources:
-    - name: update-config
+    - name: update-deployment-config
       includes: ["config/*.*"]
       transformations:
         replace:
@@ -49,8 +49,8 @@ engine:
     - name: boot-observer
       includes: ["config/deployment-with-boot-observer.yaml"]
       condition: '#includeBootObserver'
-    - name: pom-xml
-      includes: ["src/maven/pom.xml"]
+    - name: update-src-config
+      includes: ["src/*.*"]
       transformations:
         replace:
           - token: "{{appName}}"
