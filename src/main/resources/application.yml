@@ -1,4 +1,8 @@
 management:
+  metrics:
+    export:
+      wavefront:
+        uri:proxy://taznu-observability-proxy:2878
   endpoint:
     health:
       show-details: always
@@ -11,6 +15,7 @@ wavefront:
   application:
     name: {{appName}}
     service: backend
+    management.
 
 logging.level:
   org.springframework.data: debug
