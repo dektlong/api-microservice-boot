@@ -11,14 +11,17 @@ accelerator:
     dataType: string
     defaultValue: hello-fun
     inputType: text
-  - name: includeSkaffold
-    description: Include a skaffold configuration file
+  - name: includeBootObserver
+    description: Include an app configuration file with sidecar integration to Spring Boot Observer
     dataType: boolean
-    defaultValue: false
+    defaultValue: true
     inputType: toggle
 
 engine:
   resources:
+    - name: boot-observer
+      includes: ["deployment/onlinestore-backend-app.yaml"]
+      condition: '#includeBootObserver'
     - name: all
       includes: ["**"]
-      excludes: ["accelerator.yaml","generator.yaml"]
+      excludes: ["accelerator.yaml","generator.yaml","deployment/onlinestore-backend-app.yaml"]
