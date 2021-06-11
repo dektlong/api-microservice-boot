@@ -14,10 +14,12 @@ accelerator:
   - name: first-api-group
     description: Name of the first API group
     dataType: string
+    defaultValue: first-group
     inputType: text
   - name: second-api-group
     description: Name of the second API group
     dataType: string
+    defaultValue: second-group
     inputType: text
   - name: include-boot-observer
     description: Include an app configuration file with sidecar integration to Spring Boot Observer
