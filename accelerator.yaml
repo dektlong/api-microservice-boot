@@ -25,6 +25,10 @@ accelerator:
     description: Name of the second API group
     dataType: string
     inputType: text
+  - name: parentApp
+    description: Name of the parent business application 
+    dataType: string
+    inputType: text
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
@@ -39,6 +43,8 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
+          - token: "{{parentApp}}"
+            with '#parentApp'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
           - token: "{{apiGroup1}}"
