@@ -8,11 +8,11 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.online-store-backend</groupId>
-	<artifactId>online-store-backend</artifactId>
+	<groupId>io.{{appName}}</groupId>
+	<artifactId>{{appName}}</artifactId>
 	<version>0.0.1</version>
-	<name>store-backend-api</name>
-	<description>Business logic sample for backend apis for online stores</description>
+	<name>{{appName}}</name>
+	<description>Spring boot dependencies for {{appName}}/description>
 
 	<properties>
 		<java.version>1.8</java.version>
