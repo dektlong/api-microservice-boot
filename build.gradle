@@ -22,7 +22,7 @@ repositories {
 dependencies {
 	
 	//Tanzu Observability
-	implementation 'com.wavefront:wavefront-spring-boot-starter:$releaseVersion'
+	implementation 'com.wavefront:wavefront-spring-boot-starter:2.2.0'
 	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
 	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
