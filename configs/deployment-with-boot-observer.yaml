@@ -1,0 +1,8 @@
+- name: spring-observer-sidecar
+          image: spring-boot-observer-sidecar:0.0.1
+          env:
+            - name: spring.boot.observer.sidecar.application-name
+              value: {{appName}}
+            - name: spring.boot.observer.client.host
+              value: spring-boot-observer-server.sbo-system.svc.cluster.local
+          resources: {} 
