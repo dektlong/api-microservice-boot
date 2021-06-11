@@ -13,7 +13,7 @@ management:
 
 wavefront:
   application:
-    name: {{parentApp}}
+    name: {{parentAppName}}
     service: {{appName}}
 
 logging.level:
