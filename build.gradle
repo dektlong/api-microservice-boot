@@ -5,7 +5,7 @@ plugins {
 	id 'jacoco'
 }
 
-group = 'io.spring.cloud.samples.animalrescue'
+group = 'io.{{appName}}'
 version = '0.0.1-SNAPSHOT'
 
 configurations {
