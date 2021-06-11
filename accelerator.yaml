@@ -25,7 +25,7 @@ accelerator:
     description: Name of the second API group
     dataType: string
     inputType: text
-  - name: parentApp
+  - name: parentAppName
     description: Name of the parent business application 
     dataType: string
     inputType: text
@@ -41,22 +41,28 @@ engine:
       includes: ["config/*.*"]
       transformations:
         replace:
+          - token: "{{appName}}"
+            with: '#projectName'
+          - token: "{{parentAppName}}"
+            with: '#parentApp'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
           - token: "{{apiGroup1}}"
             with: '#firstApiGroup'
           - token: "{{apiGroup2}}"
             with: '#secondApiGroup'
-    - name: boot-observer
-      includes: ["config/deployment-with-boot-observer.yaml"]
-      condition: '#includeBootObserver'
-    - name: all-other
-      includes: ["**"]
+    - name: update-source-config
+      includes: ["settings.gradle","build.gradle","src/main/resources/application.yml"]
       transformations:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
           - token: "{{parentApp}}"
-            with: '#parentApp'
+            with: '#parentAppName'
+    - name: boot-observer
+      includes: ["config/deployment-with-boot-observer.yaml"]
+      condition: '#includeBootObserver'
+    - name: all-other
+      includes: ["**"]
       excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
       
