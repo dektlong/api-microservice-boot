@@ -20,6 +20,11 @@ repositories {
 }
 
 dependencies {
+	
+	//Tanzu Observability
+	implementation 'com.wavefront:wavefront-spring-boot-starter:$releaseVersion'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -41,6 +46,13 @@ dependencies {
 	}
 	testImplementation 'io.projectreactor:reactor-test'
  	testImplementation("io.pivotal.cfenv:java-cfenv-test-support:2.1.1.RELEASE")
+}
+
+//Tanzu Observability
+dependencyManagement {
+  imports {
+    mavenBom "com.wavefront:wavefront-spring-boot-bom:$releaseVersion"
+  }
 }
 
 test {
