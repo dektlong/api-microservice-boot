@@ -31,24 +31,17 @@ accelerator:
     dataType: boolean
     defaultValue: false
     inputType: toggle
+
 engine:
   resources:
-    - name: kubernetes-yaml
+    - name: config-yaml
       includes: ["config/*.yaml"]
       transformations:
         replace:
           - token: "{{appName}}"
-            with: '#projectName'  
-    - name: api-validator
-      includes: ["config/workload.yaml"]
-      transformations:
-        replace:
+            with: '#projectName'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
-    - name: api-groups
-      includes: ["config/routes-k8s.yaml"]
-      transformations:
-        replace:
           - token: "{{apiGroup1}}"
             with: '#firstApiGroup'
           - token: "{{apiGroup2}}"
