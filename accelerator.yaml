@@ -57,7 +57,7 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-          - token: "{{parentApp}}"
+          - token: "{{parentAppName}}"
             with: '#parentAppName'
     - name: boot-observer
       includes: ["config/deployment-with-boot-observer.yaml"]
