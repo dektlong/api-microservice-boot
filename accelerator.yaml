@@ -6,6 +6,11 @@ accelerator:
   - online-store-devs
 
   options:
+  - name: api-validation
+    description:  How to score and validate APIs spec and performance (project/internal/external)
+    dataType: string
+    defaultValue: project
+    inputType: text
   - name: first-api-group
     description: Name of the first API group
     dataType: string
@@ -19,17 +24,14 @@ accelerator:
     dataType: boolean
     defaultValue: false
     inputType: toggle
-  - name: api-scorecard
-    description:  How to score and validate APIs spec and performance
-    dataType: string
-    defaultValue: project
-    inputType: select    #single options
-    choices:
-      project: Project level access 
-      internal: Internal teams collabolartion 
-
 engine:
   resources:
+    - name: api-validation
+      includes: ["config/workload.yaml"]
+      transformations:
+        replace:
+          - token: "{{apiValidation}}"
+            with: '#api-validation'
     - name: api-groups
       includes: ["config/routes-k8s.yaml"]
       transformations:
