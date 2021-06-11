@@ -13,6 +13,7 @@ accelerator:
     defaultValue: project
     inputType: select
     choices:
+      unit: Unit test local access
       project: Project level access 
       internal: Internal teams collabolartion 
   - name: firstApiGroup
@@ -26,18 +27,18 @@ accelerator:
     dataType: string
     inputType: text
   - name: includeBootObserver
-    description: Include an app configuration file with sidecar integration to Spring Boot Observer
+    description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
     defaultValue: false
     inputType: toggle
 engine:
   resources:
-    #- name: apiValidator
-    #  includes: ["config/workload.yaml"]
-    #  transformations:
-    #    replace:
-    #      - token: "{{apiValidation}}"
-    #        with: '#apiValidation'
+    - name: apiValidator
+      includes: ["config/workload.yaml"]
+      transformations:
+        replace:
+          - token: "{{apiValidation}}"
+            with: '#apiValidation'
     - name: apiGroups
       includes: ["config/routes-k8s.yaml"]
       transformations:
@@ -61,8 +62,6 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-          - token: "{{appDescription}}"
-            with: '#projectDescription'
     - name: all
       includes: ["**"]
       excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
