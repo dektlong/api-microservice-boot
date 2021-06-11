@@ -6,14 +6,6 @@ accelerator:
   - online-store-devs
 
   options:
-  - name: apiValidation
-    description:  How to score and validate APIs spec and performance
-    dataType: string
-    required: true
-    inputType: select
-    choices:
-      project: Project level access 
-      internal: Internal teams collabolartion 
   - name: firstApiGroup
     description: Name of the first API group
     dataType: string
