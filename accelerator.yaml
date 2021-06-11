@@ -5,7 +5,15 @@ accelerator:
   tags:
   - online-store-devs
 
+  options:
+  - name: boot-observer
+    description: Add sidecar integration to Spring Boot Observer
+    dataType: boolean
+    defaultValue: true
+    inputType: toggle
+
 engine:
   resources:
     - name: all
       includes: ["**"]
+      exludes: ["accelerator.yaml","generator.yaml"]
