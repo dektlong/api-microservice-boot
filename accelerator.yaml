@@ -6,15 +6,23 @@ accelerator:
   - online-store-devs
 
   options:
-  - name: apiGroup1
+  - name: api-validation
+    description:  How to score and validate APIs spec and performance
+    dataType: string
+    defaultValue: project
+    inputType: select    #single options
+    choices:
+      project: Project level access 
+      internal: Internal teams collabolartion 
+  - name: first-api-group
     description: Name of the first API group
     dataType: string
     inputType: text
-  - name: apiGroup2
+  - name: second-api-group
     description: Name of the second API group
     dataType: string
     inputType: text
-  - name: includeBootObserver
+  - name: include-boot-observer
     description: Include an app configuration file with sidecar integration to Spring Boot Observer
     dataType: boolean
     defaultValue: false
@@ -23,19 +31,19 @@ accelerator:
 engine:
   resources:
     - name: api-validation
-      includes: ["confige/workload.yaml"]
+      includes: ["config/workload.yaml"]
       transformations:
         replace:
           - token: "{{apiValidation}}"
             with: '#apiValidation'
     - name: api-groups
-      includes: ["confige/routes-k8s.yaml"]
+      includes: ["config/routes-k8s.yaml"]
       transformations:
         replace:
           - token: "{{apiGroup1}}"
-            with: '#apiGroup1'
+            with: '#first-api-group'
           - token: "{{apiGroup2}}"
-            with: '#apiGroup2'
+            with: '#second-api-group'
     - name: kubernetes-yaml
       includes: ["config/*.yaml"]
       transformations:
@@ -44,7 +52,7 @@ engine:
             with: '#projectName'
     - name: boot-observer
       includes: ["config/deployment-with-boot-observer.yaml"]
-      condition: '#includeBootObserver'
+      condition: '#include-boot-observer'
     - name: pom-xml
       includes: ["src/maven/pom.xml"]
       transformations:
