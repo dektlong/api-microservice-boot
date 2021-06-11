@@ -7,6 +7,11 @@ management:
       exposure:
         include: "*"
 
+wavefront:
+  application:
+    name: {{appName}}
+    service: backend
+
 logging.level:
   org.springframework.data: debug
 
