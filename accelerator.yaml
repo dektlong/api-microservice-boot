@@ -49,13 +49,11 @@ engine:
     - name: boot-observer
       includes: ["config/deployment-with-boot-observer.yaml"]
       condition: '#includeBootObserver'
-    - name: update-src-config
-      includes: ["src/*.*"]
+    - name: all-other
+      includes: ["**"]
       transformations:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-    - name: all-other
-      includes: ["**"]
       excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
       
