@@ -20,7 +20,7 @@ accelerator:
     description: Name of the first API group
     dataType: string
     inputType: text
-    defaultValue: all APIs
+    defaultValue: All my APIs
     required: true
   - name: secondApiGroup
     description: Name of the second API group
@@ -29,7 +29,7 @@ accelerator:
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
-    defaultValue: false
+    defaultValue: true
     inputType: toggle
 
 engine:
