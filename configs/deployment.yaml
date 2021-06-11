@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: onlinestore-backend
+  name: {{appName}}
 spec:
   selector:
     matchLabels:
-      app: onlinestore-backend
+      app: {{appName}}
   template:
     metadata:
       labels:
-        app: onlinestore-backend
+        app: {{appName}}
     spec:
       imagePullSecrets: 
       - name: imagereg-secret
       containers:
-        - name: onlinestore-backend
-          image: {BACKEND_IMAGE}
+        - name: {{appName}}
+          image: {{appName}}:latest
           imagePullPolicy: Always
           env:
             - name: spring.profiles.active
@@ -23,7 +23,7 @@ spec:
             - name: spring.security.oauth2.resourceserver.jwt.jwk-set-uri
               valueFrom:
                 secretKeyRef:
-                  name: onlinestore-jwk
+                  name: {{appName}}-jwk
                   key: jwk-set-uri
           resources:
             requests:
@@ -32,22 +32,14 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-        - name: spring-observer-sidecar
-          image: {OBSERVER_SIDECAR_IMAGE}
-          env:
-            - name: spring.boot.observer.sidecar.application-name
-              value: onlinestore-backend
-            - name: spring.boot.observer.client.host
-              value: spring-boot-observer-server.sbo-system.svc.cluster.local
-          resources: {} 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: onlinestore-backend-service
+  name: {{appName}}-service
 spec:
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: onlinestore-backend
+    app: {{appName}}
