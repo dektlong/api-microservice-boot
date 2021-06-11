@@ -21,4 +21,4 @@ engine:
   resources:
     - name: all
       includes: ["**"]
-      exludes: ["accelerator.yaml","generator.yaml"]
+      excludes: ["accelerator.yaml","generator.yaml"]
