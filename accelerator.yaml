@@ -34,8 +34,8 @@ accelerator:
 
 engine:
   resources:
-    - name: config-yaml
-      includes: ["config/*.yaml"]
+    - name: update-config
+      includes: ["config/*.*"]
       transformations:
         replace:
           - token: "{{appName}}"
