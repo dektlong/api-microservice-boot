@@ -6,22 +6,54 @@ accelerator:
   - online-store-devs
 
   options:
-  - name: appName
-    description: Name of the app
+  - name: apiGroup1
+    description: Name of the first API group
     dataType: string
-    defaultValue: hello-fun
+    inputType: text
+  - name: apiGroup2
+    description: Name of the second API group
+    dataType: string
     inputType: text
   - name: includeBootObserver
     description: Include an app configuration file with sidecar integration to Spring Boot Observer
     dataType: boolean
-    defaultValue: true
+    defaultValue: false
     inputType: toggle
 
 engine:
   resources:
+    - name: api-validation
+      includes: ["confige/workload.yaml"]
+      transformations:
+        replace:
+          - token: "{{apiValidation}}"
+            with: '#apiValidation'
+    - name: api-groups
+      includes: ["confige/routes-k8s.yaml"]
+      transformations:
+        replace:
+          - token: "{{apiGroup1}}"
+            with: '#apiGroup1'
+          - token: "{{apiGroup2}}"
+            with: '#apiGroup2'
+    - name: kubernetes-yaml
+      includes: ["config/*.yaml"]
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#projectName'
     - name: boot-observer
-      includes: ["deployment/onlinestore-backend-app.yaml"]
+      includes: ["config/deployment-with-boot-observer.yaml"]
       condition: '#includeBootObserver'
+    - name: pom-xml
+      includes: ["src/maven/pom.xml"]
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#projectName'
+          - token: "{{appDescription}}"
+            with: '#projectDescription'
     - name: all
       includes: ["**"]
-      excludes: ["accelerator.yaml","generator.yaml","deployment/onlinestore-backend-app.yaml"]
+      excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
+      
