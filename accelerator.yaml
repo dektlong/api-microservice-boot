@@ -41,10 +41,6 @@ engine:
       includes: ["config/*.*"]
       transformations:
         replace:
-          - token: "{{appName}}"
-            with: '#projectName'
-          - token: "{{parentApp}}"
-            with: '#parentApp'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
           - token: "{{apiGroup1}}"
@@ -60,5 +56,7 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
+          - token: "{{parentApp}}"
+            with: '#parentApp'
       excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
       
