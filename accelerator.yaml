@@ -10,8 +10,7 @@ accelerator:
     description:  How to score and validate APIs spec and performance
     dataType: string
     required: true
-    defaultValue: project
-    inputType: select    #single options
+    inputType: select
     choices:
       project: Project level access 
       internal: Internal teams collabolartion 
