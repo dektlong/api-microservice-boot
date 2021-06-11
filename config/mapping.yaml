@@ -4,6 +4,6 @@ metadata:
   name: {{appName}}-routes
 spec:
   gatewayRef:
-    name: online-store-gateway
+    name: {{appName}}-gateway
   routeConfigRef:
     name: {{appName}}-routes
