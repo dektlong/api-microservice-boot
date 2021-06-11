@@ -44,7 +44,7 @@ engine:
           - token: "{{appName}}"
             with: '#projectName'
           - token: "{{parentAppName}}"
-            with: '#parentApp'
+            with: '#parentAppName'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
           - token: "{{apiGroup1}}"
