@@ -1,10 +1,10 @@
 apiVersion: "tanzu.vmware.com/v1"
 kind: SpringCloudGatewayRouteConfig
 metadata:
-  name: {{appName}}
+  name: {{appName}}-routes
 spec:
   service: 
-    name: {{appName}}
+    name: {{appName}}-service
   routes:
     - predicates:
         - Path=/api/store-items
