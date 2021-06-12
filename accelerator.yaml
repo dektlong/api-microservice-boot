@@ -3,7 +3,7 @@ accelerator:
   description: Accelerator to create Backend API service for online stores
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
-  - - onlinestore-dev
+  - onlinestore-dev
 
   options:
   - name: apiValidation
