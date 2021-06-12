@@ -64,5 +64,5 @@ engine:
       condition: '#includeBootObserver'
     - name: all-other
       includes: ["**"]
-      excludes: ["accelerator.yaml","generator.yaml","config/deployment-with-boot-observer.yaml"]
+      excludes: ["accelerator.yaml","config/deployment-with-boot-observer.yaml"]
       
