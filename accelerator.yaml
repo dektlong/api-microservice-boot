@@ -25,14 +25,6 @@ accelerator:
     description: Name of the second API group
     dataType: string
     inputType: text
-  - name: sampleAPIsMethods
-    description: Include sample APIs for the following methods
-    inputType: checkbox
-    choices:
-      get: Get
-      post: Post
-      put: Put
-      delete: Delete
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
