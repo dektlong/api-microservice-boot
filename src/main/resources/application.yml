@@ -13,8 +13,8 @@ management:
 
 wavefront:
   application:
-    name: {{parentAppName}}
-    service: {{appName}}
+    name: {{appName}}
+    service: {{appName}}-service
 
 logging.level:
   org.springframework.data: debug
