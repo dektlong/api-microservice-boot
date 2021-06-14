@@ -7,21 +7,21 @@ spec:
     name: {{appName}}-service
   routes:
     - predicates:
-        - Path=/api/store-items
+        - Path=/api/{{apiGroup1}}
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
         - {{apiGroup1}}
     - predicates:
-        - Path=/api/customer-id
+        - Path=/api/{{apiGroup2}}
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
       tags:
         - {{apiGroup2}}
     - predicates:
-        - Path=/api/store-item/*/transaction-requests/**
+        - Path=/api/{{apiGroup1}}/update-request/
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
