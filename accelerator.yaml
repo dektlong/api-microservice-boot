@@ -39,8 +39,6 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-          - token: "{{parentAppName}}"
-            with: '#parentAppName'
           - token: "{{apiValidation}}"
             with: '#apiValidation'
           - token: "{{apiGroup1}}"
@@ -53,8 +51,6 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-          - token: "{{parentAppName}}"
-            with: '#parentAppName'
     - name: boot-observer
       includes: ["config/deployment-with-boot-observer.yaml"]
       condition: '#includeBootObserver'
