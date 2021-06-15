@@ -1,0 +1,21 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayMapping
+metadata:
+  name: {{appName}}-mapping
+spec:
+  gatewayRef:
+    name: {{appName}}-gateway
+  routeConfigRef:
+    name: {{appName}}-routes
+---
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGateway
+metadata:
+  name: {{appName}}-dev-gateway
+spec:
+  api:
+    title: {{appName}} dev gateway
+    description: Gateway for local development of {{appName}}. 
+  count: 1
+  sso:
+    secret: dev-secret
