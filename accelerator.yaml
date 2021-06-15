@@ -6,16 +6,6 @@ accelerator:
   - onlinestore-dev
 
   options:
-  - name: apiValidation
-    description:  How to score and validate APIs spec and performance
-    dataType: string
-    required: true
-    defaultValue: unit
-    inputType: select
-    choices:
-      unit: Unit test local access
-      project: Project level access 
-      internal: Internal teams collabolartion 
   - name: firstApiGroup
     description: Name of the first API group
     dataType: string
@@ -25,6 +15,16 @@ accelerator:
     description: Name of the second API group
     dataType: string
     inputType: text
+  - name: routeExamples
+    description:  Which route examples to include 
+    dataType: string
+    defaultValue: unit-read
+    inputType: select
+    choices:
+      unit-read: Unit test: get only
+      unit-update: Unit test: get,update,delete
+      internal-read: Internal teams: get only
+      internal-update: Internal teams: get,update,delete
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
@@ -39,8 +39,6 @@ engine:
         replace:
           - token: "{{appName}}"
             with: '#projectName'
-          - token: "{{apiValidation}}"
-            with: '#apiValidation'
           - token: "{{apiGroup1}}"
             with: '#firstApiGroup'
           - token: "{{apiGroup2}}"
