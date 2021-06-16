@@ -7,26 +7,26 @@ spec:
     name: {{appName}}-service
   routes:
     - predicates:
-        - Path=/api/{{apiGroup1}}/list
+        - Path=/api/{{apiGroup2}}/list
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
-        - {{apiGroup1}}
+        - {{apiGroup2}}
     - predicates:
-        - Path=/api/{{apiGroup2}}/list
+        - Path=/api/{{apiGroup`}}/list
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - {{apiGroup2}}
+        - {{apiGroup1}}
     - predicates:
         - Path=/api/{{apiGroup2}}/update/
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - {{apiGroup1}}
+        - {{apiGroup2}}
       model:
         requestBody:
           description: Manage {{apiGroup2}}
