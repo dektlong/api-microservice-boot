@@ -14,6 +14,7 @@ metadata:
   name: {{appName}}-dev-gateway
 spec:
   api:
+    serverUrl: https://{{appName}}.example.com
     title: {{appName}} dev gateway
     description: Gateway for local development of {{appName}}. 
   count: 1
