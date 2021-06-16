@@ -18,13 +18,13 @@ accelerator:
   - name: routeExamples
     description:  Which route examples to include 
     dataType: string
-    defaultValue: unit-read
+    defaultValue: simple
     inputType: select
+    required: true
     choices:
-      unit-read: Unit test: get only
-      unit-update: Unit test: get,update,delete
-      internal-read: Internal teams: get only
-      internal-update: Internal teams: get,update,delete
+      simple: App functions
+      sso: App functions + SSO
+      filters: App functions + SSO + filters
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
@@ -47,5 +47,3 @@ engine:
     - name: include-observer
       includes: ["accelerators/k8s/deployment-observer.yaml"]
       condition: '#includeBootObserver'
-    
-      
