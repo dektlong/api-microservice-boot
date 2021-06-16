@@ -33,8 +33,8 @@ accelerator:
 
 engine:
   resources:
-    - name: update-deployment-config
-      includes: ["config/*.*"]
+    - name: set-user-selections
+      includes: ["**"]
       transformations:
         replace:
           - token: "{{appName}}"
@@ -43,16 +43,9 @@ engine:
             with: '#firstApiGroup'
           - token: "{{apiGroup2}}"
             with: '#secondApiGroup'
-    - name: update-source-config
-      includes: ["settings.gradle","build.gradle","src/main/resources/application.yml"]
-      transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#projectName'
-    - name: boot-observer
-      includes: ["config/deployment-with-boot-observer.yaml"]
+      excludes: ["accelerator.yaml"]
+    - name: include-observer
+      includes: ["accelerators/k8s/deployment-observer.yaml"]
       condition: '#includeBootObserver'
-    - name: all-other
-      includes: ["**"]
-      excludes: ["accelerator.yaml","config/deployment-with-boot-observer.yaml"]
+    
       
