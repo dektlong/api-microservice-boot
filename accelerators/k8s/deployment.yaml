@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{appName}}
+spec:
+  selector:
+    matchLabels:
+      app: {{appName}}
+  template:
+    metadata:
+      labels:
+        app: {{appName}}
+    spec:
+      imagePullSecrets: 
+      - name: imagereg-secret
+      containers:
+        - name: {{appName}}
+          image: {{appName}}:latest
+          imagePullPolicy: Always
+          env:
+            - name: spring.profiles.active
+              value: k8s
+            - name: spring.security.oauth2.resourceserver.jwt.jwk-set-uri
+              valueFrom:
+                secretKeyRef:
+                  name: {{appName}}-jwk
+                  key: jwk-set-uri
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{appName}}-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: {{appName}}
