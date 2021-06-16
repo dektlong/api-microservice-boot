@@ -7,21 +7,21 @@ spec:
     name: {{appName}}-service
   routes:
     - predicates:
-        - Path=/api/{{apiGroup1}}
+        - Path=/api/{{apiGroup1}}/list
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
         - {{apiGroup1}}
     - predicates:
-        - Path=/api/{{apiGroup2}}
+        - Path=/api/{{apiGroup2}}/list
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
       tags:
         - {{apiGroup2}}
     - predicates:
-        - Path=/api/{{apiGroup1}}/update-request/
+        - Path=/api/{{apiGroup2}}/update/
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
@@ -29,12 +29,12 @@ spec:
         - {{apiGroup1}}
       model:
         requestBody:
-          description: Manage item requests
+          description: Manage {{apiGroup2}}
           content:
             'application/json':
               schema:
                 type: object
-                description: item request schema
+                description: {{apiGroup2}} schema
                 properties:
                   itemName:
                     type: string
@@ -43,4 +43,4 @@ spec:
                     format: email
                   notes:
                     type: string
-                required: [ "item", "description" ]
+                required: [ "name", "description" ]
