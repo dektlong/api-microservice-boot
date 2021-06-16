@@ -5,7 +5,7 @@
   "count": 1,
   "memory": "2G",
   "disk": "512M",
-  "host": "{{appName}}-dev",
+  "host": "https://{{appName}}.example.com",
   "title": "{{appName}} dev gateway",
   "description": "Gateway for local development of {{appName}}.", 
   "error-routes": [ { "code": "404", "redirect-path": "/{{firstApiGroup}}" } ],
