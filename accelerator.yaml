@@ -28,7 +28,7 @@ accelerator:
   - name: includeBootObserver
     description: Include sidecar integration to Spring Boot Observer
     dataType: boolean
-    defaultValue: true
+    defaultValue: false
     inputType: toggle
 
 engine:
