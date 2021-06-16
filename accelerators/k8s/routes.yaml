@@ -14,7 +14,7 @@ spec:
       tags:
         - {{apiGroup1}}
     - predicates:
-        - Path=/api/{{apiGroup1}}/{apiGroup2}}/
+        - Path=/api/{{apiGroup1}}/{{apiGroup2}}/
         - Method=POST,PUT,DELETE
       ssoEnabled: true
       tokenRelay: true
