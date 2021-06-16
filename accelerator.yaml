@@ -46,5 +46,8 @@ engine:
       excludes: ["accelerator.yaml","accelerators/k8s/deployment-observer.yaml"]
     - name: include-observer
       includes: ["accelerators/k8s/deployment-observer.yaml"]
-      excludes: ["accelerators/k8s/deployment.yaml"]
       condition: '#includeBootObserver'
+      transformations:
+        replace:
+          - token: "{{appName}}"
+            with: '#projectName'
