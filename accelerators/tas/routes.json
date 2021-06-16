@@ -1,29 +1,16 @@
 {
   "routes": [
     {
-      "title": "Retrieve {{apiGroup2}}",
-      "description": "Retrieve a list of all available {{apiGroup2}}.",
-      "path": "/api/{{apiGroup2}}/list",
+      "title": "Retrieve {{apiGroup1}}",
+      "description": "Retrieve a list of all available {{apiGroup1}}.",
+      "path": "/api/{{apiGroup1}}",
       "method": "GET",
       "filters": [ "RateLimit=2,10s" ]
     },
     {
-      "title": "API Actuator endpoints",
-      "description": "Access API actuator endpoints to provide current status of backend service.",
-      "path": "/api/actuator/**"
-    },
-    {
-      "title": "Retrieve {{apiGroup1}}",
-      "description": "Retrieve a list of current authenticated {{apiGroup1}}",
-      "path": "/api/{{apiGroup1}}/list",
-      "method": "GET",
-      "token-relay": true,
-      "sso-enabled": true
-    },
-    {
       "title": "Update {{apiGroup2}}",
-      "description": "Update an item in your {{apiGroup2}}",
-      "path": "/api/{{apiGroup1}}/update",
+      "description": "Update an {{apiGroup2}}",
+      "path": "/api/{{apiGroup1}}/{{apiGroup2}}/",
       "method": "POST,PUT,DELETE",
       "token-relay": true,
       "sso-enabled": true
