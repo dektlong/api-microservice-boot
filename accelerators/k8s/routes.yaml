@@ -16,6 +16,8 @@ spec:
     - predicates:
         - Path=/api/{{apiGroup1}}/{{apiGroup2}}/
         - Method=POST,PUT,DELETE
+      filters:
+        - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
       tokenRelay: true
       tags:
