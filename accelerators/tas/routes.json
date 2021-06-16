@@ -1,9 +1,9 @@
 {
   "routes": [
     {
-      "title": "Retrieve store items",
-      "description": "Retrieve a list of all available store items.",
-      "path": "/api/store-items",
+      "title": "Retrieve {{apiGroup2}}",
+      "description": "Retrieve a list of all available {{apiGroup2}}.",
+      "path": "/api/{{apiGroup1}}",
       "method": "GET",
       "filters": [ "RateLimit=2,10s" ]
     },
@@ -13,17 +13,17 @@
       "path": "/api/actuator/**"
     },
     {
-      "title": "Retrieve user information",
-      "description": "Retrieve the current authenticated user's information.",
-      "path": "/api/whoami",
+      "title": "Retrieve {{apiGroup2}}",
+      "description": "Retrieve the current authenticated {{apiGroup1}}",
+      "path": "/api/{{apiGroup2}}",
       "method": "GET",
       "token-relay": true,
       "sso-enabled": true
     },
     {
-      "title": "Update a store item",
-      "description": "Update an item in your onlinestore",
-      "path": "/api/store-item/*/transaction-requests/**",
+      "title": "Update {{apiGroup2}}",
+      "description": "Update an item in your {{apiGroup2}}",
+      "path": "/api/{{apiGroup1}}/update-request/",
       "method": "POST,PUT,DELETE",
       "token-relay": true,
       "sso-enabled": true
