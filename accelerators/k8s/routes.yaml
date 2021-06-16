@@ -14,7 +14,7 @@ spec:
       tags:
         - {{apiGroup2}}
     - predicates:
-        - Path=/api/{{apiGroup`}}/list
+        - Path=/api/{{apiGroup1}}/list
         - Method=GET
       ssoEnabled: true
       tokenRelay: true
