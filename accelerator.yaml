@@ -5,31 +5,15 @@ accelerator:
   tags:
   - onlinestore-dev
 
- options:
-  - name: firstApiGroup
-    description: Name of the first API group
-    dataType: string
-    inputType: text
-    required: true
-  - name: secondApiGroup
-    description: Name of the second API group
-    dataType: string
-    inputType: text
-  - name: routeExamples
-    description:  Which route examples to include 
-    dataType: string
-    defaultValue: simple
+  options:
+  - name: deploymentType
     inputType: select
-    required: true
     choices:
-      simple: App functions
-      sso: App functions + SSO
-      filters: App functions + SSO + filters
-  - name: includeBootObserver
-    description: Include sidecar integration to Spring Boot Observer
-    dataType: boolean
-    defaultValue: false
-    inputType: toggle
+      none: Skip Kubernetes deployment
+      k8s-simple: Kubernetes deployment and service
+      knative: Knative service
+    defaultValue: k8s-simple
+    required: true
 
 engine:
   sources:
