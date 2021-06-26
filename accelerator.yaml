@@ -41,9 +41,5 @@ engine:
      transformations:
      - type: ReplaceText
        substitutions:
-       - text: appName
+       - text: {{appName}}
          with: "#artifactId"
-       - text: acc-git-url
-         with: "#gitUrl"
-       - text: acc-git-branch
-         with: "#gitBranch"
