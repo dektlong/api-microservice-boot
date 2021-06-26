@@ -32,26 +32,24 @@ accelerator:
     inputType: toggle
 
 engine:
-  resources:
-    - name: set-user-selections
-      includes: ["**"]
-      transformations:
-      - type: ReplaceText
-        substitutions:
-        - text: {{appName}}
-          with: "#projectName"
-        - text: {{apiGroup1}}
-          with: "#firstApiGroup"
-        - text: {{apiGroup2}}
-          with: "#secondApiGroup"
-        - text: {{appName}}
-          with: '#projectName'
-      excludes: ["accelerator.yaml","accelerators/k8s/deployment-observer.yaml"]
-    - name: include-observer
-      includes: ["accelerators/k8s/deployment-observer.yaml"]
-      condition: "#includeBootObserver"
-      transformations:
-      - type: ReplaceText
-        substitutions:
-        - text: {{appName}}
-          with: "#projectName"
+  sources:
+  - includes: ["**"]
+    excludes: ["accelerator.yaml","accelerators/k8s/deployment-observer.yaml"]
+    transformations:
+    - type: ReplaceText
+      substitutions:
+      - text: {{appName}}
+        with: "#projectName"
+      - text: {{apiGroup1}}
+        with: "#firstApiGroup"
+      - text: {{apiGroup2}}
+        with: "#secondApiGroup"
+      - text: {{appName}}
+        with: '#projectName'
+  - includes: ["accelerators/k8s/deployment-observer.yaml"]
+    condition: "#includeBootObserver"
+    transformations:
+    - type: ReplaceText
+      substitutions:
+      - text: {{appName}}
+        with: "#projectName"
