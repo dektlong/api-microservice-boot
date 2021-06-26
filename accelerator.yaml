@@ -6,13 +6,11 @@ accelerator:
   - onlinestore-dev
 
   options:
-  - name: deploymentType
-    inputType: select
-    choices:
-      none: Skip Kubernetes deployment
-      k8s-simple: Kubernetes deployment and service
-      knative: Knative service
-    defaultValue: k8s-simple
+  - name: firstApiGroup
+    label: First level API Group
+    description: Name of the first level API group
+    dataType: string
+    inputType: text
     required: true
 
 engine:
