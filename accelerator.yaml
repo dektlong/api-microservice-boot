@@ -43,3 +43,7 @@ engine:
        substitutions:
        - text: app-name
          with: "#artifactId"
+       - text: api-group1
+         with: "#firstApiGroup"
+       - text: api-group2
+         with: "#secondApiGroup"
