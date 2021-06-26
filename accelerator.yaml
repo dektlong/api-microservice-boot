@@ -37,15 +37,13 @@ accelerator:
 
 engine:
   sources:
-  - includes: [ "**" ]
-    transformations:
-    - type: ReplaceText
-      substitutions:
-      - text: {{appName}}
-        with: "#projectName"
-      - text: {{apiGroup1}}
-        with: "#firstApiGroup"
-      - text: {{apiGroup2}}
-        with: "#secondApiGroup"
-      - text: {{appName}}
-        with: '#projectName'
+   - includes: ["kubernetes/acc.yaml"]
+     transformations:
+     - type: ReplaceText
+       substitutions:
+       - text: acc-name
+         with: "#acceleratorName"
+       - text: acc-git-url
+         with: "#gitUrl"
+       - text: acc-git-branch
+         with: "#gitBranch"
