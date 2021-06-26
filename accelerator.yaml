@@ -1,55 +1,68 @@
 accelerator:
-  displayName: Backend API for online-stores
-  description: Accelerator to create Backend API service for online stores
-  iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
+  displayName: Hello Fun
+  description: A simple Spring Cloud Function serverless app
+  iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-cloud.png
   tags:
-  - onlinestore-dev
+  - java
+  - spring
+  - cloud
+  - function
+  - serverless
 
+  # options for the UI
   options:
-  - name: firstApiGroup
-    description: Name of the first API group
-    dataType: string
-    inputType: text
-    required: true
-  - name: secondApiGroup
-    description: Name of the second API group
-    dataType: string
-    inputType: text
-  - name: routeExamples
-    description:  Which route examples to include 
-    dataType: string
-    defaultValue: simple
+  - name: deploymentType
     inputType: select
-    required: true
     choices:
-      simple: App functions
-      sso: App functions + SSO
-      filters: App functions + SSO + filters
-  - name: includeBootObserver
-    description: Include sidecar integration to Spring Boot Observer
-    dataType: boolean
-    defaultValue: false
-    inputType: toggle
+      none: Skip Kubernetes deployment
+      k8s-simple: Kubernetes deployment and service
+      knative: Knative service
+    defaultValue: k8s-simple
+    required: true
 
 engine:
   sources:
-  - includes: ["**"]
-    excludes: ["accelerator.yaml"]
+  - includes: [ "**" ]
+    excludes: [ "kubernetes/**" ]
+  - includes: [ "pom.xml" ]
     transformations:
     - type: ReplaceText
       substitutions:
-      - text: {{appName}}
-        with: "#projectName"
-      - text: {{apiGroup1}}
-        with: "#firstApiGroup"
-      - text: {{apiGroup2}}
-        with: "#secondApiGroup"
-      - text: {{appName}}
-        with: '#projectName'
-  - includes: ["accelerators/k8s/deployment-observer.yaml"]
-    condition: "#includeBootObserver"
+      - text: hello-fun
+        with: "#artifactId"
+  - includes: [ "kubernetes/k8s/deployment.yaml", "kubernetes/k8s/service.yaml" ]
+    condition: "#deploymentType == 'k8s-simple'"
     transformations:
     - type: ReplaceText
       substitutions:
-      - text: {{appName}}
-        with: "#projectName"
+      - text: hello-fun
+        with: "#artifactId"
+    - type: RewritePath
+      rewriteTo: "'kubernetes/' + #filename"
+  - includes: [ "kubernetes/k8s/skaffold.yaml" ]
+    condition: "#deploymentType == 'k8s-simple'"
+    transformations:
+    - type: ReplaceText
+      substitutions:
+      - text: hello-fun
+        with: "#artifactId"
+    - type: RewritePath
+      rewriteTo: "#filename"
+  - includes: [ "kubernetes/knative/service.yaml" ]
+    condition: "#deploymentType == 'knative'"
+    transformations:
+    - type: ReplaceText
+      substitutions:
+      - text: hello-fun
+        with: "#artifactId"
+    - type: RewritePath
+      rewriteTo: "'kubernetes/' + #filename"
+  - includes: [ "kubernetes/knative/skaffold.yaml" ]
+    condition: "#deploymentType == 'knative'"
+    transformations:
+    - type: ReplaceText
+      substitutions:
+      - text: hello-fun
+        with: "#artifactId"
+    - type: RewritePath
+      rewriteTo: "#filename"
