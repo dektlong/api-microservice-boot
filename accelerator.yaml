@@ -36,18 +36,22 @@ engine:
     - name: set-user-selections
       includes: ["**"]
       transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#projectName'
-          - token: "{{apiGroup1}}"
-            with: '#firstApiGroup'
-          - token: "{{apiGroup2}}"
-            with: '#secondApiGroup'
+      - type: ReplaceText
+        substitutions:
+        - text: {{appName}}
+          with: "#projectName"
+        - text: {{apiGroup1}}
+          with: "#firstApiGroup"
+        - text: {{apiGroup2}}
+          with: "#secondApiGroup"
+        - text: {{appName}}
+          with: '#projectName'
       excludes: ["accelerator.yaml","accelerators/k8s/deployment-observer.yaml"]
     - name: include-observer
       includes: ["accelerators/k8s/deployment-observer.yaml"]
-      condition: '#includeBootObserver'
+      condition: "#includeBootObserver"
       transformations:
-        replace:
-          - token: "{{appName}}"
-            with: '#projectName'
+      - type: ReplaceText
+        substitutions:
+        - text: {{appName}}
+          with: "#projectName"
