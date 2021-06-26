@@ -34,7 +34,7 @@ accelerator:
 engine:
   sources:
   - includes: ["**"]
-    excludes: ["accelerator.yaml","accelerators/k8s/deployment-observer.yaml"]
+    excludes: ["accelerator.yaml"]
     transformations:
     - type: ReplaceText
       substitutions:
