@@ -37,12 +37,12 @@ accelerator:
 
 engine:
   sources:
-   - includes: ["kubernetes/acc.yaml"]
+   - includes: ["**"]
      transformations:
      - type: ReplaceText
        substitutions:
-       - text: acc-name
-         with: "#acceleratorName"
+       - text: appName
+         with: "#artifactId"
        - text: acc-git-url
          with: "#gitUrl"
        - text: acc-git-branch
