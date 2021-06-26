@@ -41,5 +41,5 @@ engine:
      transformations:
      - type: ReplaceText
        substitutions:
-       - text: {{appName}}
+       - text: app-name
          with: "#artifactId"
