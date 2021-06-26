@@ -7,11 +7,33 @@ accelerator:
 
   options:
   - name: firstApiGroup
-    label: First level API Group
+    label: First level API group
     description: Name of the first level API group
     dataType: string
     inputType: text
     required: true
+  - name: secondApiGroup
+    label: Second level API group
+    description: Name of the second API group
+    dataType: string
+    inputType: text
+  - name: routeExamples
+    label: Route examples
+    description:  Which route examples to include 
+    dataType: string
+    defaultValue: simple
+    inputType: select
+    required: true
+    choices:
+      simple: App functions
+      sso: App functions + SSO
+      filters: App functions + SSO + filters
+  - name: includeBootObserver
+    label: Include Boot observer
+    description: Include sidecar integration to Spring Boot Observer
+    dataType: boolean
+    defaultValue: false
+    inputType: toggle
 
 engine:
   sources:
