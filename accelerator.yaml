@@ -29,8 +29,8 @@ accelerator:
       sso: App functions + SSO
       filters: App functions + SSO + filters
   - name: appDeploymentType
-    label: Type of app deployment config
-    description: Include sidecar integration to Spring Boot Observer
+    label: App deployment config
+    description: Type of deployment config file
     required: true
     dataType: string
     defaultValue: k8s
@@ -51,7 +51,8 @@ engine:
          with: "#firstApiGroup"
        - text: api-group2
          with: "#secondApiGroup"
-   - excludes: [ "accelerators/k8s/deployment.yaml" ]
-     condition: "#appDeploymentType != 'k8s'"
-   - excludes: [ "accelerators/k8s/deployment-observer.yaml" ]
-     condition: "#appDeploymentType != 'k8sObserver'"
+   - condition: "#appDeploymentType == 'k8s'"
+     excludes: [ "accelerators/k8s/deployment.yaml" ]
+   - condition: "#appDeploymentType == 'k8sObserver'"
+     excludes: [ "accelerators/k8s/deployment-observer.yaml" ]
+     
