@@ -38,7 +38,6 @@ accelerator:
     choices:
       k8s: K8s simple
       k8sObserver: K8s with Boot Observer sidecar
-      tas: TAS manifest
 
 engine:
   sources:
@@ -52,3 +51,7 @@ engine:
          with: "#firstApiGroup"
        - text: api-group2
          with: "#secondApiGroup"
+   - excludes: [ "accelerators/k8s/deployment.yaml" ]
+     condition: "#appDeploymentType != 'k8s'"
+   - excludes: [ "accelerators/k8s/deployment-observer.yaml" ]
+     condition: "#appDeploymentType != 'k8sObserver'"
