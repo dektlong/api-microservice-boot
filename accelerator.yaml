@@ -11,12 +11,14 @@ accelerator:
     description: Name of the first level API group
     dataType: string
     inputType: text
+    defaultValue: apiGroup1
     required: true
   - name: secondApiGroup
     label: Second level API group
     description: Name of the second API group
     dataType: string
     inputType: text
+    defaultValue: apiGroup2
   - name: routeExamples
     label: Route examples
     description:  Which route examples to include 
