@@ -38,7 +38,24 @@ accelerator:
     choices:
       k8s: K8s simple
       k8sObserver: K8s with Boot Observer sidecar
-
+  - name: thirdApiGroup
+    label: Third  level API group
+    description: Name of the third API group
+    dataType: string
+    inputType: text
+    defaultValue: apiGroup3
+  - name: forthApiGroup
+    label: Forth level API group
+    description: Name of the forth API group
+    dataType: string
+    inputType: text
+    defaultValue: apiGroup4
+  - name: fifthApiGroup
+    label: Fifth level API group
+    description: Name of the Fifth API group
+    dataType: string
+    inputType: text
+    defaultValue: apiGroup5
 engine:
   sources:
    - includes: ["**"]
