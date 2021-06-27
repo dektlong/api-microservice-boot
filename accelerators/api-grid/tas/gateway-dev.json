@@ -1,6 +1,6 @@
 {
   "sso": {
-    "plan": "uaa"
+    "plan": "dev"
   },
   "count": 1,
   "memory": "2G",
