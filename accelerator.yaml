@@ -28,16 +28,21 @@ accelerator:
       simple: App functions
       sso: App functions + SSO
       filters: App functions + SSO + filters
-  - name: includeBootObserver
-    label: Include Boot observer
+  - name: appDeploymentType
+    label: Type of app deployment config
     description: Include sidecar integration to Spring Boot Observer
-    dataType: boolean
-    defaultValue: false
-    inputType: toggle
+    required: true
+    dataType: string
+    defaultValue: k8s
+    inputType: select
+    choices:
+      k8s: K8s simple
+      k8sObserver: K8s with Boot Observer sidecar
+      tas: TAS manifest
 
 engine:
   sources:
-   - includes: ["**"]
+   - includes: [""]
      transformations:
      - type: ReplaceText
        substitutions:
