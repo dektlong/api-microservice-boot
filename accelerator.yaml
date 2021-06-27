@@ -54,6 +54,16 @@ engine:
          with: "#secondApiGroup"
    - includes: [ "accelerators/deployment/app-simple.yaml" ]
      condition: "#appDeploymentType == 'k8s'"
+     transformations:
+     - type: ReplaceText
+       substitutions:
+       - text: app-name
+         with: "#artifactId"
    - includes: [ "accelerators/deployment/app-observer.yaml" ]
      condition: "#appDeploymentType == 'k8sObserver'"
+     transformations:
+     - type: ReplaceText
+       substitutions:
+       - text: app-name
+         with: "#artifactId"
      
