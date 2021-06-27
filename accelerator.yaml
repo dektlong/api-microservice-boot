@@ -41,7 +41,7 @@ accelerator:
 
 engine:
   sources:
-   - includes: [""]
+   - includes: ["**"]
      transformations:
      - type: ReplaceText
        substitutions:
@@ -51,3 +51,7 @@ engine:
          with: "#firstApiGroup"
        - text: api-group2
          with: "#secondApiGroup"
+   - condition: "#appDeploymentType != 'k8s'"
+     excludes: [ "accelerators/k8s/deployment.yaml" ]
+   - condition: "#appDeploymentType != 'k8sObserver'"
+     excludes: [ "accelerators/k8s/deployment-observer.yaml" ]
