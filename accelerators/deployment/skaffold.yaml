@@ -5,80 +5,20 @@ build:
   local:
     concurrency: 2
   artifacts:
-    - image: dev.registry.pivotal.io/spring-cloud-gateway-for-kubernetes/gateway
+    - image: my-dev-registry.example.com/app-name
       custom:
         buildCommand: |
-          ./gradlew :gateway:bootBuildImage --imageName="$IMAGE" && \
+          ./gradlew :bootBuildImage --imageName="$IMAGE" && \
           if [ "$PUSH_IMAGE" = "true" ]; then docker push "$IMAGE"; fi
         dependencies:
           paths:
-            - gateway/src/main/**
-            - gateway/build.gradle
-            - build.gradle
-            - settings.gradle
-    - image: dev.registry.pivotal.io/spring-cloud-gateway-for-kubernetes/scg-operator
-      custom:
-        buildCommand: |
-          ./gradlew :scg-operator:bootBuildImage --imageName="$IMAGE" && \
-          if [ "$PUSH_IMAGE" = "true" ]; then docker push "$IMAGE"; fi
-        dependencies:
-          paths:
-            - scg-operator/src/main/**
-            - scg-operator/build.gradle
-            - build.gradle
-            - settings.gradle
-
+            - src/main/**
+            - ../../build.gradle
+            - ../../settings.gradle
 deploy:
-  helm:
-    releases:
-    - name: spring-cloud-gateway
-      chartPath: helm/spring-cloud-gateway
-      createNamespace: true
-      wait: true
-      namespace: spring-cloud-gateway
-      valuesFiles:
-      - helm/spring-cloud-gateway/values.yaml
-      - helm/secrets/helm-credentials.yaml
-      artifactOverrides:
-        scg-operator.image: dev.registry.pivotal.io/spring-cloud-gateway-for-kubernetes/scg-operator
-        gateway.image: dev.registry.pivotal.io/spring-cloud-gateway-for-kubernetes/gateway
-    - name: sso4k8s
-      chartPath: helm/sso4k8s
-      namespace: spring-cloud-gateway
-      createNamespace: true
-      valuesFiles:
-      - manifests/sso/helm-values.yaml
   kubectl:
+    manifests:	# 	the Kubernetes yaml or json manifests.
+    - "../*.yaml"
     flags:
       apply:
-        - --force
-    manifests:
-    - https://raw.githubusercontent.com/kubernetes/ingress-nginx/ingress-nginx-3.7.1/deploy/static/provider/kind/deploy.yaml
-    - ./manifests/sso/sso-ingress.yaml
-  kustomize:
-    paths:
-    - ./manifests/test-infrastructure
-    - ./manifests/overlays/install-secrets/sso
-    - ./manifests/overlays/install-secrets/controller-registry
-
-profiles:
-  - name: not-a-kind-cluster
-    activation:
-      - kubeContext: "!kind"
-    patches:
-      - op: add
-        path: /deploy/kubectl/manifests
-        value: [https://raw.githubusercontent.com/kubernetes/ingress-nginx/ingress-nginx-3.7.1/deploy/static/provider/cloud/deploy.yaml]
-  - name: local-kind
-    # Profile used when running kind locally:
-    # - It will use "user" as Gateway image tag due to tagPolicy/envTemplate.
-    # - That same tag will be appended to Deployment 'gateway.image.name' env by the Kustomizer.
-    # - Thus the Operator will use the local-latest Gateway image.
-    activation:
-    - kubeContext: kind
-    build:
-      tagPolicy:
-        envTemplate:
-          template: "{{.USER}}"
-      local:
-        push: false
+        - --force  
