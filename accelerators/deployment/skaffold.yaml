@@ -12,7 +12,7 @@ build:
           if [ "$PUSH_IMAGE" = "true" ]; then docker push "$IMAGE"; fi
         dependencies:
           paths:
-            - src/main/**
+            - ../../src/main/**
             - ../../build.gradle
             - ../../settings.gradle
 deploy:
