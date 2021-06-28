@@ -19,20 +19,9 @@ accelerator:
     dataType: string
     inputType: text
     defaultValue: apiGroup2
-  - name: routeExamples
-    label: Route examples
-    description:  Which route examples to include 
-    dataType: string
-    defaultValue: simple
-    inputType: select
-    required: true
-    choices:
-      simple: App functions
-      sso: App functions + SSO
-      filters: App functions + SSO + filters
   - name: appDeploymentType
     label: App deployment config
-    description: Type of deployment config file
+    description: Type of deployment configurations
     required: true
     dataType: string
     defaultValue: k8s
@@ -40,6 +29,7 @@ accelerator:
     choices:
       k8s: K8s simple
       k8sObserver: K8s with Boot Observer sidecar
+      k8sSkaffold: K8s with Skaffold configs
   - name: thirdApiGroup
     label: Third  level API group
     description: Name of the third API group
