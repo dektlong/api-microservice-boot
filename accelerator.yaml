@@ -44,9 +44,9 @@ engine:
     transformations:
     - type: ReplaceText
       substitutions:
-      - text: {{api-group1}}
+      - text: api-group1
         with: "#firstApiGroup"
-      - text: {{api-group2}}
+      - text: api-group2
         with: "#secondApiGroup"
   - includes: [ "accelerators/deployment/app-simple.yaml" ]
     condition: "#appDeploymentType == 'k8s'"
