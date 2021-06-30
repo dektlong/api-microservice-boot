@@ -54,8 +54,3 @@ engine:
     condition: "#appDeploymentType == 'k8sObserver'"
   - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
     condition: "#appDeploymentType == 'k8sSkaffold'"
-  transformations: 
-  - type: ReplaceText
-    substitutions:
-    - text: {{app-name}}
-      with: "#artifactId"
