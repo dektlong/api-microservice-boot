@@ -59,4 +59,3 @@ engine:
     substitutions:
     - text: {{app-name}}
       with: "#artifactId"
-   
