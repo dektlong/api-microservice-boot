@@ -19,27 +19,19 @@ accelerator:
   - name: thirdApiGroup
     label: Third  level API group
     description: Name of the third API group
-    dataType: string
-    inputType: text
     defaultValue: apiGroup3
   - name: forthApiGroup
     label: Forth level API group
     description: Name of the forth API group
-    dataType: string
-    inputType: text
     defaultValue: apiGroup4
   - name: fifthApiGroup
     label: Fifth level API group
     description: Name of the Fifth API group
-    dataType: string
-    inputType: text
     defaultValue: apiGroup5
   - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
     required: true
-    dataType: string
-    defaultValue: k8s
     inputType: select
     choices:
       k8s: K8s simple
