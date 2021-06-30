@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{app-name}}
+  name: app-name
 spec:
   selector:
     matchLabels:
-      app: {{app-name}}
+      app: app-name
   template:
     metadata:
       labels:
-        app: {{app-name}}
+        app: app-name
     spec:
       imagePullSecrets: 
       - name: imagereg-secret
       containers:
-        - name: {{app-name}}
-          image: {{app-name}}:latest
+        - name: app-name
+          image: app-name:latest
           imagePullPolicy: Always
           env:
             - name: spring.profiles.active
@@ -23,7 +23,7 @@ spec:
             - name: spring.security.oauth2.resourceserver.jwt.jwk-set-uri
               valueFrom:
                 secretKeyRef:
-                  name: {{app-name}}-jwk
+                  name: app-name-jwk
                   key: jwk-set-uri
           resources:
             requests:
@@ -36,10 +36,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{app-name}}-service
+  name: app-name-service
 spec:
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: {{app-name}}
+    app: app-name

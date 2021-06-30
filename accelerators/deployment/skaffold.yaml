@@ -5,7 +5,7 @@ build:
   local:
     concurrency: 2
   artifacts:
-    - image: my-dev-registry.example.com/{{app-name}}
+    - image: my-dev-registry.example.com/app-name
       custom:
         buildCommand: |
           ./gradlew :bootBuildImage --imageName="$IMAGE" && \

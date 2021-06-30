@@ -1,35 +1,35 @@
 apiVersion: "tanzu.vmware.com/v1"
 kind: SpringCloudGatewayRouteConfig
 metadata:
-  name: {{app-name}}-routes
+  name: app-name-routes
 spec:
   service: 
-    name: {{app-name}}-service
+    name: app-name-service
   routes:
     - predicates:
-        - Path=/api/{{api-group1}}
+        - Path=/api/api-group1
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
-        - {{api-group1}}
+        - api-group1
     - predicates:
-        - Path=/api/{{api-group1}}/{{api-group2}}/
+        - Path=/api/api-group1/api-group2/
         - Method=POST,PUT,DELETE
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - {{api-group1}}
+        - api-group1
       model:
         requestBody:
-          description: Manage {{api-group2}}
+          description: Manage api-group2
           content:
             'application/json':
               schema:
                 type: object
-                description: {{api-group2}} schema
+                description: api-group2 schema
                 properties:
                   itemName:
                     type: string
