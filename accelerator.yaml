@@ -52,7 +52,6 @@ engine:
     condition: "#appDeploymentType == 'k8s'"
   - includes: [ "accelerators/deployment/app-observer.yaml" ]
     condition: "#appDeploymentType == 'k8sObserver'"
-    transformations:
   - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
     condition: "#appDeploymentType == 'k8sSkaffold'"
   transformations: 
