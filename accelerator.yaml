@@ -35,9 +35,12 @@ accelerator:
     defaultValue: k8s
     inputType: select
     choices:
-      k8s: K8s simple
-      k8sObserver: K8s with Boot Observer sidecar
-      k8sSkaffold: K8s with Skaffold configs
+    - value: k8s
+      text: K8s simple
+    - value: k8sObserver
+      text: K8s with Boot Observer sidecar
+    - valute: k8sSkaffold
+      text: K8s with Skaffold configs
 engine:
   sources:
   - includes: ["**"]
