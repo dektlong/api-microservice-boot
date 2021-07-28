@@ -39,7 +39,7 @@ accelerator:
       text: K8s simple
     - value: k8sObserver
       text: K8s with Boot Observer sidecar
-    - valute: k8sSkaffold
+    - value: k8sSkaffold
       text: K8s with Skaffold configs
 engine:
   sources:
