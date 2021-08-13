@@ -41,23 +41,21 @@ accelerator:
       text: K8s with Boot Observer sidecar
     - value: k8sSkaffold
       text: K8s with Skaffold configs
-   - name: checkbox
-     inputType: checkbox
-     label: API Grid samples
-     description: API Grid samples dev configurations
-     display: true
-     dataType: [string]
-     defaultValue:
-      - value-2
-     choices:
-      - text: routes yaml (k8s)
-        value: routek8s
-      - text: gateway yaml (k8s)
-        value: gatewayk8s
-      - text: routes json (TAS)
-        value: routeTAS
-      - text: gateway json (TAS)
-        value: gatewayTAS
+  - name: apiGridSamples
+    inputType: checkbox
+    label: API Grid samples
+    description: API Grid samples dev configurations
+    display: true
+    dataType: [string]
+    choices:
+    - text: routes yaml (k8s)
+      value: routek8s
+    - text: gateway yaml (k8s)
+      value: gatewayk8s
+    - text: routes json (TAS)
+      value: routeTAS
+    - text: gateway json (TAS)
+      value: gatewayTAS
 engine:
   sources:
   - includes: ["**"]
