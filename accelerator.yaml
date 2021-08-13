@@ -28,6 +28,7 @@ accelerator:
     label: Fifth level API group
     description: Name of the Fifth API group
     defaultValue: apiGroup5
+
   - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
@@ -43,6 +44,7 @@ accelerator:
       text: K8s with Skaffold configs
     - value: cf
       text: Cloud Foundry manifest
+
   - name: apiGridSamples
     inputType: checkbox
     label: API Grid samples
@@ -57,6 +59,21 @@ accelerator:
       text: routes definitions for Cloud Foundry
     - value: gatewayTAS
       text: gateway definition for Cloud Foundry
+      
+  - name: checkbox
+    inputType: checkbox
+    display: true
+    dataType: [string]
+    defaultValue:
+      - value-2
+    choices:
+      - text: Checkbox choice 1
+        value: value-1
+      - text: Checkbox choice 2
+        value: value-2
+      - text: Checkbox choice 3
+        value: value-3
+
 
 engine:
   sources:
