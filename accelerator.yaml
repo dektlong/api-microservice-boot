@@ -45,10 +45,10 @@ accelerator:
       - value: cf
         text: Cloud Foundry manifest
 
-  - name: apiGridSamples
+  - name: apiSamples
     inputType: checkbox
-    label: API Grid samples
-    description: API Grid dev configurations samples
+    label: API samples
+    description: API developement samples
     display: true
     dataType: [string]
     defaultValue:
@@ -77,9 +77,9 @@ engine:
   - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
     condition: "#appDeploymentType == 'k8sSkaffold'"
   - includes: [ "accelerators/api-grid/k8s/**" ]
-    condition: "#apiGridSamples.contains('k8s')"
+    condition: "#apiSamples.contains('k8s')"
   - includes: [ "accelerators/api-grid/cf/**" ]
-    condition: "#apiGridSamples.contains('cf')"
+    condition: "#apiSamples.contains('cf')"
     
   transformations: 
   - type: ReplaceText
