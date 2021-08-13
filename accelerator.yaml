@@ -62,7 +62,7 @@ accelerator:
 engine:
   sources:
   - includes: ["**"]
-    excludes: [ "accelerators/deployment/**" ]
+    excludes: [ "accelerators/**" ]
     transformations:
     - type: ReplaceText
       substitutions:
