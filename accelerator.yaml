@@ -76,10 +76,10 @@ engine:
     condition: "#appDeploymentType == 'k8sObserver'"
   - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
     condition: "#appDeploymentType == 'k8sSkaffold'"
-  - includes: [ "accelerators/api-grid/k8s" ]
-    condition: "#apiGridSamples == 'k8s'"
-  - includes: [ "accelerators/api-grid/cf/gateway-dev.json" ]
-    condition: "#apiGridSamples == 'cf'"
+  - includes: [ "accelerators/api-grid/k8s/**" ]
+    condition: "#apiGridSamples.contains('k8s')"
+  - includes: [ "accelerators/api-grid/cf/**" ]
+    condition: "#apiGridSamples.contains('cf')"
     
   transformations: 
   - type: ReplaceText
