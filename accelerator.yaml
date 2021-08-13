@@ -36,28 +36,33 @@ accelerator:
     defaultValue: k8s
     inputType: select
     choices:
-    - value: k8s
-      text: K8s simple
-    - value: k8sObserver
-      text: K8s with Boot Observer sidecar
-    - value: k8sSkaffold
-      text: K8s with Skaffold configs
-    - value: cf
-      text: Cloud Foundry manifest
+      - value: k8s
+        text: K8s simple
+      - value: k8sObserver
+        text: K8s with Boot Observer sidecar
+      - value: k8sSkaffold
+        text: K8s with Skaffold configs
+      - value: cf
+        text: Cloud Foundry manifest
 
-  - name: checkbox
+  - name: apiGridSamples
     inputType: checkbox
+    label: API Grid samples
+    description: API Grid samples dev configurations
     display: true
     dataType: [string]
     defaultValue:
-      - value-2
+      - routek8s
+      - gatewayk8s
     choices:
-      - text: Checkbox choice 1
-        value: value-1
-      - text: Checkbox choice 2
-        value: value-2
-      - text: Checkbox choice 3
-        value: value-3
+      - value: routek8s  
+        text: routes definitions for k8s
+      - value: gatewayk8s
+        text: gateway definition for k8s
+      - value: routeTAS
+        text: routes definitions for Cloud Foundry
+      - value: gatewayTAS
+        text: gateway definition for Cloud Foundry
 
 
 engine:
