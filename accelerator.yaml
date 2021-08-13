@@ -45,21 +45,6 @@ accelerator:
     - value: cf
       text: Cloud Foundry manifest
 
-  - name: apiGridSamples
-    inputType: checkbox
-    label: API Grid samples
-    description: API Grid samples dev configurations
-    display: true
-    choices:
-    - value: routek8s  
-      text: routes definitions for k8s
-    - value: gatewayk8s
-      text: gateway definition for k8s
-    - value: routeTAS
-      text: routes definitions for Cloud Foundry
-    - value: gatewayTAS
-      text: gateway definition for Cloud Foundry
-      
   - name: checkbox
     inputType: checkbox
     display: true
