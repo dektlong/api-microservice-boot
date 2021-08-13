@@ -63,13 +63,6 @@ engine:
   sources:
   - includes: ["**"]
     excludes: [ "accelerators/**" ]
-    transformations:
-    - type: ReplaceText
-      substitutions:
-      - text: api-group1
-        with: "#firstApiGroup"
-      - text: api-group2
-        with: "#secondApiGroup"
   - includes: [ "accelerators/deployment/app-simple.yaml" ]
     condition: "#appDeploymentType == 'k8s'"
   - includes: [ "accelerators/deployment/app-observer.yaml" ]
@@ -86,3 +79,7 @@ engine:
     substitutions:
     - text: app-name
       with: "#artifactId"
+    - text: api-group1
+      with: "#firstApiGroup"
+    - text: api-group2
+      with: "#secondApiGroup"
