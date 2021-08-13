@@ -50,13 +50,13 @@ accelerator:
     display: true
     choices:
     - value: routek8s  
-      text: routes yaml (k8s)
+      text: routes definitions for k8s
     - value: gatewayk8s
-      text: gateway yaml (k8s)
+      text: gateway definition for k8s
     - value: routeTAS
-      text: routes json (TAS)
+      text: routes definitions for Cloud Foundry
     - value: gatewayTAS
-      text: gateway json (TAS)
+      text: gateway definition for Cloud Foundry
 
 engine:
   sources:
