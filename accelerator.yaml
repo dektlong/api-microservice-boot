@@ -78,7 +78,7 @@ engine:
     condition: "#appDeploymentType == 'k8sSkaffold'"
   - includes: [ "accelerators/api-grid/k8s" ]
     condition: "#apiGridSamples == 'k8s'"
-  - includes: [ "accelerators/api-grid/cf ]
+  - includes: [ "accelerators/api-grid/cf/gateway-dev.json" ]
     condition: "#apiGridSamples == 'cf'"
     
   transformations: 
