@@ -86,8 +86,8 @@ engine:
   - include: [ "src/main/java/io/storebackend/api/data/Entity.java"]
     chain:
     - type: RewritePath
-      rewriteTo: "#entityName.java"
+      rewriteTo: "'#entityName.java'"
     - type: ReplaceText
       substitutions:
       - text: EntityName
-        with: "#entityName"
+        with: "'#entityName"
