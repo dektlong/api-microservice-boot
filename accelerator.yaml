@@ -7,7 +7,7 @@ accelerator:
 
   options:
   - name: firstApiGroup
-    label: 1st level API group
+    label: First level API group
     description: Name of the first level API group
     defaultValue: apiGroup1
     required: true
