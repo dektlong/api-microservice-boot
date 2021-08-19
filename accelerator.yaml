@@ -29,7 +29,12 @@ accelerator:
     description: Name of the Fifth API group
     defaultValue: apiGroup5
 
-  - name: appDeploymentType
+  - name: entityName
+    label: Entity Name
+    description: The name of the entity this microservice exposes 
+    required: true
+  
+    - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
     required: true
@@ -73,6 +78,13 @@ engine:
     condition: "#apiSamples.contains('k8s')"
   - includes: [ "accelerators/api-grid/cf/**" ]
     condition: "#apiSamples.contains('cf')"
+  - includes: [ "src/main/java/io/storebackend/api/data/Entity.java" ]
+    chain:  
+    - type: RewritePath
+      rewriteTo: "'Entity.java' + #entityName + '.java'"
+    - type: ReplaceText
+      substitutions: EntityName
+      with: "#entityName"
     
   transformations: 
   - type: ReplaceText
