@@ -78,13 +78,13 @@ engine:
     condition: "#apiSamples.contains('k8s')"
   - includes: [ "accelerators/api-grid/cf/**" ]
     condition: "#apiSamples.contains('cf')"
-  - includes: [ "src/main/java/io/storebackend/api/data/Entity.java" ]
-    #chain:  
-    #- type: RewritePath
-    #  rewriteTo: "'Entity.java' + #entityName + '.java'"
-    #- type: ReplaceText
-    #  substitutions: EntityName
-    #  with: "#entityName"
+  - include: [ "src/main/java/io/storebackend/api/data/Entity.java"]
+    chain:
+    - type: RewritePath
+      rewriteTo: "#entityName.java"
+    - type: ReplaceText
+      substitutions: EntityName
+      with: "#entityName"
     
   transformations: 
   - type: ReplaceText
@@ -97,3 +97,6 @@ engine:
       with: "#secondApiGroup"
     - text: EntityName
       with: "#entityName"
+  - type: RewritePath
+    rewriteTo: ""'Entity.java' + #entityName + '.java'"
+    #
