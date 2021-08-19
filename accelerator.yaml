@@ -6,7 +6,7 @@ accelerator:
   - onlinestore-dev
 
   options:
-  - name: firstApiGroup
+  - name: 1firstApiGroup
     label: First level API group
     description: Name of the first level API group
     defaultValue: apiGroup1
