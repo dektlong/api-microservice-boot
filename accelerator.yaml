@@ -91,4 +91,3 @@ engine:
         with: "#entityName"
     - type: RewritePath
       rewriteTo: "#entityName'.java'"
-    
