@@ -13,6 +13,8 @@ spec:
         - RateLimit=2,10s
       tags:
         - api-group1
+      title: "open api for read-only functionality"
+      description: "open api for read only interactions with the backend service"
     - predicates:
         - Path=/api/api-group1/api-group2/
         - Method=POST,PUT,DELETE
@@ -22,6 +24,8 @@ spec:
       tokenRelay: true
       tags:
         - api-group1
+      title: "SSO protected api for write functionality"
+      description: "SSO protected api for write/delete/update interactions with the backend service"
       model:
         requestBody:
           description: Manage api-group2
