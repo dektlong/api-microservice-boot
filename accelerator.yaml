@@ -79,48 +79,47 @@ engine:
         - type: RewritePath
           rewriteTo: "'src/main/java/io/storebackend/api/data/' + #entityName +'.java'"
   #deployment transformations
-  - includes: [ "accelerators/deployment/app-simple.yaml" ]
-    condition: "#appDeploymentType == 'k8s'"
-    chain:
-      - type: ReplaceText
-        substitutions:
-          - text: app-name
-            with: "#artifactId"
-  - includes: [ "accelerators/deployment/app-observer.yaml" ]
-    condition: "#appDeploymentType == 'k8sObserver'"
-    chain:
-      - type: ReplaceText
-        substitutions:
-          - text: app-name
-            with: "#artifactId"
-  - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
-    condition: "#appDeploymentType == 'k8sSkaffold'"
-    chain:
-      - type: ReplaceText
-        substitutions:
-          - text: app-name
-            with: "#artifactId"
-  #api-grid transformations
-  - includes: [ "accelerators/api-grid/k8s/**" ]
-    condition: "#apiSamples.contains('k8s')"
-    chain:
-      - type: ReplaceText
-        substitutions:
+    - includes: [ "accelerators/deployment/app-simple.yaml" ]
+      condition: "#appDeploymentType == 'k8s'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+    - includes: [ "accelerators/deployment/app-observer.yaml" ]
+      condition: "#appDeploymentType == 'k8sObserver'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+    - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
+      condition: "#appDeploymentType == 'k8sSkaffold'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+    #api-grid transformations
+    - includes: [ "accelerators/api-grid/k8s/**" ]
+      condition: "#apiSamples.contains('k8s')"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+            - text: api-group1
+              with: "#firstApiGroup"
+            - text: api-group2
+              with: "#secondApiGroup"
+    - includes: [ "accelerators/api-grid/cf/**" ]
+      condition: "#apiSamples.contains('cf')"
+      chain:
+        - type: ReplaceText
+          substitutions:
           - text: app-name
             with: "#artifactId"
           - text: api-group1
             with: "#firstApiGroup"
           - text: api-group2
             with: "#secondApiGroup"
-  - includes: [ "accelerators/api-grid/cf/**" ]
-    condition: "#apiSamples.contains('cf')"
-    chain:
-      - type: ReplaceText
-        substitutions:
-          - text: app-name
-            with: "#artifactId"
-          - text: api-group1
-            with: "#firstApiGroup"
-          - text: api-group2
-            with: "#secondApiGroup"
-  
