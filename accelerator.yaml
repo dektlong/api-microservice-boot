@@ -85,9 +85,10 @@ engine:
     condition: "#apiSamples.contains('cf')"
   - include: [ "src/main/java/io/storebackend/api/data/Entity.java"]
     chain:
-    - type: RewritePath
-      rewriteTo: "'#entityName.java'"
     - type: ReplaceText
       substitutions:
-      - text: EntityName
+      - text: entityName
         with: "#entityName"
+    - type: RewritePath
+      rewriteTo: "#entityName.java"
+    

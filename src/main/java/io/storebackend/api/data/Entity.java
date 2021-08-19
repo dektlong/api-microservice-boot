@@ -1,8 +1,8 @@
 package io.storebackend.api.data;
 
-public class EntityName {
+public class entityNameEntity {
 
-    private String id; //TODO add the detaills of your EntityName entity
+    private String id; //TODO add the detaills of your entityName entity
 
     //implement more here and document
 }
