@@ -90,4 +90,4 @@ engine:
     - type: ReplaceText
       substitutions:
       - text: EntityName
-        with: "'#entityName"
+        with: "#entityName"
