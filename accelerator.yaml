@@ -88,5 +88,6 @@ engine:
     - type: RewritePath
       rewriteTo: "#entityName.java"
     - type: ReplaceText
-      substitutions: EntityName
-      with: "#entityName"
+      substitutions:
+      - text: EntityName
+        with: "#entityName"
