@@ -76,8 +76,6 @@ engine:
               with: "#artifactId"
             - text: entityName
               with: "#entityName"
-        - type: RewritePath
-          rewriteTo: "'src/main/java/io/storebackend/api/data/' + #entityName +'.java'"
   #deployment transformations
     - includes: [ "accelerators/deployment/app-simple.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
