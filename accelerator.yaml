@@ -90,4 +90,4 @@ engine:
       - text: entityName
         with: "#entityName"
     - type: RewritePath
-      rewriteTo: "#entityName'.java'"
+      rewriteTo: "#entityName"
