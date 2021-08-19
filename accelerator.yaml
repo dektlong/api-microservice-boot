@@ -65,8 +65,13 @@ accelerator:
         text: routes and gateway definitions for Cloud Foundry
 
 engine:
-  sources:
+  merge:
   - includes: ["**"]
+    chain:
+    - type: ReplaceText
+      substitutions:
+      - text: app-name
+        with: "#artifactId"
     excludes: [ "accelerators/**" ]
   - includes: [ "accelerators/deployment/app-simple.yaml" ]
     condition: "#appDeploymentType == 'k8s'"
@@ -85,18 +90,3 @@ engine:
     - type: ReplaceText
       substitutions: EntityName
       with: "#entityName"
-    
-  transformations: 
-  - type: ReplaceText
-    substitutions:
-    - text: app-name
-      with: "#artifactId"
-    - text: api-group1
-      with: "#firstApiGroup"
-    - text: api-group2
-      with: "#secondApiGroup"
-    - text: EntityName
-      with: "#entityName"
-  - type: RewritePath
-    rewriteTo: ""'Entity.java' + #entityName + '.java'"
-    #
