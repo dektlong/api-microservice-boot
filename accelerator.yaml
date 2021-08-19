@@ -66,28 +66,61 @@ accelerator:
 
 engine:
   merge:
-  - includes: ["**"]
-    chain:
-    - type: ReplaceText
-      substitutions:
-      - text: app-name
-        with: "#artifactId"
-    excludes: [ "accelerators/**" ]
+    #generic transformation
+    - includes: ["**"]
+      excludes: [ "accelerators/**" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+            - text: entityName
+              with: "#entityName"
+        - type: RewritePath
+          rewriteTo: "'src/main/java/io/storebackend/api/data/' + #entityName +'.java'"
+  #deployment transformations
   - includes: [ "accelerators/deployment/app-simple.yaml" ]
     condition: "#appDeploymentType == 'k8s'"
+    chain:
+      - type: ReplaceText
+        substitutions:
+          - text: app-name
+            with: "#artifactId"
   - includes: [ "accelerators/deployment/app-observer.yaml" ]
     condition: "#appDeploymentType == 'k8sObserver'"
+    chain:
+      - type: ReplaceText
+        substitutions:
+          - text: app-name
+            with: "#artifactId"
   - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
     condition: "#appDeploymentType == 'k8sSkaffold'"
+    chain:
+      - type: ReplaceText
+        substitutions:
+          - text: app-name
+            with: "#artifactId"
+  #api-grid transformations
   - includes: [ "accelerators/api-grid/k8s/**" ]
     condition: "#apiSamples.contains('k8s')"
+    chain:
+      - type: ReplaceText
+        substitutions:
+          - text: app-name
+            with: "#artifactId"
+          - text: api-group1
+            with: "#firstApiGroup"
+          - text: api-group2
+            with: "#secondApiGroup"
   - includes: [ "accelerators/api-grid/cf/**" ]
     condition: "#apiSamples.contains('cf')"
-  - include: [ "src/main/java/io/storebackend/api/data/Entity.java"]
     chain:
-    - type: ReplaceText
-      substitutions:
-      - text: entityName
-        with: "#entityName"
-    - type: RewritePath
-      rewriteTo: "#entityName"
+      - type: ReplaceText
+        substitutions:
+          - text: app-name
+            with: "#artifactId"
+          - text: api-group1
+            with: "#firstApiGroup"
+          - text: api-group2
+            with: "#secondApiGroup"
+  
