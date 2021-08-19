@@ -34,7 +34,7 @@ accelerator:
     description: The name of the entity this microservice exposes 
     required: true
   
-    - name: appDeploymentType
+  - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
     required: true
