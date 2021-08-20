@@ -33,6 +33,7 @@ accelerator:
     defaultValue: apiGroup1
   - name: secondApiGroup
     label: Second level API group
+    display: true
     description: Name of the second API group
     defaultValue: apiGroup2
   - name: thirdApiGroup
@@ -77,7 +78,7 @@ accelerator:
     label: Data service entity type
     description: Select the data service type
     dependsOn:
-      name: addDataService
+      name: addDataEntity
     inputType: select
     defaultValue: mySQL
     choices:
@@ -95,7 +96,7 @@ accelerator:
     label: Data service entity name
     description: Data service entity name
     dependsOn:
-      name: addDataService
+      name: addDataEntity
       
       
 engine:
