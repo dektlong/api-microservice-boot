@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 @Profile("redis")
-public class RedisConfig {
+public class RedisTemplate {
 
     @Bean("mybean")
     public RedisAlbumRepository redisRepository(RedisTemplate<String, Album> redisTemplate) {
