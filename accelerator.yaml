@@ -95,6 +95,7 @@ accelerator:
   - name: entityName
     label: Data service entity name
     description: Data service entity name
+    defaultValue: myMySQL
     dependsOn:
       name: addDataEntity
       
