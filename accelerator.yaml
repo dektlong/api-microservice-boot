@@ -80,7 +80,7 @@ accelerator:
     dependsOn:
       name: addDataEntity
     inputType: select
-    defaultValue: none
+    defaultValue: inmemory
     choices:
       - value: mysql
         text: MySQL
@@ -90,6 +90,8 @@ accelerator:
         text: Mongo
       - value: redis
         text: Redis
+      - value: inmemory
+        text: In memory
   - name: entityName
     label: Data service entity name
     description: Data service entity name
@@ -102,7 +104,7 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "accelerators/**", "src/main/java/io/storebackend/api/data/Entity.java" ]
+      excludes: [ "accelerators/**", "src/main/java/io/storebackend/api/data/*" ]
       chain:
         - type: ReplaceText
           substitutions:
