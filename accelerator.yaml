@@ -103,14 +103,12 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "accelerators/**" ]
+      excludes: [ "accelerators/**", "src/main/java/io/storebackend/api/data/Entity.java" ]
       chain:
         - type: ReplaceText
           substitutions:
             - text: app-name
               with: "#artifactId"
-            - text: entityName
-              with: "#entityName"
   #deployment transformations
     - includes: [ "accelerators/deployment/app-simple.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
@@ -156,3 +154,13 @@ engine:
             with: "#firstApiGroup"
           - text: api-group2
             with: "#secondApiGroup"
+    
+    #data entity transformations
+    - includes: [ "src/main/java/io/storebackend/api/data/Entity.java" ]
+      condition: "#addDataEntity"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"   
+    
