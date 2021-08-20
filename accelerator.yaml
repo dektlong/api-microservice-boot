@@ -80,22 +80,20 @@ accelerator:
     dependsOn:
       name: addDataEntity
     inputType: select
-    defaultValue: mySQL
+    defaultValue: none
     choices:
-      - value: mySQL
+      - value: mysql
         text: MySQL
-      - value: mariaDB
-        text: MariaDB
-      - value: postgreSQL
+      - value: postgres
         text: PostgreSQL
-      - value: db2
-        text: DB2
+      - value: mongo
+        text: Mongo
       - value: redis
         text: Redis
   - name: entityName
     label: Data service entity name
     description: Data service entity name
-    defaultValue: myMySQL
+    defaultValue: mybean
     dependsOn:
       name: addDataEntity
       
@@ -157,11 +155,32 @@ engine:
             with: "#secondApiGroup"
     
     #data entity transformations
-    - includes: [ "src/main/java/io/storebackend/api/data/Entity.java" ]
-      condition: "#addDataEntity"
+    - includes: [ "src/main/java/io/storebackend/api/data/MongoTemplate.java" ]
+      condition: "#entityType == 'mongo'"
       chain:
         - type: ReplaceText
           substitutions:
-            - text: app-name
-              with: "#artifactId"   
+            - text: mybean
+              with: "#entityName"
+    - includes: [ "src/main/java/io/storebackend/api/data/RedisTemplate.java" ]
+      condition: "#entityType == 'redis'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: mybean
+              with: "#entityName"
+    - includes: [ "src/main/java/io/storebackend/api/data/PostgresTemplate.java" ]
+      condition: "#entityType == 'postgres'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: mybean
+              with: "#entityName" 
+    - includes: [ "src/main/java/io/storebackend/api/data/MySQLTemplate.java" ]
+      condition: "#entityType == 'mysql'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: mybean
+              with: "#entityName" 
     
