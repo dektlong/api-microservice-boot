@@ -6,62 +6,8 @@ accelerator:
   - onlinestore-dev
 
   options:
-  - name: firstApiGroup
-    label: First level API group
-    description: Name of the first level API group
-    defaultValue: apiGroup1
-    required: true
-  - name: secondApiGroup
-    label: Second level API group
-    description: Name of the second API group
-    defaultValue: apiGroup2
-    display: true
-  - name: thirdApiGroup
-    label: Third  level API group
-    description: Name of the third API group
-    defaultValue: apiGroup3
-  - name: forthApiGroup
-    label: Forth level API group
-    description: Name of the forth API group
-    defaultValue: apiGroup4
-  - name: fifthApiGroup
-    label: Fifth level API group
-    description: Name of the Fifth API group
-    defaultValue: apiGroup5
-
-  - name: addDataService
-    label: Add a data service entity bean
-    description: Add a data service entity bean class to the generated code
-    inputType: toggle
-    display: true
-    dataType: boolean
-    defaultValue: false
-
-  - name: entityType
-    label: Data service entity type
-    description: Select the data service type
-    dependsOn:
-      name: addDataService
-    inputType: select
-    choices:
-      - value: mySQL
-        text: MySQL
-      - value: mariaDB
-        text: MariaDB
-      - value: postgreSQL
-        text: PostgreSQL
-      - value: db2
-        text: DB2
-      - value: redis
-        text: Redis
-    
-  - name: entityName
-    label: Data service entity name
-    description: Data service entity name
-    dependsOn:
-      name: addDataService
-
   
+  #deployment type
   - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
@@ -77,11 +23,38 @@ accelerator:
         text: K8s with Skaffold configs
       - value: cf
         text: Cloud Foundry manifest
+  
+  #apis groups
+  - name: firstApiGroup
+    label: First level API group
+    description: Name of the first level API group
+    defaultValue: apiGroup1
+    required: true
+    defaultValue: apiGroup1
+  - name: secondApiGroup
+    label: Second level API group
+    description: Name of the second API group
+    defaultValue: apiGroup2
+  - name: thirdApiGroup
+    label: Third  level API group
+    description: Name of the third API group
+    defaultValue: apiGroup3
+  - name: forthApiGroup
+    label: Forth level API group
+    description: Name of the forth API group
+    defaultValue: apiGroup4
+  - name: fifthApiGroup
+    label: Fifth level API group
+    description: Name of the Fifth API group
+    defaultValue: apiGroup5
 
+  #apis samples
   - name: apiSamples
     inputType: checkbox
     label: API samples
     description: API developement samples
+    dependsOn:
+      name: addAPIs
     display: true
     dataType: [string]
     defaultValue:
@@ -91,7 +64,40 @@ accelerator:
         text: routes and gateway definitions for k8s
       - value: cf
         text: routes and gateway definitions for Cloud Foundry
-
+  
+  #optional - data entity      
+  - name: addDataEntity
+    label: Add data service entity bean
+    description: Add a data service entity bean class to the generated code
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+  - name: entityType
+    label: Data service entity type
+    description: Select the data service type
+    dependsOn:
+      name: addDataService
+    inputType: select
+    defaultValue: mySQL
+    choices:
+      - value: mySQL
+        text: MySQL
+      - value: mariaDB
+        text: MariaDB
+      - value: postgreSQL
+        text: PostgreSQL
+      - value: db2
+        text: DB2
+      - value: redis
+        text: Redis
+  - name: entityName
+    label: Data service entity name
+    description: Data service entity name
+    dependsOn:
+      name: addDataService
+      
+      
 engine:
   merge:
     #generic transformation
