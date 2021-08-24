@@ -20,7 +20,7 @@ accelerator:
       - value: workload
         text: TAP workload
       - value: k8sObserver
-        text: K8s with Boot Observer sidecar
+        text: K8s with Tanzu App Live View
       - value: k8sSkaffold
         text: K8s with Skaffold configs
       - value: cf
