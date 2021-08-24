@@ -1,16 +1,16 @@
 {
   "routes": [
     {
-      "title": "Retrieve {{apiGroup1}}",
-      "description": "Retrieve a list of all available {{apiGroup1}}.",
-      "path": "/api/{{apiGroup1}}",
+      "title": "Retrieve api-group1",
+      "description": "Retrieve a list of all available api-group1.",
+      "path": "/api/api-group1",
       "method": "GET",
       "filters": [ "RateLimit=2,10s" ]
     },
     {
-      "title": "Update {{apiGroup2}}",
-      "description": "Update an {{apiGroup2}}",
-      "path": "/api/{{apiGroup1}}/{{apiGroup2}}/",
+      "title": "Update api-group2",
+      "description": "Update an api-group2",
+      "path": "/api/api-group1/api-group2/",
       "method": "POST,PUT,DELETE",
       "token-relay": true,
       "sso-enabled": true
