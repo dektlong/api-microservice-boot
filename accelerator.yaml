@@ -133,7 +133,7 @@ engine:
           substitutions:
             - text: app-name
               with: "#artifactId"
-            - text: git
+            - text: git-repo
               with: "#gitRepo"
     - includes: [ "accelerators/deployment/app-observer.yaml" ]
       condition: "#appDeploymentType == 'k8sObserver'"
