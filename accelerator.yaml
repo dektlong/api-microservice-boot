@@ -135,6 +135,8 @@ engine:
               with: "#artifactId"
             - text: git-repo
               with: "#gitRepo"
+            - text: db-type
+              with: "#entityType"
     - includes: [ "accelerators/deployment/app-observer.yaml" ]
       condition: "#appDeploymentType == 'k8sObserver'"
       chain:
