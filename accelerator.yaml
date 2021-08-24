@@ -26,11 +26,11 @@ accelerator:
       - value: cf
         text: Cloud Foundry manifest
   - name: gitRepo
-      label: Git repo
-      inputType: text
-      required: true
-      dataType: string
-      defaultValue: https://github.com/dektlong/dekt4pets-backend
+    label: Git repo
+    inputType: text
+    required: true
+    dataType: string
+    defaultValue: https://github.com/dektlong/dekt4pets-backend
   
   #apis groups
   - name: firstApiGroup
