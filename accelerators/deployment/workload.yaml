@@ -1,0 +1,31 @@
+apiVersion: kontinue.io/v1alpha1
+kind: Workload
+metadata:
+  name: app-name
+  labels:
+    app.tanzu.vmware.com/workload-type: web
+
+spec:
+
+  metadata:
+    java-version: 11
+     
+  git:
+    url: git1
+    ref: {branch: main}
+    
+  services:
+    - apiVersion: services.tanzu.vmware.com/v1alpha1
+      kind: backend-db
+
+  env:
+     - name: SPRING_PROFILES_ACTIVE
+       value: backend-db
+
+resources:
+    requests:
+      memory: 1Gi
+      cpu: 100m
+    limits:
+      memory: 1Gi
+      cpu: 4000m
