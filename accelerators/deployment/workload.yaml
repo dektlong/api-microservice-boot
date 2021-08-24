@@ -16,7 +16,7 @@ spec:
     
   services:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
-      kind: db-dev
+      kind: db-type
 
   env:
      - name: SPRING_PROFILES_ACTIVE
