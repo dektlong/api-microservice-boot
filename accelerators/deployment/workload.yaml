@@ -11,7 +11,7 @@ spec:
     java-version: 11
      
   git:
-    url: git
+    url: git-repo
     ref: {branch: main}
     
   services:
