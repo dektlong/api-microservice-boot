@@ -7,7 +7,7 @@ accelerator:
 
   options:
   
-  #deployment type
+  #deployment
   - name: appDeploymentType
     label: App deployment config
     description: Type of deployment configurations
@@ -17,12 +17,20 @@ accelerator:
     choices:
       - value: k8s
         text: K8s simple
+      - value: workload
+        text: TAP workload
       - value: k8sObserver
         text: K8s with Boot Observer sidecar
       - value: k8sSkaffold
         text: K8s with Skaffold configs
       - value: cf
         text: Cloud Foundry manifest
+  - name: gitRepo
+      label: Git repo
+      inputType: text
+      required: true
+      dataType: string
+      defaultValue: https://github.com/dektlong/dekt4pets-backend
   
   #apis groups
   - name: firstApiGroup
@@ -118,6 +126,15 @@ engine:
           substitutions:
             - text: app-name
               with: "#artifactId"
+    - includes: [ "accelerators/deployment/workload.yaml" ]
+      condition: "#appDeploymentType == 'workload'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+            - text: git
+              with: "#gitRepo"
     - includes: [ "accelerators/deployment/app-observer.yaml" ]
       condition: "#appDeploymentType == 'k8sObserver'"
       chain:
