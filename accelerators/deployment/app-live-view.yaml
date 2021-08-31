@@ -9,9 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: app-name
-        tanzu.app.live.view: "true" #Enable pod to be discovered by connector
-        tanzu.app.live.view.application.name: dekt4pets-backend-live-view 
+        app.kubernetes.io/name: app-name
+        app.kubernetes.io/part-of:  app-name
+        tanzu.app.live.view: "true"
+        tanzu.app.live.view.application.name: app-name
     spec:
       imagePullSecrets: 
       - name: imagereg-secret
