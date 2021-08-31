@@ -10,9 +10,8 @@ spec:
     git:
       url: git-repo
       ref:
-        branch: "main"
-        #tag: "v0.0.1"
-        #commit: "b4df00d"
+        branch: "dev"
+
   services:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
       kind: db-type
