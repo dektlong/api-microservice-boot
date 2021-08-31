@@ -3,7 +3,7 @@ kind: Workload
 metadata:
   name: app-name
   labels:
-    app.tanzu.vmware.com/workload-type: web   # (1)
+    app.tanzu.vmware.com/workload-type: web
 
 spec:
   source:
@@ -30,7 +30,7 @@ spec:
       cpu: 4000m
 
   params:
-    - name: my-company.com/defaults/java-version
+    - name: java-version
       value: 11
     - name: debug
       value: true
