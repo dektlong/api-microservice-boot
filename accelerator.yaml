@@ -19,7 +19,7 @@ accelerator:
         text: K8s simple
       - value: workload
         text: TAP workload
-      - value: k8sObserver
+      - value: alv
         text: K8s with Tanzu App Live View
       - value: k8sSkaffold
         text: K8s with Skaffold configs
@@ -137,8 +137,8 @@ engine:
               with: "#gitRepo"
             - text: db-type
               with: "#entityType"
-    - includes: [ "accelerators/deployment/app-observer.yaml" ]
-      condition: "#appDeploymentType == 'k8sObserver'"
+    - includes: [ "accelerators/deployment/app-live-view.yaml" ]
+      condition: "#appDeploymentType == 'alv'"
       chain:
         - type: ReplaceText
           substitutions:
