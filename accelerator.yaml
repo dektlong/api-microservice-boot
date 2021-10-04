@@ -112,21 +112,21 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "accelerators/**", "src/main/java/io/storebackend/api/data/*" ]
+      excludes: [ "config/**", "src/main/java/io/storebackend/api/data/*" ]
       chain:
         - type: ReplaceText
           substitutions:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "accelerators/deployment/app-simple.yaml" ]
+    - includes: [ "config/deployment/app-simple.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: app-name
               with: "#artifactId"
-    - includes: [ "accelerators/deployment/workload.yaml" ]
+    - includes: [ "config/deployment/workload.yaml" ]
       condition: "#appDeploymentType == 'workload'"
       chain:
         - type: ReplaceText
@@ -137,14 +137,14 @@ engine:
               with: "#gitRepo"
             - text: db-type
               with: "#entityType"
-    - includes: [ "accelerators/deployment/app-live-view.yaml" ]
+    - includes: [ "config/deployment/app-live-view.yaml" ]
       condition: "#appDeploymentType == 'alv'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: app-name
               with: "#artifactId"
-    - includes: [ "accelerators/deployment/app-simple.yaml", "accelerators/deployment/skaffold.yaml"]
+    - includes: [ "config/deployment/app-simple.yaml", "config/deployment/skaffold.yaml"]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
         - type: ReplaceText
@@ -152,7 +152,7 @@ engine:
             - text: app-name
               with: "#artifactId"
     #api-grid transformations
-    - includes: [ "accelerators/api-grid/k8s/**" ]
+    - includes: [ "config/api-grid/k8s/**" ]
       condition: "#apiSamples.contains('k8s')"
       chain:
         - type: ReplaceText
@@ -163,7 +163,7 @@ engine:
               with: "#firstApiGroup"
             - text: api-group2
               with: "#secondApiGroup"
-    - includes: [ "accelerators/api-grid/cf/**" ]
+    - includes: [ "config/api-grid/cf/**" ]
       condition: "#apiSamples.contains('cf')"
       chain:
         - type: ReplaceText
