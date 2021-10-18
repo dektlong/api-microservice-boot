@@ -15,7 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: #@ data.values.artifactId
         app.kubernetes.io/part-of: #@ data.values.artifactId
-#@ if data.values.alv:
+#@ if data.values.addAlv:
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.name: #@ data.values.artifactId + "-liveview"
 #@ end
