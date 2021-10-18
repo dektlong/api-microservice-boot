@@ -1,39 +1,41 @@
+#@ load("@ytt:data", "data")
+---
 apiVersion: "tanzu.vmware.com/v1"
 kind: SpringCloudGatewayRouteConfig
 metadata:
-  name: app-name-routes
+  name: #@ data.values.artifactId + "-routes"
 spec:
   service: 
-    name: app-name-service
+    name: #@ data.values.artifactId + "-service"
   routes:
     - predicates:
-        - Path=/api/api-group1
+        - Path= #@ "/api/" + data.values.firstApiGroup
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
-        - api-group1
+        - #@ data.values.firstApiGroup
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        - Path=/api/api-group1/api-group2/
+        - Path= #@ "/api/" + data.values.firstApiGroup + "/" + data.values.secondApiGroup
         - Method=POST,PUT,DELETE
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - api-group1
+        - #@ data.values.secondApiGroup
       title: "SSO protected api for write functionality"
       description: "SSO protected api for write/delete/update interactions with the backend service"
       model:
         requestBody:
-          description: Manage api-group2
+          description: #@ "Manage " + data.values.secondApiGroup
           content:
             'application/json':
               schema:
                 type: object
-                description: api-group2 schema
+                description: #@ data.values.secondApiGroup + "schema"
                 properties:
                   itemName:
                     type: string
