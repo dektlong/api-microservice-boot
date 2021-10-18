@@ -1,26 +1,30 @@
+#@ load("@ytt:data", "data") 
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app.kubernetes.io/name: app-name
-  name: app-name
+    app.kubernetes.io/name: #@ data.values.artifactId
+  name: #@ data.values.artifactId
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: app-name
+      app.kubernetes.io/name: #@ data.values.artifactId
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: app-name
-        app.kubernetes.io/part-of: app-name
+        app.kubernetes.io/name: #@ data.values.artifactId
+        app.kubernetes.io/part-of: #@ data.values.artifactId
+#@ if data.values.alv:
         tanzu.app.live.view: "true"
-        tanzu.app.live.view.application.name: app-name-liveview
+        tanzu.app.live.view.application.name: #@ data.values.artifactId + "-liveview"
+#@ end
     spec:
       imagePullSecrets: 
       - name: imagereg-secret
       containers:
-        - name: app-name
-          image: app-name:latest
+        - name: #@ data.values.artifactId
+          image: #@ data.values.artifactId + ":latest"
           imagePullPolicy: Always
           env:
             - name: spring.profiles.active
@@ -28,7 +32,7 @@ spec:
             - name: spring.security.oauth2.resourceserver.jwt.jwk-set-uri
               valueFrom:
                 secretKeyRef:
-                  name: app-name-jwk
+                  name: #@ data.values.artifactId + "-jwk"
                   key: jwk-set-uri
           resources:
             requests:
@@ -41,10 +45,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-name-service
+  name: #@ data.values.artifactId + "-service"
 spec:
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: app-name
+    app: #@ data.values.artifactId
