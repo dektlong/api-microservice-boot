@@ -20,14 +20,6 @@ spec:
     - name: SPRING_PROFILES_ACTIVE
       value: dev
 
-  resources:
-    requests:
-      memory: 1Gi
-      cpu: 100m
-    limits:
-      memory: 1Gi
-      cpu: 4000m
-
   params:
     - name: java-version
       value: 11
