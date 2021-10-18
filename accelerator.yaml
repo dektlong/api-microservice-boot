@@ -12,17 +12,27 @@ accelerator:
     label: App deployment config
     description: Type of deployment configurations
     required: true
-    defaultValue: tap
+    defaultValue: k8s
     inputType: select
     choices:
       - value: tap
         text: TAP workload
-      - value: alv
-        text: K8s with Tanzu App Live View
+      - value: k8s
+        text: K8s deployment
       - value: k8sSkaffold
-        text: K8s with Skaffold configs
+        text: K8s deployment with Skaffold configs
       - value: cf
         text: Cloud Foundry manifest
+    - name: addAlv
+      label: Add application live view
+      description: Add application live view sidecar to your deployment config
+      inputType: toggle 
+      defaultValue: false
+      dataType: boolean
+      dependsOn:
+        name: appDeploymentType
+        value: k8s    
+        
   - name: gitRepo
     label: Git repo
     inputType: text
@@ -121,8 +131,8 @@ engine:
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment/app-live-view.yaml" ]
-      condition: "#appDeploymentType == 'alv'"
+    - includes: [ "config/deployment/deployment.yaml" ]
+      condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
     - includes: [ "config/deployment/app-simple.yaml", "config/deployment/skaffold.yaml"]
