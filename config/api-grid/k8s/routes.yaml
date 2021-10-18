@@ -35,7 +35,7 @@ spec:
             'application/json':
               schema:
                 type: object
-                description: #@ data.values.secondApiGroup + "schema"
+                description: #@ data.values.secondApiGroup + " schema"
                 properties:
                   itemName:
                     type: string
