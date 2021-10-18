@@ -23,15 +23,15 @@ accelerator:
         text: K8s deployment with Skaffold configs
       - value: cf
         text: Cloud Foundry manifest
-    - name: addAlv
-      label: Add application live view
-      description: Add application live view sidecar to your deployment config
-      inputType: toggle 
-      defaultValue: false
-      dataType: boolean
-      dependsOn:
-        name: appDeploymentType
-        value: k8s    
+  - name: addAlv
+    label: Add application live view
+    description: Add application live view sidecar to your deployment config
+    inputType: toggle 
+    defaultValue: false
+    dataType: boolean
+    dependsOn:
+      name: appDeploymentType
+      value: k8s    
         
   - name: gitRepo
     label: Git repo
