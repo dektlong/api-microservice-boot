@@ -1,20 +1,23 @@
+#@ load("@ytt:data", "data") 
+--- 
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: app-name
+  name: #@ data.values.artifactId
   labels:
-    app.tanzu.vmware.com/workload-type: web
+    app.tanzu.vmware.com/workload-type: online-store
 
 spec:
   source:
     git:
-      url: git-repo
+      url: #@ data.values.gitRepo
       ref:
         branch: "dev"
-
+#@ if data.values.addDataEntity:
   services:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
-      kind: db-type
+      kind: #@ data.values.entityType
+#@ end
 
   env:
     - name: SPRING_PROFILES_ACTIVE
