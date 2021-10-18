@@ -135,7 +135,7 @@ engine:
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment/app-simple.yaml", "config/deployment/skaffold.yaml"]
+    - includes: [ "config/deployment/deployment.yaml", "config/deployment/skaffold.yaml"]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
         - type: YTT
