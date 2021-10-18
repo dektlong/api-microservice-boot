@@ -9,7 +9,7 @@ spec:
     name: #@ data.values.artifactId + "-service"
   routes:
     - predicates:
-        - Path= #@ "/api/" + data.values.firstApiGroup
+        #@ "- Path=/api/" + data.values.firstApiGroup
         - Method=GET
       filters:
         - RateLimit=2,10s
