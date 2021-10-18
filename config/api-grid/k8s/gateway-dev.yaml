@@ -1,22 +1,24 @@
+#@ load("@ytt:data", "data")
+---
 apiVersion: "tanzu.vmware.com/v1"
 kind: SpringCloudGatewayMapping
 metadata:
-  name: app-name-mapping
+  name: #@ data.values.artifactId + "-mapping"
 spec:
   gatewayRef:
-    name: app-name-gateway
+    name: #@ data.values.artifactId + "-gateway"
   routeConfigRef:
-    name: app-name-routes
+    name: #@ data.values.artifactId + "-routes"
 ---
 apiVersion: "tanzu.vmware.com/v1"
 kind: SpringCloudGateway
 metadata:
-  name: app-name-dev-gateway
+  name: #@ data.values.artifactId + "-gateway"
 spec:
   api:
     serverUrl: https://app-name.example.com
-    title: app-name dev gateway
-    description: Gateway for local development of app-name. 
+    title: #@ data.values.artifactId + " dev micro gateway"
+    description: #@ "Micro-gateway for local development of " + data.values.artifactId
   count: 1
   sso:
     secret: dev-secret
