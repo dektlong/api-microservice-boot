@@ -12,12 +12,10 @@ accelerator:
     label: App deployment config
     description: Type of deployment configurations
     required: true
-    defaultValue: k8s
+    defaultValue: tap
     inputType: select
     choices:
-      - value: k8s
-        text: K8s simple
-      - value: workload
+      - value: tap
         text: TAP workload
       - value: alv
         text: K8s with Tanzu App Live View
@@ -119,50 +117,23 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/deployment/app-simple.yaml" ]
-      condition: "#appDeploymentType == 'k8s'"
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
     - includes: [ "config/deployment/workload.yaml" ]
-      condition: "#appDeploymentType == 'workload'"
+      condition: "#appDeploymentType == 'tap'"
       chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
-            - text: git-repo
-              with: "#gitRepo"
-            - text: db-type
-              with: "#entityType"
+        - type: YTT
     - includes: [ "config/deployment/app-live-view.yaml" ]
       condition: "#appDeploymentType == 'alv'"
       chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
+        - type: YTT
     - includes: [ "config/deployment/app-simple.yaml", "config/deployment/skaffold.yaml"]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
+        - type: YTT
     #api-grid transformations
     - includes: [ "config/api-grid/k8s/**" ]
       condition: "#apiSamples.contains('k8s')"
       chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
-            - text: api-group1
-              with: "#firstApiGroup"
-            - text: api-group2
-              with: "#secondApiGroup"
+        - type: YTT
     - includes: [ "config/api-grid/cf/**" ]
       condition: "#apiSamples.contains('cf')"
       chain:
