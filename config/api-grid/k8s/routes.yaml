@@ -9,7 +9,7 @@ spec:
     name: #@ data.values.artifactId + "-service"
   routes:
     - predicates:
-        #@ "- Path=/api/" + data.values.firstApiGroup
+        - #@ " Path=/api/" + data.values.firstApiGroup
         - Method=GET
       filters:
         - RateLimit=2,10s
@@ -18,7 +18,7 @@ spec:
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        #@ "- Path=/api/" + data.values.firstApiGroup + "/" + data.values.secondApiGroup
+        - #@ " Path=/api/" + data.values.firstApiGroup + "/" + data.values.secondApiGroup
         - Method=POST,PUT,DELETE
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
