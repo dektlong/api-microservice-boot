@@ -31,7 +31,7 @@ accelerator:
     dataType: boolean
     dependsOn:
       name: appDeploymentType
-      value: k8s    
+      value: k8s
         
   - name: gitRepo
     label: Git repo
