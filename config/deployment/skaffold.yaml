@@ -7,7 +7,7 @@ build:
   local:
     concurrency: 2
   artifacts:
-    - image: #@ my-dev-registry.example.com/" + data.values.artifactId
+    - image: #@ "my-dev-registry.example.com/" + data.values.artifactId
       custom:
         buildCommand: |
           ./gradlew :bootBuildImage --imageName="$IMAGE" && \
