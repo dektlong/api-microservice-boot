@@ -12,7 +12,7 @@ accelerator:
     label: App deployment config
     description: Type of deployment configurations
     required: true
-    defaultValue: k8s
+    defaultValue: tap
     inputType: select
     choices:
       - value: tap
