@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data") 
+--- 
 apiVersion: skaffold/v2beta10
 kind: Config
 
@@ -5,7 +7,7 @@ build:
   local:
     concurrency: 2
   artifacts:
-    - image: my-dev-registry.example.com/app-name
+    - image: #@ my-dev-registry.example.com/" + data.values.artifactId
       custom:
         buildCommand: |
           ./gradlew :bootBuildImage --imageName="$IMAGE" && \
@@ -17,7 +19,7 @@ build:
             - ../../settings.gradle
 deploy:
   kubectl:
-    manifests:	# 	the Kubernetes yaml or json manifests.
+    manifests:	
     - "../*.yaml"
     flags:
       apply:
