@@ -68,19 +68,17 @@ accelerator:
   #apis samples
   - name: apiSamples
     inputType: checkbox
-    label: API samples format
+    label: API definitions format
     description: API developement samples
-    dependsOn:
-      name: addAPIs
     display: true
     dataType: [string]
     defaultValue:
       - k8s
     choices:
       - value: k8s  
-        text: routes and gateway definitions as YAML
+        text: YAML
       - value: cf
-        text: routes and gateway definitions as JSON
+        text: JSON
   
   #optional - data entity      
   - name: addDataEntity
