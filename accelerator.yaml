@@ -68,7 +68,7 @@ accelerator:
   #apis samples
   - name: apiSamples
     inputType: checkbox
-    label: API samples
+    label: API samples format
     description: API developement samples
     dependsOn:
       name: addAPIs
@@ -78,9 +78,9 @@ accelerator:
       - k8s
     choices:
       - value: k8s  
-        text: routes and gateway definitions for k8s
+        text: routes and gateway definitions as YAML
       - value: cf
-        text: routes and gateway definitions for Cloud Foundry
+        text: routes and gateway definitions as JSON
   
   #optional - data entity      
   - name: addDataEntity
