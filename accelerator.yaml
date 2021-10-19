@@ -127,24 +127,28 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/deployment/workload.yaml" ]
+    - includes: [ "config/workload.yaml" ]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment/deployment.yaml" ]
+    - includes: [ "config/deployment.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment/deployment.yaml", "config/deployment/skaffold.yaml"]
+    - includes: [ "config/deployment.yaml", "config/skaffold.yaml"]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
         - type: YTT
+    - includes: [ "config/manifest.yaml"]
+      condition: "#appDeploymentType == 'cf'"
+      chain:
+        - type: YTT
     #api-grid transformations
-    - includes: [ "config/api-grid/k8s/**" ]
+    - includes: [ "config/gateway-dev.yaml", "config/routes.yaml" ]
       condition: "#apiSamples.contains('k8s')"
       chain:
         - type: YTT
-    - includes: [ "config/api-grid/cf/**" ]
+    - includes: [ "config/gateway-dev.json", "config/routes.json" ]
       condition: "#apiSamples.contains('cf')"
       chain:
         - type: ReplaceText
