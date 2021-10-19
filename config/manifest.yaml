@@ -1,0 +1,10 @@
+#@ load("@ytt:data", "data") 
+---
+applications:
+- name: #@ data.values.artifactId
+  path: ./build
+  routes:
+    - route: #@ data.values.artifactId + ".apps.internal"
+  memory: 1G
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'
