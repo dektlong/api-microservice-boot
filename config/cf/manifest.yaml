@@ -11,5 +11,5 @@ applications:
     SPRING_PROFILES_ACTIVE: dev
 #@ if data.values.addDataEntity:
 services:
-   #@ data.values.entityType
+   - #@ data.values.entityType
 #@ end
