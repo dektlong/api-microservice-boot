@@ -9,20 +9,20 @@ accelerator:
   
   #deployment
   - name: appDeploymentType
-    label: App deployment config
+    label: Deployment configs format
     description: Type of deployment configurations
     required: true
     defaultValue: tap
     inputType: select
     choices:
       - value: tap
-        text: TAP workload
+        text: Tanzu App Platform
       - value: k8s
         text: K8s deployment
       - value: k8sSkaffold
         text: K8s deployment with Skaffold configs
       - value: cf
-        text: Cloud Foundry manifest
+        text: Tanzu App Service (cf)
   - name: addAlv
     label: Add application live view
     description: Add application live view sidecar to your deployment config
@@ -65,21 +65,6 @@ accelerator:
     description: Name of the Fifth API group
     defaultValue: apiGroup5
 
-  #apis samples
-  - name: apiSamples
-    inputType: checkbox
-    label: API definitions format
-    description: API developement samples
-    display: true
-    dataType: [string]
-    defaultValue:
-      - k8s
-    choices:
-      - value: k8s  
-        text: YAML
-      - value: cf
-        text: JSON
-  
   #optional - data entity      
   - name: addDataEntity
     label: Add data service entity bean
@@ -125,15 +110,15 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/workload.yaml" ]
+    - includes: [ "config/workload.yaml", "config/gateway-dev.yaml", "config/routes.yaml"]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment.yaml" ]
+    - includes: [ "config/deployment.yaml", "config/gateway-dev.yaml", "config/routes.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment.yaml", "config/skaffold.yaml"]
+    - includes: [ "config/deployment.yaml", "config/skaffold.yaml", "config/gateway-dev.yaml", "config/routes.yaml"]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
         - type: YTT
@@ -141,13 +126,8 @@ engine:
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
-    #api-grid transformations
-    - includes: [ "config/gateway-dev.yaml", "config/routes.yaml" ]
-      condition: "#apiSamples.contains('k8s')"
-      chain:
-        - type: YTT
     - includes: [ "config/gateway-dev.json", "config/routes.json" ]
-      condition: "#apiSamples.contains('cf')"
+      condition: "#appDeploymentType == 'cf'"
       chain:
         - type: ReplaceText
           substitutions:
