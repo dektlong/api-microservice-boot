@@ -108,15 +108,19 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/k8s/workload.yaml", "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+    - includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+      condition: "#appDeploymentType != 'cf'"
+      chain:
+        - type: YTT
+    - includes: [ "config/k8s/workload.yaml" ]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/deployment.yaml", "config/gateway-dev.yaml", "config/routes.yaml" ]
+    - includes: [ "config/k8s/deployment.yaml" ]
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
-    - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml", "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+    - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml" ]
       condition: "#appDeploymentType == 'k8sSkaffold'"
       chain:
         - type: YTT
