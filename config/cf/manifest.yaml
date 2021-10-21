@@ -8,6 +8,7 @@ applications:
   memory: 1G
   env:
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'
+    SPRING_PROFILES_ACTIVE: dev
 #@ if data.values.addDataEntity:
 services:
    #@ data.values.entityType
