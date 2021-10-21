@@ -9,7 +9,7 @@ accelerator:
   
   #deployment
   - name: appDeploymentType
-    label: Deployment configs format
+    label: Deployment environment
     description: Type of deployment configurations
     required: true
     defaultValue: tap
