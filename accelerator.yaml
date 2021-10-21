@@ -79,7 +79,6 @@ accelerator:
     dependsOn:
       name: addDataEntity
     inputType: select
-    defaultValue: inmemory
     choices:
       - value: mysql
         text: MySQL
@@ -89,8 +88,6 @@ accelerator:
         text: Mongo
       - value: redis
         text: Redis
-      - value: inmemory
-        text: In memory
   - name: entityName
     label: Data service entity name
     description: Data service entity name
