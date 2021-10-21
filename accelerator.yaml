@@ -124,7 +124,7 @@ engine:
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
-    - includes: [ "config/cf/gateway-dev.json", "config/cf/routes.json" ]
+    - includes: [ "config/cf/*.json" ]
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: ReplaceText
