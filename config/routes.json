@@ -1,19 +1,96 @@
 {
   "routes": [
     {
-      "title": "Retrieve api-group1",
-      "description": "Retrieve a list of all available api-group1.",
+      "title": "Retrieve pets for adoption.",
+      "description": "Retrieve all of the animals who are up for pet adoption.",
       "path": "/api/api-group1",
       "method": "GET",
-      "filters": [ "RateLimit=2,10s" ]
+      "filters": [ "RateLimit=2,10s" ],
+      "tags": ["api-group1"]
     },
     {
-      "title": "Update api-group2",
-      "description": "Update an api-group2",
-      "path": "/api/api-group1/api-group2/",
-      "method": "POST,PUT,DELETE",
+      "title": "Retrieve user information",
+      "description": "Retrieve the current authenticated user's information.",
+      "path": "/api/whoami",
+      "method": "GET",
       "token-relay": true,
-      "sso-enabled": true
+      "sso-enabled": true,
+      "tags": ["api-group2"]
+    },
+    {
+      "title": "Pet adoption API",
+      "description": "Create pet adoption requests.",
+      "path": "/api/api-group1/{animalId}/api-group2",
+      "method": "POST",
+      "token-relay": true,
+      "sso-enabled": true,
+      "tags": ["api-group1"],
+      "model": {
+        "requestBody": {
+          "description": "Manage adoption requests",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Adoption request schema",
+                "properties": {
+                  "adopterName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [ "adopterName", "email" ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Adoption request created successfully."
+          }
+        }
+      }
+    },
+    {
+      "title": "Pet adoption API",
+      "description": "Update/delete pet adoption requests.",
+      "path": "/api/animals/{animalId}/adoption-requests/{adoptionId}",
+      "method": "PUT,DELETE",
+      "token-relay": true,
+      "sso-enabled": true,
+      "tags": ["api-group2],
+      "model": {
+        "requestBody": {
+          "description": "Manage adoption requests",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Adoption request schema",
+                "properties": {
+                  "adopterName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [ "adopterName", "email" ]
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
