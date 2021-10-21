@@ -79,6 +79,7 @@ accelerator:
     dependsOn:
       name: addDataEntity
     inputType: select
+    defaultValue: mysql
     choices:
       - value: mysql
         text: MySQL
