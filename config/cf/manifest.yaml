@@ -10,6 +10,6 @@ applications:
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'
     SPRING_PROFILES_ACTIVE: dev
 #@ if data.values.addDataEntity:
-services:
+  services:
    - #@ data.values.entityType
 #@ end
