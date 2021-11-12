@@ -43,15 +43,14 @@ accelerator:
   - name: javaVersion
     label: Java version
     description: Java runtime version
-    inputType: integer
     required: true
-    defaultValue: 11
+    defaultValue: 11.0.13
     inputType: select
     choices:
-      - value: 11
-        text: 11 (dev+prod)
-      - value: 17
-        text: 17 (dev only)
+      - value: 11.0.13
+        text: 11.0 
+      - value: 18.9
+        text: 18.9 (dev only)
         
   #apis groups
   - name: firstApiGroup
