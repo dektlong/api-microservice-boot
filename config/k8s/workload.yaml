@@ -12,7 +12,7 @@ spec:
     git:
       url: #@ data.values.gitRepo
       ref:
-        branch: "dev"
+        branch: "main"
 #@ if data.values.addDataEntity:
   services:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
