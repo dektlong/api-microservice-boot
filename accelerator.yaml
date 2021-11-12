@@ -43,6 +43,7 @@ accelerator:
   - name: javaVersion
     label: Java version
     description: Java runtime version
+    inputType: number
     required: true
     defaultValue: 11
     inputType: select
