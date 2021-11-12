@@ -18,6 +18,6 @@ spec:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
       kind: #@ data.values.entityType
 #@ end
-    params:
-    - name: java-version
-      value: #@ data.values.javaVersion
+  params:
+   - name: java-version
+     value: #@ data.values.javaVersion
