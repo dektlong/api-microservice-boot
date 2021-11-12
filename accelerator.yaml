@@ -40,6 +40,18 @@ accelerator:
     dataType: string
     defaultValue: https://github.com/dektlong/dekt4pets-backend
   
+  - name: javaVersion
+    label: Java version
+    description: Java runtime version
+    required: true
+    defaultValue: 11
+    inputType: select
+    choices:
+      - value: 11
+        text: 11 (dev+prod)
+      - value: 17
+        text: 17 (dev only)
+        
   #apis groups
   - name: firstApiGroup
     label: First level API group
