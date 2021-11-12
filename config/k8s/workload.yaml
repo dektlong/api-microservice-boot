@@ -21,7 +21,3 @@ spec:
     params:
     - name: java-version
       value: #@ data.values.javaVersion
-#@ if data.values.javaDebug:
-    - name: debug
-      value: true
-#@ end
