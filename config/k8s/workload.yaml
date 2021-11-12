@@ -18,13 +18,10 @@ spec:
     - apiVersion: services.tanzu.vmware.com/v1alpha1
       kind: #@ data.values.entityType
 #@ end
-
-  env:
-    - name: SPRING_PROFILES_ACTIVE
-      value: dev
-
-  params:
+    params:
     - name: java-version
-      value: 11
+      value: #@ data.values.javaVersion
+#@ if data.values.javaDebug:
     - name: debug
       value: true
+#@ end
