@@ -19,5 +19,5 @@ spec:
       kind: #@ data.values.entityType
 #@ end
   params:
-   - name: java-version
-     value: #@ data.values.javaVersion
+    - name: java-version
+      value: #@ data.values.javaVersion
