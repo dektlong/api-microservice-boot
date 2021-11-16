@@ -16,13 +16,13 @@ accelerator:
     inputType: select
     choices:
       - value: tap
-        text: Tanzu App Platform Workload
+        text: Tanzu App Platform workload
       #- value: k8s
       #  text: K8s deployment
      # - value: k8sSkaffold
       #  text: K8s deployment with Skaffold configs
       - value: cf
-        text: Tanzu App Service Manifest
+        text: Tanzu App Service manifest
   - name: addAlv
     label: Add application live view
     description: Add application live view sidecar to your deployment config
