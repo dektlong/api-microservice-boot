@@ -5,19 +5,19 @@ kind: Workload
 metadata:
   name: #@ data.values.artifactId
   labels:
-    app.tanzu.vmware.com/workload-type: online-store
+    app.tanzu.vmware.com/workload-type: web-backend
 
 spec:
   source:
     git:
       url: #@ data.values.gitRepo
       ref:
-        branch: "main"
+        branch: main
 #@ if data.values.addDataEntity:
-  services:
-    - apiVersion: services.tanzu.vmware.com/v1alpha1
-      kind: #@ data.values.entityType
+  serviceClaims:
+    - name: #@ data.values.entityType + "-claim"
+      ref:
+        apiVersion:  #@ services.tanzu.vmware.com/" + data.values.entityType + "/v1alpha1"
+        kind: #@ data.values.entityType + "Operator"
+        name:  #@ data.values.entityName
 #@ end
-  params:
-    - name: java-version
-      value: #@ data.values.javaVersion
