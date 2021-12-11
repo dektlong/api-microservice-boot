@@ -153,8 +153,8 @@ engine:
             with: "#secondApiGroup"
     
     #data entity transformations
-    - includes: [ "src/main/java/io/storebackend/api/data/MongoTemplate.java" ]
-      condition: "#entityType == 'mongo'"
+    - includes: [ "src/main/java/io/storebackend/api/data/RabbitMQTemplate.java" ]
+      condition: "#entityType == 'rabbitmq'"
       chain:
         - type: ReplaceText
           substitutions:
