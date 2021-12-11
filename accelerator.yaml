@@ -79,14 +79,14 @@ accelerator:
 
   #optional - data entity      
   - name: addDataEntity
-    label: Add data service entity bean
+    label: Add data service
     description: Add a data service entity bean class to the generated code
     inputType: toggle
     display: true
     dataType: boolean
     defaultValue: false
   - name: entityType
-    label: Data service entity type
+    label: Data service type
     description: Select the data service type
     dependsOn:
       name: addDataEntity
@@ -97,14 +97,14 @@ accelerator:
         text: MySQL
       - value: postgres
         text: PostgreSQL
-      - value: mongo
-        text: Mongo
+      - value: rabbitmq
+        text: RabbitMQ
       - value: redis
         text: Redis
   - name: entityName
-    label: Data service entity name
-    description: Data service entity name
-    defaultValue: mybean
+    label: Data service name
+    description: Data service name
+    defaultValue: mydb
     dependsOn:
       name: addDataEntity
       
