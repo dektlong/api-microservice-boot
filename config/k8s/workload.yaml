@@ -17,7 +17,7 @@ spec:
   serviceClaims:
     - name: #@ data.values.entityType + "-claim"
       ref:
-        apiVersion:  #@ services.tanzu.vmware.com/" + data.values.entityType + "/v1alpha1"
+        apiVersion:  #@ "services.tanzu.vmware.com/" + data.values.entityType + "/v1alpha1"
         kind: #@ data.values.entityType + "Operator"
         name:  #@ data.values.entityName
 #@ end
