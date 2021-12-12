@@ -17,12 +17,12 @@ spec:
     - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: a1
+        kind: #@ data.values.dbType 
         name: a2 
     - name: #@ data.values.msgType + "-claim"
       ref:
         apiVersion: rabbitmq.com/v1beta1
-        kind: b1
+        kind: #@ data.values.msgType
         name: b2
     - name: #@ data.values.cacheType + "-claim"
       ref:
