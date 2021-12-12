@@ -112,7 +112,7 @@ accelerator:
     display: true
     dataType: boolean
     defaultValue: false
-  - name: cacheype
+  - name: cacheType
     label: Caching service type
     description: Select the cachingservice type
     dependsOn:
@@ -204,31 +204,25 @@ engine:
     
     #data entity transformations
     - includes: [ "src/main/java/io/storebackend/api/data/RabbitMQTemplate.java" ]
-      condition: "#entityType == 'rabbitmq'"
+      condition: "#msgType == 'RabbitMQCluster'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
-              with: "#entityName"
+              with: "#msgName"
     - includes: [ "src/main/java/io/storebackend/api/data/RedisTemplate.java" ]
-      condition: "#entityType == 'redis'"
+      condition: "#cacheType == 'Redisluster'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
-              with: "#entityName"
+              with: "#cacheName"
     - includes: [ "src/main/java/io/storebackend/api/data/PostgresTemplate.java" ]
-      condition: "#entityType == 'postgres'"
+      condition: "#dbType == 'PostgresCluster'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
-              with: "#entityName" 
-    - includes: [ "src/main/java/io/storebackend/api/data/MySQLTemplate.java" ]
-      condition: "#entityType == 'mysql'"
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: mybean
-              with: "#entityName" 
+              with: "#dbName" 
+  
     
