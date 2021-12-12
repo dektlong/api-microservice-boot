@@ -14,7 +14,7 @@ spec:
       ref:
         branch: main
   serviceClaims:
-    - name: a-claim
+    - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: a-type
