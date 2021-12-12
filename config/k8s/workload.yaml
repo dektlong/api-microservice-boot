@@ -14,17 +14,18 @@ spec:
       ref:
         branch: main
   serviceClaims:
-  #@ if data.values.addDB:
     - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.dbType 
         name:  #@ #@ data.values.dbName
-  #@ end
-  #@ if data.values.addCache:
+    - name: #@ data.values.msgType + "-claim"
+      ref:
+        apiVersion: rabbitmq.com/v1beta1
+        kind: #@ data.values.msgType
+        name:  #@ data.values.msgName
     - name: #@ data.values.cacheType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.cacheType 
         name:  #@ #@ data.values.cacheName
-  #@ end
