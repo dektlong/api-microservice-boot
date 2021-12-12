@@ -27,6 +27,6 @@ spec:
     - name: #@ data.values.cacheType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: c1
+        kind: #@ data.values.cacheType
         name: c2
     
