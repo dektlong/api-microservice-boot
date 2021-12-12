@@ -21,7 +21,7 @@ spec:
         apiVersion: rabbitmq.com/v1beta1
         kind: RabbitmqCluster
         name:  #@ data.values.entityName
-  #@ else
+  #@ else:
     - name: #@ data.values.entityType
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
