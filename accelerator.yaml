@@ -118,7 +118,7 @@ accelerator:
     dependsOn:
       name: addCache
     inputType: select
-    defaultValue: Redisluster
+    defaultValue: RedisCluster
     choices:
       - value: Redisluster
         text: On-prem Redis
