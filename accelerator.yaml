@@ -93,13 +93,13 @@ accelerator:
     inputType: select
     defaultValue: mysql
     choices:
-      - value: mysql
+      - value: MySQLCluster
         text: MySQL
-      - value: postgres
+      - value: PostgresCluster
         text: PostgreSQL
       - value: rabbitmq
         text: RabbitMQ
-      - value: redis
+      - value: RedisCluster
         text: Redis
   - name: entityName
     label: Data service name
