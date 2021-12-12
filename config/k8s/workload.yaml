@@ -15,9 +15,17 @@ spec:
         branch: main
 #@ if data.values.addDataEntity:
   serviceClaims:
-    - name: #@ data.values.entityType + "-claim"
+  #@ if data.values.entityType == "rabbitmq":
+    - name: rabbitmq-service
       ref:
-        apiVersion:  #@ "services.tanzu.vmware.com/" + data.values.entityType + "/v1alpha1"
-        kind: #@ data.values.entityType + "Operator"
+        apiVersion: rabbitmq.com/v1beta1
+        kind: RabbitmqCluster
         name:  #@ data.values.entityName
+  #@ else
+    - name: #@ data.values.entityType
+      ref:
+        apiVersion: services.tanzu.vmware.com/v1alpha1
+        kind: #@ data.values.entityType
+        name:  #@ data.values.entityName
+  #@ end
 #@ end
