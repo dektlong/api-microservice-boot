@@ -14,18 +14,19 @@ spec:
       ref:
         branch: main
   serviceClaims:
-    - name: #@ data.values.dbType + "-claim"
+    - name: a-claim
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.dbType 
-        name:  #@ #@ data.values.dbName
-    - name: #@ data.values.msgType + "-claim"
-      ref:
-        apiVersion: rabbitmq.com/v1beta1
-        kind: #@ data.values.msgType
-        name:  #@ data.values.msgName
-    - name: #@ data.values.cacheType + "-claim"
+        kind: a-type
+        name:  a-name
+    - name: b-claim
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.cacheType 
-        name:  #@ #@ data.values.cacheName
+        kind: a-type
+        name:  a-name
+    - name: c-claim
+      ref:
+        apiVersion: services.tanzu.vmware.com/v1alpha1
+        kind: a-type
+        name:  a-name
+    
