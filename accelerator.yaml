@@ -23,15 +23,15 @@ accelerator:
       #  text: K8s deployment with Skaffold configs
       - value: cf
         text: Tanzu App Service manifest
-  - name: addAlv
-    label: Add application live view
-    description: Add application live view sidecar to your deployment config
-    inputType: toggle 
-    defaultValue: false
-    dataType: boolean
-    dependsOn:
-      name: appDeploymentType
-      value: k8s
+  #- name: addAlv
+  #  label: Add application live view
+  #  description: Add application live view sidecar to your deployment config
+  #  inputType: toggle 
+  #  defaultValue: false
+  #  dataType: boolean
+  #  dependsOn:
+  #    name: appDeploymentType
+  #    value: k8s
         
   - name: gitRepo
     label: Git repo
@@ -51,7 +51,86 @@ accelerator:
         text: 11 
       - value: "17"
         text: 17 (dev only)
-        
+  
+  #data services
+  - name: addDB
+    label: Bind to a database 
+    description: Add a service request to a database
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+  - name: dbType
+    label: Database service type
+    description: Select the database service type
+    dependsOn:
+      name: addDB
+    inputType: select
+    defaultValue: PostgresCluster
+    choices:
+      - value: PostgresCluster
+        text: On-prem PostgreSQL
+      - value: RDSConnector
+        text: Amazon RDS
+  - name: dbName
+    label: Database service name
+    description: Database service name
+    defaultValue: mydb
+    dependsOn:
+      name: addDB
+      
+  - name: addMsg
+    label: Bind to a message queue 
+    description: Add a service request to a message queue
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+  - name: msgType
+    label: Message queue service type
+    description: Select the message queue service type
+    dependsOn:
+      name: addMsg
+    inputType: select
+    defaultValue: RabbitMQCluster
+    choices:
+      - value: RabbitMQCluster
+        text: On-prem RabbitMQ
+      - value: SQSConnector
+        text: Amazon SQS
+  - name: msgName
+    label: Message queue service name
+    description: Message service name
+    defaultValue: myqueue
+    dependsOn:
+      name: addMsg
+      
+  - name: addCache
+    label: Bind to a caching service 
+    description: Add a service request to a caching service
+    inputType: toggle
+    display: true
+    dataType: boolean
+    defaultValue: false
+  - name: cacheype
+    label: Caching service type
+    description: Select the cachingservice type
+    dependsOn:
+      name: addCache
+    inputType: select
+    defaultValue: Redisluster
+    choices:
+      - value: Redisluster
+        text: On-prem Redis
+      - value: ElastiCacheConnector
+        text: Amazon ElastiCache
+  - name: cacheName
+    label: Caching service name
+    description: Caching service name
+    defaultValue: mycache
+    dependsOn:
+      name: addCache
+      
   #apis groups
   - name: firstApiGroup
     label: First level API group
@@ -77,36 +156,7 @@ accelerator:
     description: Name of the Fifth API group
     defaultValue: apiGroup5
 
-  #optional - data entity      
-  - name: addDataEntity
-    label: Add data service
-    description: Add a data service entity bean class to the generated code
-    inputType: toggle
-    display: true
-    dataType: boolean
-    defaultValue: false
-  - name: entityType
-    label: Data service type
-    description: Select the data service type
-    dependsOn:
-      name: addDataEntity
-    inputType: select
-    defaultValue: MySQLCluster
-    choices:
-      - value: MySQLCluster
-        text: MySQL
-      - value: PostgresCluster
-        text: PostgreSQL
-      - value: rabbitmq
-        text: RabbitMQ
-      - value: RedisCluster
-        text: Redis
-  - name: entityName
-    label: Data service name
-    description: Data service name
-    defaultValue: mydb
-    dependsOn:
-      name: addDataEntity
+  
       
       
 engine:
