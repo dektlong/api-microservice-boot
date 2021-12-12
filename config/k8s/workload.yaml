@@ -13,7 +13,7 @@ spec:
       url: #@ data.values.gitRepo
       ref:
         branch: main
-#@ if data.values.addDB or data.values.addMsg ir data.values.addCache: 
+#@ if data.values.addDB or data.values.addMsg or data.values.addCache: 
   serviceClaims:
     - name: #@ data.values.dbType + "-claim"
       ref:
