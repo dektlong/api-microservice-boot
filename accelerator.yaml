@@ -1,6 +1,6 @@
 accelerator:
   displayName: Backend API-driven Service
-  description: Accelerator to create Backend API service for stream processing
+  description: Accelerator to create Backend API service for stream processing using Spring Boot
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
   - cloud-native-devs
