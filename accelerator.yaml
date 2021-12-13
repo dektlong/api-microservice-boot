@@ -1,6 +1,6 @@
 accelerator:
   displayName: Backend API-driven Service
-  description: Accelerator to create Backend API service for online stores
+  description: Accelerator to create Backend API service for stream processing
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
   - cloud-native-devs
