@@ -12,10 +12,10 @@ applications:
 #@ if data.values.addDB or data.values.addMsg or data.values.addCache: 
   service:
   #@ if data.values.addDB: 
-    - name: #@ data.values.dbType + "-service"
+    - #@ data.values.dbType + "-service"
   #@ end
   #@ if data.values.addMsg: 
-    - name: #@ data.values.dbType + "-service"
+    - #@ data.values.dbType + "-service"
   #@ end
   #@ if data.values.addCache:
-    - name: #@ data.values.cacheType + "-service"
+    - #@ data.values.cacheType + "-service"
