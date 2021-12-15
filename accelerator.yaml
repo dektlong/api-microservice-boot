@@ -177,14 +177,14 @@ engine:
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/k8s/deployment.yaml" ]
-      condition: "#appDeploymentType == 'k8s'"
-      chain:
-        - type: YTT
-    - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml" ]
-      condition: "#appDeploymentType == 'k8sSkaffold'"
-      chain:
-        - type: YTT
+   # - includes: [ "config/k8s/deployment.yaml" ]
+   #   condition: "#appDeploymentType == 'k8s'"
+   #   chain:
+   #     - type: YTT
+   # - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml" ]
+   #   condition: "#appDeploymentType == 'k8sSkaffold'"
+   #   chain:
+   #     - type: YTT
     - includes: [ "config/cf/manifest.yaml"]
       condition: "#appDeploymentType == 'cf'"
       chain:
