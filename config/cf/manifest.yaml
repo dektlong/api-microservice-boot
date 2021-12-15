@@ -19,3 +19,5 @@ applications:
   #@ end
   #@ if data.values.addCache:
     - #@ data.values.cacheType + "-service"
+   #@ end
+#@ end
