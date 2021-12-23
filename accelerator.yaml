@@ -1,5 +1,5 @@
 accelerator:
-  displayName: API-driven microservice with Spring Boot
+  displayName: API-driven backend with Spring Boot
   description: Accelerator to create Backend API service using Spring Boot
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
