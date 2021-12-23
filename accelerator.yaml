@@ -38,7 +38,7 @@ accelerator:
     inputType: text
     required: true
     dataType: string
-    defaultValue: https://github.com/dektlong/my-backend
+    defaultValue: my-backend
   
   - name: javaVersion
     label: Java version
