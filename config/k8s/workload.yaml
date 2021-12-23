@@ -10,7 +10,7 @@ metadata:
 spec:
   source:
     git:
-      url: #@ data.values.gitRepo
+      url: #@ "https://github.com/dektlong/" + data.values.gitRepo
       ref:
         branch: dev
 #@ if data.values.addDB or data.values.addMsg or data.values.addCache: 
