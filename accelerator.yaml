@@ -33,7 +33,7 @@ accelerator:
   #    value: k8s
         
   - name: gitRepo
-    label: Git repository
+    label: Source repository
     description: Name of your git repo (not the full URL)
     inputType: text
     required: true
