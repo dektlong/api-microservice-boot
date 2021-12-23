@@ -5,7 +5,7 @@ kind: Workload
 metadata:
   name: #@ data.values.artifactId
   labels:
-    app.tanzu.vmware.com/workload-type: stream
+    app.tanzu.vmware.com/workload-type: web-backend
 
 spec:
   source:
