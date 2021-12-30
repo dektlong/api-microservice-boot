@@ -79,9 +79,9 @@ accelerator:
     defaultValue: false
   - name: dbType
     label: Database service type
-    description: Select the database service type
     dependsOn:
       name: addDB
+    description: Select the database service type
     inputType: select
     defaultValue: PostgresCluster
     choices:
