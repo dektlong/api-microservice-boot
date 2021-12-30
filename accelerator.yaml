@@ -73,7 +73,7 @@ accelerator:
   - name: addDB
     label: Bind a database service
     description: Add a service request to a database
-    inputType: toggle
+    inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
@@ -99,7 +99,7 @@ accelerator:
   - name: addMsg
     label: Bind a messaging service 
     description: Add a service request to a message queue
-    inputType: toggle
+    inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
@@ -125,7 +125,7 @@ accelerator:
   - name: addCache
     label: Bind a caching service 
     description: Add a service request to a caching service
-    inputType: toggle
+    inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
