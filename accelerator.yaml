@@ -9,23 +9,6 @@ accelerator:
   options:
   
   #deployment
-  - name: includeKubernetes
-    label: Kubernetes deployment
-    display: true
-    description: Toggle "On" to include skaffold and Kubernetes deployment configurations.
-    inputType: checkbox
-    dataType: boolean
-    defaultValue: false
-
-  - name: enableAppLiveView
-    label: App Live View
-    dependsOn:
-      name: includeKubernetes
-    description: Toggle "On" to enable Application Live View integration.
-    inputType: checkbox
-    dataType: boolean
-    defaultValue: false
-    
   - name: appDeploymentType
     label: Deployment environment
     description: Type of deployment configurations
@@ -69,6 +52,23 @@ accelerator:
       - value: "17"
         text: 17 (dev only)
   
+  - name: includeKubernetes
+    label: Kubernetes deployment
+    display: true
+    description: Toggle "On" to include skaffold and Kubernetes deployment configurations.
+    inputType: checkbox
+    dataType: boolean
+    defaultValue: false
+
+  - name: enableAppLiveView
+    label: App Live View
+    dependsOn:
+      name: includeKubernetes
+    description: Toggle "On" to enable Application Live View integration.
+    inputType: checkbox
+    dataType: boolean
+    defaultValue: false
+    
   #data services
   - name: addDB
     label: Bind a database service
