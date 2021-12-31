@@ -112,22 +112,22 @@ accelerator:
   #  display: true
   #  dataType: boolean
   #  defaultValue: false
-  - name: cacheType
-    label: Caching service type
-    description: Select the cachingservice type
+  #- name: cacheType
+  #  label: Caching service type
+  #  description: Select the cachingservice type
   #  dependsOn:
   #    name: addCache
-    inputType: select
-    defaultValue: RedisCluster
-    choices:
-      - value: RedisCluster
-        text: Redis
-      - value: ElastiCacheConnector
-        text: Amazon ElastiCache
-  - name: cacheName
-    label: Caching service name
-    description: Caching service name
-    defaultValue: mycache
+  #  inputType: select
+  #  defaultValue: RedisCluster
+  #  choices:
+  #    - value: RedisCluster
+  #      text: Redis
+  #    - value: ElastiCacheConnector
+  #      text: Amazon ElastiCache
+  #- name: cacheName
+  #  label: Caching service name
+  #  description: Caching service name
+  #  defaultValue: mycache
   #  dependsOn:
   #    name: addCache
       
@@ -140,7 +140,7 @@ accelerator:
     defaultValue: apiGroup1
   - name: secondApiGroup
     label: Second level API group
-    display: true
+    display: false
     description: Name of the second API group
     defaultValue: apiGroup2
   - name: thirdApiGroup
