@@ -134,13 +134,13 @@ accelerator:
   #apis groups
   - name: apiGroups
     label: API routes hierarchy & tag names
-      description: Name of each level of the API routes hierarchy, which will also be the tag name in the API portal grouping
-      inputType: multi-text
-      required: false
-      dataType: [string]
-      defaultValue:
-        - my-api-group1
-        - my-api-group2
+    description: Name of each level of the API routes hierarchy, which will also be the tag name in the API portal grouping
+    inputType: multi-text
+    required: false
+    dataType: [string]
+    defaultValue:
+      - my-api-group1
+      - my-api-group2
       
 engine:
   merge:
