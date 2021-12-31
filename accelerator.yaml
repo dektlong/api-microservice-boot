@@ -116,31 +116,31 @@ accelerator:
    # dependsOn:
    #   name: addMsg
       
-  #- name: addCache
-  #  label: Bind a caching service 
-  #  description: Add a service request to a caching service
-  #  inputType: checkbox
-  #  display: true
-  #  dataType: boolean
-  #  defaultValue: false
-  #- name: cacheType
-  #  label: Caching service type
-  #  description: Select the cachingservice type
-  #  dependsOn:
-  #    name: addCache
-  #  inputType: select
-  #  defaultValue: RedisCluster
-  #  choices:
-  #    - value: RedisCluster
-  #      text: Redis
-  #    - value: ElastiCacheConnector
-  #      text: Amazon ElastiCache
-  #- name: cacheName
-  #  label: Caching service name
-  #  description: Caching service name
-  #  defaultValue: mycache
-  #  dependsOn:
-  #    name: addCache
+  - name: addCache
+    label: Bind a caching service 
+    description: Add a service request to a caching service
+    inputType: checkbox
+    display: true
+    dataType: boolean
+    defaultValue: false
+  - name: cacheType
+    label: Caching service type
+    description: Select the cachingservice type
+    dependsOn:
+      name: addCache
+    inputType: select
+    defaultValue: RedisCluster
+    choices:
+      - value: RedisCluster
+        text: Redis
+      - value: ElastiCacheConnector
+        text: Amazon ElastiCache
+  - name: cacheName
+    label: Caching service name
+    description: Caching service name
+    defaultValue: mycache
+    dependsOn:
+      name: addCache
           
 engine:
   merge:
