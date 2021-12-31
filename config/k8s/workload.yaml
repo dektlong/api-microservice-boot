@@ -13,28 +13,14 @@ spec:
       url: #@ "https://github.com/dektlong/" + data.values.gitRepo
       ref:
         branch: dev
-#@ if data.values.addDB or data.values.addMsg or data.values.addCache: 
   serviceClaims:
-  #@ if data.values.addDB: 
     - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.dbType 
         name: #@ data.values.dbName
-  #@ end
-  #@ if data.values.addMsg: 
     - name: #@ data.values.msgType + "-claim"
       ref:
         apiVersion: rabbitmq.com/v1beta1
         kind: #@ data.values.msgType
         name: #@ data.values.msgName
-  #@ end
-  #@ if data.values.addCache:
-    - name: #@ data.values.cacheType + "-claim"
-      ref:
-        apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.cacheType
-        name: #@ data.values.cacheName
-  #@ end
-#@ end
-    
