@@ -18,8 +18,17 @@ spec:
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "-request"
+        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "/update"
         - Method=POST,PUT,DELETE
+      ssoEnabled: true
+      tokenRelay: true
+      tags:
+        - #@ data.values.apiGroups[1]
+      title: "SSO protected api for write functionality"
+      description: "SSO protected api for write/delete/update interactions with the backend service"
+    - predicates:
+        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "/read"
+        - Method=GET
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
