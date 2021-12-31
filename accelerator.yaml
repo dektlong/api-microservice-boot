@@ -132,33 +132,15 @@ accelerator:
   #    name: addCache
       
   #apis groups
-  - name: firstApiGroup
-    label: First level API group
-    description: Name of the first level API group
-    defaultValue: apiGroup1
-    required: true
-    defaultValue: apiGroup1
-  - name: secondApiGroup
-    label: Second level API group
-    display: false
-    description: Name of the second API group
-    defaultValue: apiGroup2
-  - name: thirdApiGroup
-    label: Third  level API group
-    description: Name of the third API group
-    defaultValue: apiGroup3
-    display: false
-  #- name: forthApiGroup
-  #  label: Forth level API group
-  #  description: Name of the forth API group
-  #  defaultValue: apiGroup4
-  #- name: fifthApiGroup
-  #  label: Fifth level API group
-  #  description: Name of the Fifth API group
-  #  defaultValue: apiGroup5
-
-  
-      
+  - name: apiGroups
+    label: API routes hierarchy & tag names
+      description: Name of each level of the API routes hierarchy, which will also be the tag name in the API portal grouping
+      inputType: multi-text
+      required: false
+      dataType: [string]
+      defaultValue:
+        - my-api-group1
+        - my-api-group2
       
 engine:
   merge:
