@@ -139,8 +139,8 @@ accelerator:
     required: false
     dataType: [string]
     defaultValue:
-      - my-api-group1
-      - my-api-group2
+      - my-apigroup1
+      - my-apigroup2
       
 engine:
   merge:
@@ -153,10 +153,10 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    #- includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+    - includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
     #  condition: "#appDeploymentType != 'cf'"
-    #  chain:
-    #    - type: YTT
+      chain:
+        - type: YTT
     - includes: [ "config/k8s/workload.yaml" ]
      # condition: "#appDeploymentType == 'tap'"
       chain:
