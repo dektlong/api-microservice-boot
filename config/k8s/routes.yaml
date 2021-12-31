@@ -14,28 +14,28 @@ spec:
       filters:
         - RateLimit=2,10s
       tags:
-        - #@ data.values.firstApiGroup
+        - #@ data.values.apiGroups[0]
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        - #@ "Path=/api/" + data.values.firstApiGroup + "/" + data.values.secondApiGroup
+        - #@ "Path=/api/" + data.values.apiGroups[0] + "/" + data.values.apiGroups[1]
         - Method=POST,PUT,DELETE
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
       tokenRelay: true
       tags:
-        - #@ data.values.secondApiGroup
+        - #@ data.values.apiGroups[1]
       title: "SSO protected api for write functionality"
       description: "SSO protected api for write/delete/update interactions with the backend service"
       model:
         requestBody:
-          description: #@ "Manage " + data.values.secondApiGroup
+          description: #@ "Manage " + data.values.apiGroups[1]
           content:
             'application/json':
               schema:
                 type: object
-                description: #@ data.values.secondApiGroup + " schema"
+                description: #@ data.values.apiGroups[1] + " schema"
                 properties:
                   itemName:
                     type: string
