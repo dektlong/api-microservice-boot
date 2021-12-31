@@ -72,6 +72,8 @@ accelerator:
         text: PostgreSQL
       - value: RDSConnector
         text: Amazon RDS
+      - value: AzureSQLConnector
+        text: Azure SQL
   - name: dbName
     label: Database service name
     description: Database service name
@@ -98,6 +100,8 @@ accelerator:
         text: RabbitMQ
       - value: SQSConnector
         text: Amazon SQS
+      - value: GooglePubSuB
+        text: Google Pub/Sub
   - name: msgName
     label: Messaging service name
     description: Message service name
