@@ -25,7 +25,7 @@ accelerator:
   #- name: addAlv
   #  label: Add application live view
   #  description: Add application live view sidecar to your deployment config
-  #  inputType: toggle 
+  #  inputType: checkbox 
   #  defaultValue: false
   #  dataType: boolean
   #  dependsOn:
