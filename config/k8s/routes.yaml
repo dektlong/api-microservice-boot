@@ -18,7 +18,7 @@ spec:
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[0] + "-request"
+        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "-request"
         - Method=POST,PUT,DELETE
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
