@@ -9,19 +9,19 @@ accelerator:
   options:
   
   #deployment
-  - name: appDeploymentType
-    label: Deployment environment
-    description: Type of deployment configurations
-    required: true
-    defaultValue: tap
-    inputType: select
-    choices:
-      - value: tap
-        text: Tanzu App Platform workload
+  #- name: appDeploymentType
+  #  label: Deployment environment
+  #  description: Type of deployment configurations
+  #  required: true
+  #  defaultValue: tap
+  #  inputType: select
+  #  choices:
+  #    - value: tap
+  #      text: Tanzu App Platform workload
      # - value: k8sSkaffold
       #  text: K8s deployment with Skaffold configs
-      - value: cf
-        text: Tanzu App Service manifest
+  #   - value: cf
+  #      text: Tanzu App Service manifest
   #- name: addAlv
   #  label: Add application live view
   #  description: Add application live view sidecar to your deployment config
@@ -52,35 +52,18 @@ accelerator:
       - value: "17"
         text: 17 (dev only)
   
-  - name: includeKubernetes
-    label: Kubernetes deployment
-    display: true
-    description: Toggle "On" to include skaffold and Kubernetes deployment configurations.
-    inputType: checkbox
-    dataType: boolean
-    defaultValue: false
-
-  - name: enableAppLiveView
-    label: App Live View
-    dependsOn:
-      name: includeKubernetes
-    description: Toggle "On" to enable Application Live View integration.
-    inputType: checkbox
-    dataType: boolean
-    defaultValue: false
-    
   #data services
-  - name: addDB
-    label: Bind a database service
-    description: Add a service request to a database
-    inputType: checkbox
-    display: true
-    dataType: boolean
-    defaultValue: false
+  #- name: addDB
+  #  label: Bind a database service
+  #  description: Add a service request to a database
+  #  inputType: checkbox
+  #  display: true
+  #  dataType: boolean
+  #  defaultValue: false
   - name: dbType
     label: Database service type
-    dependsOn:
-      name: addDB
+   # dependsOn:
+   #   name: addDB
     description: Select the database service type
     inputType: select
     defaultValue: PostgresCluster
@@ -93,21 +76,21 @@ accelerator:
     label: Database service name
     description: Database service name
     defaultValue: mydb
-    dependsOn:
-      name: addDB
+    #dependsOn:
+    #  name: addDB
       
-  - name: addMsg
-    label: Bind a messaging service 
-    description: Add a service request to a message queue
-    inputType: checkbox
-    display: true
-    dataType: boolean
-    defaultValue: false
+  #- name: addMsg
+  #  label: Bind a messaging service 
+  #  description: Add a service request to a message queue
+  #  inputType: checkbox
+  #  display: true
+  #  dataType: boolean
+  #  defaultValue: false
   - name: msgType
     label: Messaging service type
     description: Select the message queue service type
-    dependsOn:
-      name: addMsg
+  #  dependsOn:
+  #    name: addMsg
     inputType: select
     defaultValue: RabbitMQCluster
     choices:
@@ -119,21 +102,21 @@ accelerator:
     label: Messaging service name
     description: Message service name
     defaultValue: myqueue
-    dependsOn:
-      name: addMsg
+   # dependsOn:
+   #   name: addMsg
       
-  - name: addCache
-    label: Bind a caching service 
-    description: Add a service request to a caching service
-    inputType: checkbox
-    display: true
-    dataType: boolean
-    defaultValue: false
+  #- name: addCache
+  #  label: Bind a caching service 
+  #  description: Add a service request to a caching service
+  #  inputType: checkbox
+  #  display: true
+  #  dataType: boolean
+  #  defaultValue: false
   - name: cacheType
     label: Caching service type
     description: Select the cachingservice type
-    dependsOn:
-      name: addCache
+  #  dependsOn:
+  #    name: addCache
     inputType: select
     defaultValue: RedisCluster
     choices:
@@ -145,8 +128,8 @@ accelerator:
     label: Caching service name
     description: Caching service name
     defaultValue: mycache
-    dependsOn:
-      name: addCache
+  #  dependsOn:
+  #    name: addCache
       
   #apis groups
   - name: firstApiGroup
@@ -164,14 +147,15 @@ accelerator:
     label: Third  level API group
     description: Name of the third API group
     defaultValue: apiGroup3
-  - name: forthApiGroup
-    label: Forth level API group
-    description: Name of the forth API group
-    defaultValue: apiGroup4
-  - name: fifthApiGroup
-    label: Fifth level API group
-    description: Name of the Fifth API group
-    defaultValue: apiGroup5
+    display: false
+  #- name: forthApiGroup
+  #  label: Forth level API group
+  #  description: Name of the forth API group
+  #  defaultValue: apiGroup4
+  #- name: fifthApiGroup
+  #  label: Fifth level API group
+  #  description: Name of the Fifth API group
+  #  defaultValue: apiGroup5
 
   
       
@@ -187,12 +171,12 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
-      condition: "#appDeploymentType != 'cf'"
-      chain:
-        - type: YTT
+    #- includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+    #  condition: "#appDeploymentType != 'cf'"
+    #  chain:
+    #    - type: YTT
     - includes: [ "config/k8s/workload.yaml" ]
-      condition: "#appDeploymentType == 'tap'"
+     # condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
    # - includes: [ "config/k8s/deployment.yaml" ]
@@ -203,21 +187,21 @@ engine:
    #   condition: "#appDeploymentType == 'k8sSkaffold'"
    #   chain:
    #     - type: YTT
-    - includes: [ "config/cf/manifest.yaml"]
-      condition: "#appDeploymentType == 'cf'"
-      chain:
-        - type: YTT
-    - includes: [ "config/cf/*.json" ]
-      condition: "#appDeploymentType == 'cf'"
-      chain:
-        - type: ReplaceText
-          substitutions:
-          - text: app-name
-            with: "#artifactId"
-          - text: api-group1
-            with: "#firstApiGroup"
-          - text: api-group2
-            with: "#secondApiGroup"
+   # - includes: [ "config/cf/manifest.yaml"]
+   #   condition: "#appDeploymentType == 'cf'"
+   #   chain:
+   #     - type: YTT
+   # - includes: [ "config/cf/*.json" ]
+   #   condition: "#appDeploymentType == 'cf'"
+   #   chain:
+   #     - type: ReplaceText
+   #       substitutions:
+   #       - text: app-name
+   #         with: "#artifactId"
+   #       - text: api-group1
+   #         with: "#firstApiGroup"
+   #       - text: api-group2
+   #         with: "#secondApiGroup"
     
     #data entity transformations
     - includes: [ "src/main/java/io/storebackend/api/data/RabbitMQTemplate.java" ]
