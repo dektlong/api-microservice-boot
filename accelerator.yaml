@@ -69,7 +69,9 @@ accelerator:
     defaultValue: PostgresCluster
     choices:
       - value: PostgresCluster
-        text: PostgreSQL
+        text: PostgreSQL (K8s service)
+      - value: MySQLVM
+        text: MySQL (Dedicated VM)
       - value: RDSConnector
         text: Amazon RDS
   - name: dbName
@@ -87,15 +89,17 @@ accelerator:
   #  dataType: boolean
   #  defaultValue: false
   - name: msgType
-    label: Messaging service type
-    description: Select the message queue service type
+    label: Streaming service type
+    description: Select the streaming service type
   #  dependsOn:
   #    name: addMsg
     inputType: select
     defaultValue: RabbitMQCluster
     choices:
       - value: RabbitMQCluster
-        text: RabbitMQ
+        text: RabbitMQ (K8s service)
+      - value: KafkaVM
+        text: Kafka (Dedicated VM)
       - value: AzureServiceBusConnector
         text: Azure Service Bus
   - name: msgName
