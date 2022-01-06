@@ -162,22 +162,24 @@ engine:
           substitutions:
             - text: app-name
               with: "#artifactId"
-  #deployment transformations
-    - includes: [ "config/tap/gateway-dev.yaml", "config/tap/routes.yaml"]
-    #  condition: "#appDeploymentType != 'cf'"
+  
+  #deployment configs per type
+    - includes: [ "config/tap/**"]
+    #  condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/tap/workload.yaml" ]
-     # condition: "#appDeploymentType == 'tap'"
+    - includes: [ "config/cf/**"]
+    #  condition: "#appDeploymentType == 'cf'"
+      chain:
+        - type: YTT
+    - includes: [ "config/k8s/**"]
+    #  condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
     - includes: [ "config/backstage/**"]
       chain:
         - type: YTT
-   # - includes: [ "config/k8s/deployment.yaml" ]
-   #   condition: "#appDeploymentType == 'k8s'"
-   #   chain:
-   #     - type: YTT
+   
    # - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml" ]
    #   condition: "#appDeploymentType == 'k8sSkaffold'"
    #   chain:
