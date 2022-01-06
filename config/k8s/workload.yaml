@@ -6,6 +6,7 @@ metadata:
   name: #@ data.values.artifactId
   labels:
     app.tanzu.vmware.com/workload-type: web-backend
+    app.kubernetes.io/part-of: #@ data.values.parentApp
 
 spec:
   source:
