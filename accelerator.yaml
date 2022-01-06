@@ -163,11 +163,11 @@ engine:
             - text: app-name
               with: "#artifactId"
   #deployment transformations
-    - includes: [ "config/k8s/gateway-dev.yaml", "config/k8s/routes.yaml"]
+    - includes: [ "config/tap/gateway-dev.yaml", "config/tap/routes.yaml"]
     #  condition: "#appDeploymentType != 'cf'"
       chain:
         - type: YTT
-    - includes: [ "config/k8s/workload.yaml" ]
+    - includes: [ "config/tap/workload.yaml" ]
      # condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
