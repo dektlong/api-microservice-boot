@@ -40,6 +40,13 @@ accelerator:
     dataType: string
     defaultValue: my-backend
   
+  - name: parentApp
+    label: Name of parent application (the Big A app)
+    description: Name of the parent application this component is a part of
+    inputType: text
+    dataType: string
+    defaultValue: my-BigA-app
+    
   - name: javaVersion
     label: Java version
     description: Java runtime version
