@@ -1,13 +1,11 @@
 # Introduction
-An Accelerator to create internal APIs for online stores.
+An Accelerator to create API-driven backend with Spring Boot.
 
-The backend service fits into a larger Online Store application, which includes a WebUI, an edge service, as well as caching and database services.
-
-The service can be accessed from a Web UI or directly at the endpoints it exposes.
+The service should expose well defined API routes.
 
 ## Internal API Endpoints
 
-Implementations of `store-backend-api` should support at the minimum these route endpoints
+Implementations should support at the minimum these route endpoints
 
 Retrieve all store items
 * path: /api/store-items
