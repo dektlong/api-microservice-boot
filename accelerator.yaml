@@ -148,7 +148,7 @@ accelerator:
     choices:
     - value: tap
       text: Tanzu App Platform workload
-    - value: k8sSkaffold
+    - value: k8s
       text: K8s deployment with Skaffold configs
     - value: cf
       text: Tanzu App Service manifest
@@ -166,40 +166,36 @@ engine:
   
   #deployment configs per type
     - includes: [ "config/tap/**"]
-    #  condition: "#appDeploymentType == 'tap'"
+      condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
     - includes: [ "config/cf/**"]
-    #  condition: "#appDeploymentType == 'cf'"
+      condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
     - includes: [ "config/k8s/**"]
-    #  condition: "#appDeploymentType == 'k8s'"
+      condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
     - includes: [ "config/backstage/**"]
       chain:
         - type: YTT
    
-   # - includes: [ "config/k8s/deployment.yaml", "config/k8s/skaffold.yaml" ]
-   #   condition: "#appDeploymentType == 'k8sSkaffold'"
-   #   chain:
-   #     - type: YTT
-   # - includes: [ "config/cf/manifest.yaml"]
-   #   condition: "#appDeploymentType == 'cf'"
-   #   chain:
-   #     - type: YTT
-   # - includes: [ "config/cf/*.json" ]
-   #   condition: "#appDeploymentType == 'cf'"
-   #   chain:
-   #     - type: ReplaceText
-   #       substitutions:
-   #       - text: app-name
-   #         with: "#artifactId"
-   #       - text: api-group1
-   #         with: "#firstApiGroup"
-   #       - text: api-group2
-   #         with: "#secondApiGroup"
+    - includes: [ "config/cf/manifest.yaml"]
+      condition: "#appDeploymentType == 'cf'"
+      chain:
+        - type: YTT
+    - includes: [ "config/cf/*.json" ]
+      condition: "#appDeploymentType == 'cf'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+          - text: app-name
+            with: "#artifactId"
+          - text: api-group1
+            with: "#firstApiGroup"
+          - text: api-group2
+            with: "#secondApiGroup"
     
     #data entity transformations
     - includes: [ "src/main/java/io/storebackend/api/data/RabbitMQTemplate.java" ]
