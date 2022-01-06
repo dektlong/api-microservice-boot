@@ -171,6 +171,9 @@ engine:
      # condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
+    - includes: [ "config/backstage/**"]
+      chain:
+        - type: YTT
    # - includes: [ "config/k8s/deployment.yaml" ]
    #   condition: "#appDeploymentType == 'k8s'"
    #   chain:
