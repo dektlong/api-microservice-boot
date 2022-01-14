@@ -18,13 +18,12 @@ accelerator:
   #    name: appDeploymentType
   #    value: k8s
         
-  - name: gitRepo
-    label: Source repository
-    description: Name of your git repo (not the full URL)
-    inputType: text
-    required: true
-    dataType: string
-    defaultValue: my-backend
+#  - name: gitRepo
+#    label: Source repository
+#    description: Name of your git repo (not the full URL)
+#    inputType: text
+#    dataType: string
+#    defaultValue: my-backend
   
   - name: parentApp
     label: Name of parent application (the Big A app)
