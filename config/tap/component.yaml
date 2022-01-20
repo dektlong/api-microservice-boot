@@ -4,10 +4,14 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: #@ data.values.artifactId
-  description: Backstage GUI component config
+  description: Backstage component config
   annotations:
     'backstage.io/kubernetes-label-selector': #@ "app.kubernetes.io/part-of:" + data.values.parentApp
 spec:
   type: service
-  lifecycle: experimental
-  owner: default-team
+  lifecycle: development
+  owner: my-team
+  system: #@ data.values.parentApp
+  dependsOn: 
+    - component: #@ data.values.dbName
+    - component: #@ data.values.msgName
