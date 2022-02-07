@@ -145,8 +145,7 @@ accelerator:
     required: false
     dataType: [string]
     defaultValue:
-      - API-request-url1
-      - API-request-url2
+      - discover-via-api-portal
       
   #deployment type (for demo vision paiting)
   - name: appDeploymentType
