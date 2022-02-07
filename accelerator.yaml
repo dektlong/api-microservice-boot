@@ -129,7 +129,7 @@ accelerator:
  
   #apis groups
   - name: apiGroups
-    label: API routes hierarchy & tag names
+    label: New APIs: API routes hierarchy & tag names
     description: Name of each level of the API routes hierarchy, which will also be the tag name in the API portal grouping
     inputType: multi-text
     required: false
@@ -137,6 +137,16 @@ accelerator:
     defaultValue:
       - my-apigroup1
       - my-apigroup2
+      
+  - name: existingAPIs
+    label: Existing APIs: Request URLs to to include this project
+    description: Using Tanzu API Portal, discover existing APIs, learn how to use them and add the request URLs
+    inputType: multi-text
+    required: false
+    dataType: [string]
+    defaultValue:
+      - API-request-url1
+      - API-request-url2
       
   #deployment type (for demo vision paiting)
   - name: appDeploymentType
