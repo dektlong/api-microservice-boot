@@ -9,15 +9,6 @@ applications:
   env:
     JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+}}'
     SPRING_PROFILES_ACTIVE: dev
-#@ if data.values.addDB or data.values.addMsg or data.values.addCache: 
   service:
-  #@ if data.values.addDB: 
     - #@ data.values.dbName
-  #@ end
-  #@ if data.values.addMsg: 
     - #@ data.values.msgName
-  #@ end
-  #@ if data.values.addCache:
-    - #@ data.values.cacheName
-   #@ end
-#@ end
