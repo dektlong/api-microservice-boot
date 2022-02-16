@@ -64,8 +64,8 @@ accelerator:
         text: PostgreSQL (K8s service)
       - value: MySQLVM
         text: MySQL (Dedicated VM)
-      - value: RDSConnector
-        text: Amazon RDS
+      - value: RDSPostgresSQL
+        text: Amazon RDS PostgresSQL
   - name: dbName
     label: Database service name
     description: Database service name
