@@ -152,8 +152,8 @@ accelerator:
     dataType: boolean
       
   - name: readAPIs
-    label: Path of APIs with read-only functionality 
-    description: API paths with read-only functionality. APIs decorations are auto-generated based on DEKT org security guidelines.
+    label: Path of APIs with READ-ONLY functionality 
+    description: APIs decorations are auto-generated based on DEKT org security guidelines.
     dependsOn:
       name: newAPIs
       value: true
@@ -162,8 +162,8 @@ accelerator:
     dataType: [string]
   
   - name: writeAPIs
-    label: Path of APIs with wrtie/delete functionality 
-    description: API paths with write/delete functionality. APIs decorations are auto-generated based on DEKT org security guidelines.
+    label: Path of APIs with WRITE/DELETE functionality
+    description: APIs decorations are auto-generated based on DEKT org security guidelines.
     dependsOn:
       name: newAPIs
       value: true
