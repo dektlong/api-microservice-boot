@@ -144,12 +144,12 @@ accelerator:
       
   #apis 
   - name: newAPIs
-      label: Add new APIs definitions
-      description: Browse the API plugin portal to re-use existing APIs, add new ONLY if cannot re-use
-      inputType: checkbox 
-      defaultValue: false
-      display: true
-      dataType: boolean
+    label: Add new APIs definitions
+    description: Browse the API plugin portal for existing APIs. Add new ONLY if cannot re-use
+    inputType: checkbox 
+    defaultValue: false
+    display: true
+    dataType: boolean
       
   - name: readAPIs
     label: Path of APIs with read-only functionality 
@@ -170,12 +170,7 @@ accelerator:
     inputType: multi-text
     required: false
     dataType: [string]
-    
  
-  
-      
-  
-
 engine:
   merge:
     #generic transformation
