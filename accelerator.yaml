@@ -128,17 +128,6 @@ accelerator:
  #   dependsOn:
  #     name: addCache
  
-  #apis groups
-  - name: apiGroups
-    label: API routes hierarchy & tag names for new APIs (Browse existing APIs via API Portal)
-    description: Name of each level of the API routes hierarchy, which will also be the tag name in the API portal grouping
-    inputType: multi-text
-    required: false
-    dataType: [string]
-    defaultValue:
-      - my-apigroup1
-      - my-apigroup2
- 
   #deployment type (for demo vision paiting)
   - name: appDeploymentType
     label: Deployment environment
@@ -152,6 +141,40 @@ accelerator:
       text: K8s deployment with Skaffold configs
     - value: cf
       text: Tanzu App Service manifest
+      
+  #apis 
+  - name: newAPIs
+      label: Add new APIs definitions
+      description: Browse the API plugin portal to re-use existing APIs, add new ONLY if cannot re-use
+      inputType: checkbox 
+      defaultValue: false
+      display: true
+      dataType: boolean
+      
+  - name: readAPIs
+    label: Path of APIs with read-only functionality 
+    description: API paths with read-only functionality. APIs decorations are auto-generated based on DEKT org security guidelines.
+    dependsOn:
+      name: newAPIs
+      value: true
+    inputType: multi-text
+    required: false
+    dataType: [string]
+  
+  - name: writeAPIs
+    label: Path of APIs with wrtie/delete functionality 
+    description: API paths with write/delete functionality. APIs decorations are auto-generated based on DEKT org security guidelines.
+    dependsOn:
+      name: newAPIs
+      value: true
+    inputType: multi-text
+    required: false
+    dataType: [string]
+    
+ 
+  
+      
+  
 
 engine:
   merge:
