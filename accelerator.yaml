@@ -144,8 +144,8 @@ accelerator:
       
   #apis 
   - name: newAPIs
-    label: Add new APIs definitions
-    description: Browse the API plugin portal for existing APIs. Add new ONLY if cannot re-use
+    label: Add new APIs definitions (Explore existing APIs. Add ONLY if cannot re-use)
+    description: 
     inputType: checkbox 
     defaultValue: false
     display: true
