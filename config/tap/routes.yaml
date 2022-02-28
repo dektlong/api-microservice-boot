@@ -9,42 +9,41 @@ spec:
     name: #@ data.values.artifactId + "-service"
   routes:
     - predicates:
-        - #@ "Path=/api/" + data.values.apiGroups[0]
+        - #@ "Path=/api/" + data.values.readAPIs[0]
         - Method=GET
       filters:
         - RateLimit=2,10s
       tags:
-        - #@ data.values.apiGroups[0]
+        - data retrieval APIs
       title: "open api for read-only functionality"
       description: "open api for read only interactions with the backend service"
     - predicates:
-        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "/update"
-        - Method=POST,PUT,DELETE
-      ssoEnabled: true
-      tokenRelay: true
-      tags:
-        - #@ data.values.apiGroups[1]
-      title: "SSO protected api for write functionality"
-      description: "SSO protected api for write/delete/update interactions with the backend service"
-    - predicates:
-        - #@ "Path=/api/" + data.values.apiGroups[0] + "/{" + data.values.apiGroups[0] + "Id}/" + data.values.apiGroups[1] + "/read"
+        - #@ "Path=/api/" + data.values.readAPIs[0]+ "/protected"
         - Method=GET
       filters:
         - CircuitBreaker="myCircuitBreaker,forward:/inCaseOfFailureUseThis"
       ssoEnabled: true
+      title: "open api for protecetd read-only functionality"
+      description: "open api for protected read only interactions with SSO and Circuit Breaker"
+      tags:
+        - data retrieval APIs
+    - predicates:
+        - #@ "Path=/api/" + data.values.writeAPIs[0] + "/{itemId}/" + "/update"
+        - Method=POST,PUT,DELETE
+      ssoEnabled: true
       tokenRelay: true
       tags:
-        - #@ data.values.apiGroups[1]
+        - data manipulation APIs
       title: "SSO protected api for write functionality"
       description: "SSO protected api for write/delete/update interactions with the backend service"
       model:
         requestBody:
-          description: #@ "Manage " + data.values.apiGroups[1]
+          description: #@ "Manage " + data.values.writeAPIs[0]
           content:
             'application/json':
               schema:
                 type: object
-                description: #@ data.values.apiGroups[1] + " schema"
+                description: #@ data.values.writeAPIs[0] + " schema"
                 properties:
                   itemName:
                     type: string
