@@ -73,7 +73,7 @@ accelerator:
     description: Database service name
     defaultValue: mydb
     dependsOn:
-      name: addDataServices
+      name: addDB
       
   - name: addMsg
     label: Requst a messaging service 
