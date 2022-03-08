@@ -131,7 +131,7 @@ accelerator:
  
   #apis 
   - name: newAPIs
-    label: New APIs definitions. Use the API Explorer plugin to re-use existing APIs.
+    label: Add APIs definitions. Use the API Explorer plugin to re-use existing APIs.
     description: 
     inputType: checkbox 
     defaultValue: false
