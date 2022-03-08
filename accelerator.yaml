@@ -128,7 +128,37 @@ accelerator:
  #   dependsOn:
  #     name: addCache
  
-  #deployment type (for demo vision paiting)
+      
+  #apis 
+  - name: newAPIs
+    label: New APIs definitions. Use the API Explorer plugin to re-use existing APIs.
+    description: 
+    inputType: checkbox 
+    defaultValue: false
+    display: true
+    dataType: boolean
+      
+  - name: readAPIs
+    label: APIs with READ-ONLY functionality 
+    description: APIs decorations are auto-generated based on DEKT org security guidelines.
+    dependsOn:
+      name: newAPIs
+      value: true
+    inputType: multi-text
+    required: false
+    dataType: [string]
+  
+  - name: writeAPIs
+    label: APIs with WRITE/DELETE functionality
+    description: APIs decorations are auto-generated based on DEKT org security guidelines.
+    dependsOn:
+      name: newAPIs
+      value: true
+    inputType: multi-text
+    required: false
+    dataType: [string]
+
+ #deployment type (for demo vision paiting)
   - name: appDeploymentType
     label: Deployment environment
     description: Type of deployment configurations
@@ -142,35 +172,6 @@ accelerator:
     - value: cf
       text: Tanzu App Service manifest
       
-  #apis 
-  - name: newAPIs
-    label: New APIs definitions. Use the API Explorer plugin to re-use existing APIs.
-    description: 
-    inputType: checkbox 
-    defaultValue: false
-    display: true
-    dataType: boolean
-      
-  - name: readAPIs
-    label: Path of APIs with READ-ONLY functionality 
-    description: APIs decorations are auto-generated based on DEKT org security guidelines.
-    dependsOn:
-      name: newAPIs
-      value: true
-    inputType: multi-text
-    required: false
-    dataType: [string]
-  
-  - name: writeAPIs
-    label: Path of APIs with WRITE/DELETE functionality
-    description: APIs decorations are auto-generated based on DEKT org security guidelines.
-    dependsOn:
-      name: newAPIs
-      value: true
-    inputType: multi-text
-    required: false
-    dataType: [string]
- 
 engine:
   merge:
     #generic transformation
