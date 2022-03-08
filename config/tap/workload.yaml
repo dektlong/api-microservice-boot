@@ -34,7 +34,7 @@ spec:
         name: #@ data.values.msgName
     #@ end
     
-    #@ if data.values.addCache
+    #@ if data.values.addCache:
     - name: #@ data.values.cacheType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
