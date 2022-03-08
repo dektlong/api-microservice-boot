@@ -47,7 +47,7 @@ accelerator:
   
   #data services
   - name: addDB
-    label: add a Database service
+    label: Request a database service
     description: Add a service request to a database
     inputType: checkbox
     display: true
@@ -55,7 +55,7 @@ accelerator:
     defaultValue: false
   
   - name: dbType
-    label: Requst a database service 
+    label: Database service type
     dependsOn:
       name: addDB
     description: Select the database service type
