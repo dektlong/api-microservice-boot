@@ -127,7 +127,7 @@ accelerator:
     description: Caching service name
     defaultValue: mycache
     dependsOn:
-      name: addCache
+      name: addDataServices
  
   #apis 
   - name: newAPIs
