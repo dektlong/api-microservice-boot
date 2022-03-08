@@ -148,6 +148,8 @@ accelerator:
     inputType: multi-text
     required: false
     dataType: [string]
+    defaultValue:
+      - my-read-api-path
   
   - name: writeAPIs
     label: APIs with WRITE/DELETE functionality
@@ -158,6 +160,8 @@ accelerator:
     inputType: multi-text
     required: false
     dataType: [string]
+    defaultValue:
+      - my-write-api-path
 
  #deployment type (for demo vision paiting)
   - name: appDeploymentType
