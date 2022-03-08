@@ -46,8 +46,8 @@ accelerator:
         text: 17 (dev only)
   
   #data services
-  - name: addDataServices
-    label: add Data Services
+  - name: addDB
+    label: add a Database service
     description: Add a service request to a database
     inputType: checkbox
     display: true
@@ -55,9 +55,9 @@ accelerator:
     defaultValue: false
   
   - name: dbType
-    label: Database service type
+    label: Requst a database service 
     dependsOn:
-      name: addDataServices
+      name: addDB
     description: Select the database service type
     inputType: select
     defaultValue: PostgresCluster
@@ -75,18 +75,18 @@ accelerator:
     dependsOn:
       name: addDataServices
       
-  #- name: addMsg
-  #  label: Bind a messaging service 
-  #  description: Add a service request to a message queue
-  #  inputType: checkbox
-  #  display: true
-  #  dataType: boolean
-  #  defaultValue: false
+  - name: addMsg
+    label: Requst a messaging service 
+    description: Add a service request to a message queue
+    inputType: checkbox
+    display: true
+    dataType: boolean
+    defaultValue: false
   - name: msgType
     label: Streaming service type
     description: Select the streaming service type
     dependsOn:
-      name: addDataServices
+      name: addMsg
     inputType: select
     defaultValue: RabbitMQCluster
     choices:
@@ -101,20 +101,21 @@ accelerator:
     description: Message service name
     defaultValue: myqueue
     dependsOn:
-      name: addDataServices
+      name: addMsg
       
- # - name: addCache
- #   label: Bind a caching service 
- #   description: Add a service request to a caching service
- #   inputType: checkbox
- #   display: true
- #   dataType: boolean
- #   defaultValue: false
+  - name: addCache
+    label: Request a caching service 
+    description: Add a service request to a caching service
+    inputType: checkbox
+    display: true
+    dataType: boolean
+    defaultValue: false
+  
   - name: cacheType
     label: Caching service type
     description: Select the cachingservice type
     dependsOn:
-      name: addDataServices
+      name: addCache
     inputType: select
     defaultValue: RedisCluster
     choices:
@@ -127,7 +128,7 @@ accelerator:
     description: Caching service name
     defaultValue: mycache
     dependsOn:
-      name: addDataServices
+      name: addCache
  
   #apis 
   - name: newAPIs
