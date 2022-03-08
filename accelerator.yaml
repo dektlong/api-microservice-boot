@@ -46,17 +46,18 @@ accelerator:
         text: 17 (dev only)
   
   #data services
-  #- name: addDB
-  #  label: Bind a database service
-  #  description: Add a service request to a database
-  #  inputType: checkbox
-  #  display: true
-  #  dataType: boolean
-  #  defaultValue: false
+  - name: addDataServices
+    label: add Data Services
+    description: Add a service request to a database
+    inputType: checkbox
+    display: true
+    dataType: boolean
+    defaultValue: false
+  
   - name: dbType
     label: Database service type
-   # dependsOn:
-   #   name: addDB
+    dependsOn:
+      name: addDataServices
     description: Select the database service type
     inputType: select
     defaultValue: PostgresCluster
@@ -71,8 +72,8 @@ accelerator:
     label: Database service name
     description: Database service name
     defaultValue: mydb
-    #dependsOn:
-    #  name: addDB
+    dependsOn:
+      name: addDataServices
       
   #- name: addMsg
   #  label: Bind a messaging service 
@@ -84,8 +85,8 @@ accelerator:
   - name: msgType
     label: Streaming service type
     description: Select the streaming service type
-  #  dependsOn:
-  #    name: addMsg
+    dependsOn:
+      name: addDataServices
     inputType: select
     defaultValue: RabbitMQCluster
     choices:
@@ -99,8 +100,8 @@ accelerator:
     label: Messaging service name
     description: Message service name
     defaultValue: myqueue
-   # dependsOn:
-   #   name: addMsg
+    dependsOn:
+      name: addDataServices
       
  # - name: addCache
  #   label: Bind a caching service 
@@ -109,26 +110,25 @@ accelerator:
  #   display: true
  #   dataType: boolean
  #   defaultValue: false
- # - name: cacheType
- #   label: Caching service type
- #   description: Select the cachingservice type
- #   dependsOn:
- #     name: addCache
- #   inputType: select
- #   defaultValue: RedisCluster
- #   choices:
- #     - value: RedisCluster
- #       text: Redis
- #     - value: ElastiCacheConnector
- #       text: Amazon ElastiCache
- # - name: cacheName
- #   label: Caching service name
- #   description: Caching service name
- #   defaultValue: mycache
- #   dependsOn:
- #     name: addCache
+  - name: cacheType
+    label: Caching service type
+    description: Select the cachingservice type
+    dependsOn:
+      name: addDataServices
+    inputType: select
+    defaultValue: RedisCluster
+    choices:
+      - value: RedisCluster
+        text: Redis
+      - value: ElastiCacheConnector
+        text: Amazon ElastiCache
+  - name: cacheName
+    label: Caching service name
+    description: Caching service name
+    defaultValue: mycache
+    dependsOn:
+      name: addCache
  
-      
   #apis 
   - name: newAPIs
     label: New APIs definitions. Use the API Explorer plugin to re-use existing APIs.
