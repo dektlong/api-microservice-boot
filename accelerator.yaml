@@ -76,7 +76,7 @@ accelerator:
       name: addDB
       
   - name: addMsg
-    label: Requst a messaging service 
+    label: Request a messaging service 
     description: Add a service request to a message queue
     inputType: checkbox
     display: true
@@ -163,7 +163,7 @@ accelerator:
     defaultValue:
       - my-write-api-path
 
- #deployment type (for demo vision paiting)
+ #deployment type
   - name: appDeploymentType
     label: Deployment environment
     description: Type of deployment configurations
