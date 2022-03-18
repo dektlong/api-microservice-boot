@@ -64,8 +64,6 @@ accelerator:
         text: Postgres
       - value: mariadb
         text: MariaDB
-      - value: sqlserver
-        text: SQL Server
   - name: dbName
     label: SQL Database instance name
     defaultValue: mydb
@@ -73,13 +71,13 @@ accelerator:
       name: addDB
       
   - name: addMsg
-    label: Request a message broker 
+    label: Request streaming service 
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
   - name: msgType
-    label: Message broker type
+    label: Streaming service type
     dependsOn:
       name: addMsg
     inputType: select
@@ -90,34 +88,34 @@ accelerator:
       - value: kafka
         text: Kafka
   - name: msgName
-    label: Messaging broker instance name
+    label: Streaming service instance name
     defaultValue: myqueue
     dependsOn:
       name: addMsg
       
-  - name: addCache
-    label: Request caching  
+  - name: addNosql
+    label: Request NoSQL data store   
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
     
-  - name: cacheType
-    label: Caching type
+  - name: nosqlType
+    label: NoSQL data store type
     dependsOn:
-      name: addCache
+      name: addNosql
     inputType: select
     defaultValue: redis
     choices:
       - value: redis
         text: Redis
-      - value: memcached
-        text: Memcached
-  - name: cacheName
-    label: Caching instance name
-    defaultValue: mycache
+      - value: cassandra 
+        text: Cassandra
+  - name: nosqlName
+    label: NoSQL datastore instance name
+    defaultValue: mynosql
     dependsOn:
-      name: addCache
+      name: addNosql
  
   #apis 
   - name: newAPIs
