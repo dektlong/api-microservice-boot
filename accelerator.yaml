@@ -47,27 +47,29 @@ accelerator:
   
   #data services
   - name: addDB
-    label: Request a database service
-    description: Add a service request to a database
+    label: Request a SQL database
+    description: Add a request to a SQL database
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
   
   - name: dbType
-    label: Database service type
+    label: SQL Database type
     dependsOn:
       name: addDB
-    description: Select the database service type
+    description: Select the type of your SQL database
     inputType: select
     defaultValue: PostgresCluster
     choices:
-      - value: PostgresCluster
-        text: PostgreSQL (K8s service)
-      - value: MySQLVM
-        text: MySQL (Dedicated VM)
-      - value: RDSPostgresSQL
-        text: Amazon RDS PostgresSQL
+      - value: postgres
+        text: Postgres
+      - value: mysql
+        text: MySQL
+      - value: mariadb
+        text: MariaDB
+      - value: sqlserver
+        text: SQL Server
   - name: dbName
     label: Database service name
     description: Database service name
