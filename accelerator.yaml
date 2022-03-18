@@ -48,7 +48,6 @@ accelerator:
   #data services
   - name: addDB
     label: Request a SQL database
-    description: Add a request to a SQL database
     inputType: checkbox
     display: true
     dataType: boolean
@@ -58,76 +57,64 @@ accelerator:
     label: SQL Database type
     dependsOn:
       name: addDB
-    description: Select the type of your SQL database
     inputType: select
-    defaultValue: PostgresCluster
+    defaultValue: postgres
     choices:
       - value: postgres
         text: Postgres
-      - value: mysql
-        text: MySQL
       - value: mariadb
         text: MariaDB
       - value: sqlserver
         text: SQL Server
   - name: dbName
-    label: Database service name
-    description: Database service name
+    label: SQL Database instance name
     defaultValue: mydb
     dependsOn:
       name: addDB
       
   - name: addMsg
-    label: Request a messaging service 
-    description: Add a service request to a message queue
+    label: Request a message broker 
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
   - name: msgType
-    label: Streaming service type
-    description: Select the streaming service type
+    label: Message broker type
     dependsOn:
       name: addMsg
     inputType: select
-    defaultValue: RabbitMQCluster
+    defaultValue: rabbitmq
     choices:
-      - value: RabbitMQCluster
-        text: RabbitMQ (K8s service)
-      - value: KafkaVM
-        text: Kafka (Dedicated VM)
-      - value: AzureServiceBusConnector
-        text: Azure Service Bus
+      - value: rabbitmq
+        text: Rabbitmq
+      - value: kafka
+        text: Kafka
   - name: msgName
-    label: Messaging service name
-    description: Message service name
+    label: Messaging broker instance name
     defaultValue: myqueue
     dependsOn:
       name: addMsg
       
   - name: addCache
-    label: Request a caching service 
-    description: Add a service request to a caching service
+    label: Request caching  
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
-  
+    
   - name: cacheType
-    label: Caching service type
-    description: Select the cachingservice type
+    label: Caching type
     dependsOn:
       name: addCache
     inputType: select
-    defaultValue: RedisCluster
+    defaultValue: redis
     choices:
-      - value: RedisCluster
+      - value: redis
         text: Redis
-      - value: ElastiCacheConnector
-        text: Amazon ElastiCache
+      - value: memcached
+        text: Memcached
   - name: cacheName
-    label: Caching service name
-    description: Caching service name
+    label: Caching instance name
     defaultValue: mycache
     dependsOn:
       name: addCache
