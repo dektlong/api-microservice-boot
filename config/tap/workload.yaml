@@ -16,7 +16,7 @@ spec:
       ref:
         branch: dev
   
-  #@ if data.values.addCache or data.values.addMsg or data.values.addDB:
+  #@ if data.values.addNosql or data.values.addMsg or data.values.addDB:
   serviceClaims:
     
     #@ if data.values.addDB:
