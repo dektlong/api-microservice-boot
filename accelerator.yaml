@@ -1,6 +1,6 @@
 accelerator:
-  displayName: API-driven backend with Spring Boot
-  description: Accelerator to create Backend API service using Spring Boot
+  displayName: Web backend microservice with Spring Boot
+  description: Accelerator to create a web backend microservice with Spring Boot
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-boot.png
   tags:
   - cloud-native-devs
@@ -71,13 +71,13 @@ accelerator:
       name: addDB
       
   - name: addMsg
-    label: Request streaming service 
+    label: Request a messaging broker  
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
   - name: msgType
-    label: Streaming service type
+    label: Messaging broker type
     dependsOn:
       name: addMsg
     inputType: select
@@ -88,20 +88,20 @@ accelerator:
       - value: kafka
         text: Kafka
   - name: msgName
-    label: Streaming service instance name
+    label: Messaging broker instance name
     defaultValue: myqueue
     dependsOn:
       name: addMsg
       
   - name: addNosql
-    label: Request NoSQL data store   
+    label: Request a NoSQL datastore   
     inputType: checkbox
     display: true
     dataType: boolean
     defaultValue: false
     
   - name: nosqlType
-    label: NoSQL data store type
+    label: NoSQL datastore type
     dependsOn:
       name: addNosql
     inputType: select
