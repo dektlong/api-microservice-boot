@@ -30,17 +30,17 @@ spec:
     #@ if data.values.addMsg:
     - name: #@ data.values.msgType + "-claim"
       ref:
-        apiVersion: rabbitmq.com/v1beta1
+        apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.msgType
         name: #@ data.values.msgName
     #@ end
     
-    #@ if data.values.addCache:
-    - name: #@ data.values.cacheType + "-claim"
+    #@ if data.values.addNosql:
+    - name: #@ data.values.nosqlType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.cacheType
-        name: #@ data.values.cacheName 
+        kind: #@ data.values.nosqlType
+        name: #@ data.values.nosqlName 
      #@ end
   
   #@ end
