@@ -210,21 +210,21 @@ engine:
     
     #data entity transformations
     - includes: [ "src/main/java/org/tanzu/demo/connectors/RabbitMQTemplate.java" ]
-      condition: "#msgType == 'RabbitMQCluster'"
+      condition: "#msgType == 'rabbitmq'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
               with: "#msgName"
     - includes: [ "src/main/java/org/tanzu/demo/connectors/RedisTemplate.java" ]
-      condition: "#cacheType == 'Redisluster'"
+      condition: "#cacheType == 'redis'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
               with: "#cacheName"
     - includes: [ "src/main/java/org/tanzu/demo/connectors/PostgresTemplate.java" ]
-      condition: "#dbType == 'PostgresCluster'"
+      condition: "#dbType == 'postgres'"
       chain:
         - type: ReplaceText
           substitutions:
