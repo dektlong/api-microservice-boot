@@ -3,47 +3,43 @@ An Accelerator to create API-driven backend with Spring Boot.
 
 The service should expose well defined API routes.
 
-## Internal API Endpoints
+## Setup
 
-Implementations should support at the minimum these route endpoints
+- install TAP with ```full profile``` 
+- Update ```UPDATE_ME``` values in ```supplychain/dekt-path2prod.yaml``` to any image repo accesisble from the this cluster
+  - note: if this repo requires authentication and is differenet than the one in the ooot-supplchain, you will need to add a secret as well
+- Install the rabbitmq operator 
+```
+kapp -y deploy --app rmq-operator --file https://github.com/rabbitmq/cluster-operator/releases/download/v1.9.0/cluster-operator.yml
+```
+- Apply the custom supplychain, policies and rabbit instance
+```
+kubectl apply -f supplychain -n YOUR_TAP_DEV_NS
+```
 
-Retrieve all store items
-* path: /api/store-items
-* method: GET
-* secured: no
-* filters: RateLimit
+## Deploy the mood-sensors workload
 
-Retrieve current authenticated user's information
-* path: /api/whoami
-* method: GET
-* secured: yes, token-relay and sso
+```
+tanzu apps workload create -f workload.yaml -n YOUR_TAP_DEV_NS
+```
 
-Manage a request to transact a given store-item
-* path: /api/store-item/*/transaction-requests/**",
-* method: POST,PUT,DELETE
-* secured: yes, token-relay and sso
+## Track progess
 
-API Actuator endpoints
-* path: /api/actuator/**
-* method: GET
-* secured: no
-    
+```
+tanzu apps cluster-supply-chain list
 
-## The Domain Model
-The Domain Model is a StoreItem object which has an id, a title and a category
+tanzu apps workload get mood-sensors -n YOUR_TAP_DEV_NS
 
-* id: store-item-category-unique-id
-* title: store-item-name
-* category: store-item-category
+kubectl tree workload mood-sensors -n YOUR_TAP_DEV_NS
 
-## Pre-requisites for using store-backend-api 
-Building and running the application assumes that you have installed a number of pre-requisites:
+kubectl describe imagescan.scanning.apps.tanzu.vmware.com/sensors -n YOUR_TAP_DEV_NS
 
-* Java 8 - configured to run the application by default. You can decided to build and run the app also with Java 11 or 14 
-* Maven - compiling the application and running tests
-* Helm v3 - for installing the caching and database solutions. [Helm installation link](https://helm.sh/docs/intro/install/).
-* Skaffold - for building, pushing, deploying and debugging the application. [Skaffold installation link](https://skaffold.dev/docs/install/).
-* Kustomize - for using a template-free way to customize application configuration that simplifies the use of off-the-shelf applications. [Kustomize installation link](https://kubernetes-sigs.github.io/kustomize/installation/).
-* HTTPie - highly recommended as a cUrl replacement for a user-friendly command-line HTTP client for the API era. It comes with JSON support, syntax highlighting, persistent sessions, wget-like downloads, plugins, etc. [HTTPie installation link](https://httpie.org/).
-* Kubectl - the Kubernetes CLI, allows you to run commands against Kubernetes clusters. [Kubectl installation link](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+tanzu apps workload tail mood-sensors --since 100m --timestamp  -n YOUR_TAP_DEV_NS
 
+kc get ServiceBinding -n YOUR_TAP_DEV_NS
+```
+
+### Register workload entity in TAP GUI
+```
+https://github.com/dektlong/mood-sensors/blob/main/catalog-info.yaml
+```
