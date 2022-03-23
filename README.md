@@ -6,21 +6,16 @@ The service should expose well defined API routes.
 ## Setup
 
 - install TAP with ```full profile``` 
-- Update ```UPDATE_ME``` values in ```supplychain/dekt-path2prod.yaml``` to any image repo accesisble from the this cluster
-  - note: if this repo requires authentication and is differenet than the one in the ooot-supplchain, you will need to add a secret as well
 - Install the rabbitmq operator 
 ```
 kapp -y deploy --app rmq-operator --file https://github.com/rabbitmq/cluster-operator/releases/download/v1.9.0/cluster-operator.yml
 ```
-- Apply the custom supplychain, policies and rabbit instance
-```
-kubectl apply -f supplychain -n YOUR_TAP_DEV_NS
-```
 
-## Deploy the mood-sensors workload
+
+## Deploy the workload
 
 ```
-tanzu apps workload create -f workload.yaml -n YOUR_TAP_DEV_NS
+tanzu apps workload create -f config/tap/workload.yaml -n YOUR_TAP_DEV_NS
 ```
 
 ## Track progess
