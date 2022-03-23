@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="tanzu.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src=https://code.jquery.com/jquery-3.3.1.min.js
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=anonymous></script>
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="jumbotron">
+            <h1 id="headerTitle"></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="button" id="writeButton" class="btn btn-primary">/activate&nbsp;&nbsp;<i
+                                class="fa fa-toggle-up"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title" th:text="${sensorDB}">Mood stream storage: </h3>
+                </div>
+                <div id="mapValues" class="panel-body"></div>
+            </div>
+            <button type="button" id="refreshButton" class="btn btn-primary">/measure&nbsp;&nbsp;<i
+                    class="fa fa-refresh"></i></button>
+        </div>
+    </div>
+</div>
+</body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    //var writeUrl = [[@{/write}]];
+        $('#writeButton').click(function () {
+            $.getJSON('/activate').done(refresh);
+        });
+    $('#refreshButton').click(refresh);
+
+    function refresh() {
+        $.getJSON('/refresh').done(displayData);
+    }
+
+    function displayData(data) {
+
+        console.log( 'Data=' + data );
+        $('#headerTitle').text( data.bannerText );
+        $('#headerTitle').css( 'color', data.bannerColor );
+
+        var tableHtml = '<table class="table"><thead><tr><th>Sensor ID</th><th>' + data.tempHeader + '</th><th>' + data.pressureHeader + '</th></tr></thead><tbody>';
+        for (var index in data.sensors) {
+            tableHtml += '<tr><td>' + data.sensors[index].id + '</td><td>' + data.sensors[index].type + '</td><td>' + data.sensors[index].mood + '</td></tr>';
+        }
+        tableHtml += '</tbody></table>';
+        $('#mapValues').html(tableHtml);
+    }
+
+    $(document).ready(refresh);
+    /*]]>*/
+</script>
+
+</html>

@@ -9,13 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.tanzu</groupId>
-    <artifactId>sensors</artifactId>
+    <artifactId>APP_NAME</artifactId>
     <version>0.1</version>
-    <name>sensors</name>
-    <description>backend application for the devx-mood app</description>
+    <name>APP_NAME</name>
+    <description>APP_NAME part of the PARENT_APP business application</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>JAVA_VER</java.version>
     </properties>
 
     <dependencies>
@@ -46,10 +46,6 @@
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
