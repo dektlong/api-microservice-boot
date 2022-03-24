@@ -209,21 +209,21 @@ engine:
             with: "#secondApiGroup"
     
     #data entity transformations
-    - includes: [ "src/main/java/org/tanzu/demo/connectors/RabbitMQTemplate.java" ]
+    - includes: [ "src/main/java/backend/connectors/RabbitMQTemplate.java" ]
       condition: "#msgType == 'rabbitmq'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
               with: "#msgName"
-    - includes: [ "src/main/java/org/tanzu/demo/connectors/RedisTemplate.java" ]
+    - includes: [ "src/main/java/backend/connectors/RedisTemplate.java" ]
       condition: "#cacheType == 'redis'"
       chain:
         - type: ReplaceText
           substitutions:
             - text: mybean
               with: "#cacheName"
-    - includes: [ "src/main/java/org/tanzu/demo/connectors/PostgresTemplate.java" ]
+    - includes: [ "src/main/java/backend/connectors/PostgresTemplate.java" ]
       condition: "#dbType == 'postgres'"
       chain:
         - type: ReplaceText
