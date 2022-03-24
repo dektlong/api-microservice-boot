@@ -1,4 +1,4 @@
-package org.tanzu.demo;
+package backend;
 
 import java.sql.Connection;
 import java.sql.SQLException;

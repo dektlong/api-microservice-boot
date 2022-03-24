@@ -168,7 +168,7 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "config/**"]
+      excludes: [ "config/**" , "src/main/java/backend/connectors/**"]
       chain:
         - type: ReplaceText
           substitutions:

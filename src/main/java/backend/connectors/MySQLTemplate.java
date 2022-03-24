@@ -1,4 +1,4 @@
-package io.storebackend.api.data;
+package backend.connectors;
 
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;

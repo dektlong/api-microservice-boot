@@ -1,4 +1,4 @@
-package org.tanzu.demo.model;
+package backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
