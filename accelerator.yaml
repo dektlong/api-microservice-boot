@@ -28,14 +28,14 @@ accelerator:
   
   - name: parentApp
     label: Name of parent application (the Big A app)
-    description: Name of the parent application this component is a part of
+    #description: Name of the parent application this component is a part of
     inputType: text
     dataType: string
     defaultValue: my-BigA-app
     
   - name: javaVersion
     label: Java version
-    description: Java runtime version
+    #description: Java runtime version
     required: true
     defaultValue: "11"
     inputType: select
@@ -120,7 +120,7 @@ accelerator:
   #apis 
   - name: newAPIs
     label: Add APIs definitions. Explore existing APIs *before* adding new ones
-    description: 
+    #description: 
     inputType: checkbox 
     defaultValue: false
     display: true
@@ -128,7 +128,7 @@ accelerator:
       
   - name: readAPIs
     label: APIs with READ-ONLY functionality 
-    description: APIs decorations are auto-generated based on DEKT org security guidelines.
+    #description: APIs decorations are auto-generated based on DEKT org security guidelines.
     dependsOn:
       name: newAPIs
       value: true
@@ -140,7 +140,7 @@ accelerator:
   
   - name: writeAPIs
     label: APIs with WRITE/DELETE functionality
-    description: APIs decorations are auto-generated based on DEKT org security guidelines.
+    #description: APIs decorations are auto-generated based on DEKT org security guidelines.
     dependsOn:
       name: newAPIs
       value: true
@@ -153,7 +153,7 @@ accelerator:
  #deployment type
   - name: appDeploymentType
     label: Deployment environment
-    description: Type of deployment configurations
+    #description: Type of deployment configurations
     defaultValue: tap
     inputType: select
     choices:
