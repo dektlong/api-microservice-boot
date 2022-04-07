@@ -196,17 +196,17 @@ engine:
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
-    - includes: [ "config/cf/*.json" ]
-      condition: "#appDeploymentType == 'cf'"
-      chain:
-        - type: ReplaceText
-          substitutions:
-          - text: app-name
-            with: "#artifactId"
-          - text: api-group1
-            with: "#firstApiGroup"
-          - text: api-group2
-            with: "#secondApiGroup"
+    #- includes: [ "config/cf/*.json" ]
+    #  condition: "#appDeploymentType == 'cf'"
+    #  chain:
+    #    - type: ReplaceText
+    #      substitutions:
+    #      - text: app-name
+    #        with: "#artifactId"
+    #      - text: api-group1
+    #        with: "#firstApiGroup"
+    #      - text: api-group2
+    #        with: "#secondApiGroup"
     
     #data entity transformations
     - includes: [ "src/main/java/backend/connectors/RabbitMQTemplate.java" ]
