@@ -1,4 +1,4 @@
-# Introduction
+
 An Accelerator to create API-driven backend with Spring Boot.
 
 ## Deploy the workload
