@@ -1,8 +1,6 @@
 # Introduction
 An Accelerator to create API-driven backend with Spring Boot.
 
-The service should expose well defined API routes.
-
 ## Deploy the workload
 
 ```
