@@ -7,7 +7,7 @@ An Accelerator to create API-driven backend with Spring Boot.
 tanzu apps workload create -f config/tap/workload.yaml -n YOUR_TAP_DEV_NS
 ```
 
-## Track progess
+## Track workload progress
 
 ```
 tanzu apps cluster-supply-chain list
