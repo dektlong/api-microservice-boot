@@ -136,7 +136,7 @@ accelerator:
     required: false
     dataType: [string]
     defaultValue:
-      - my-read-api-path
+      - measure
   
   - name: writeAPIs
     label: APIs with WRITE/DELETE functionality
@@ -148,8 +148,8 @@ accelerator:
     required: false
     dataType: [string]
     defaultValue:
-      - my-write-api-path
-
+      - activate
+      
  #deployment type
   - name: appDeploymentType
     label: Deployment environment
