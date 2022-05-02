@@ -31,7 +31,7 @@ accelerator:
     #description: Name of the parent application this component is a part of
     inputType: text
     dataType: string
-    defaultValue: my-BigA-app
+    defaultValue: devx-mood
     
   - name: javaVersion
     label: Java version
@@ -66,7 +66,7 @@ accelerator:
         text: MariaDB
   - name: dbName
     label: SQL Database instance name
-    defaultValue: mydb
+    defaultValue: inventory
     dependsOn:
       name: addDB
       
@@ -89,7 +89,7 @@ accelerator:
         text: Kafka
   - name: msgName
     label: Messaging broker instance name
-    defaultValue: myqueue
+    defaultValue: reading
     dependsOn:
       name: addMsg
       
