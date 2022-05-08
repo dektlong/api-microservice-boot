@@ -137,6 +137,7 @@ accelerator:
     dataType: [string]
     defaultValue:
       - measure
+      - sentiment
   
   - name: writeAPIs
     label: APIs with WRITE/DELETE functionality
