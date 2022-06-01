@@ -137,6 +137,7 @@ accelerator:
     dataType: [string]
     defaultValue:
       - measure
+      - medical-history
       - social-sentiment
   
   - name: writeAPIs
