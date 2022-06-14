@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: mood-sensors-apis
+  description: APIs published by the mood-sensors component
+spec:
+  type: openapi
+  lifecycle: development
+  owner: dekt-dev-team2
+  system: devx-mood
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Mood Sensors APIs
+    servers:
+      - url: mood-sensors.apps.dekt.io/v1
+    paths:
+      /activate:
+        post:
+          summary: activate a sensor
+        tags:
+            - sensors-update
+      /measure:
+        get:
+          summary: retrieve all mood information
+        tags:
+            - sensors-reading
