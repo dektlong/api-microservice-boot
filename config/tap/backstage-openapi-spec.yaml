@@ -1,18 +1,20 @@
+#@ load("@ytt:data", "data")
+---
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: mood-sensors-apis
-  description: APIs published by the mood-sensors component
+  name: #@ data.values.artifactId + "-apis"
+  description: #@ "APIs published by the " +  data.values.artifactId + " component"
 spec:
   type: openapi
   lifecycle: development
   owner: dekt-dev-team2
-  system: devx-mood
+  system:  #@ data.values.parentApp
   definition: |
     openapi: "3.0.0"
     info:
       version: 1.0.0
-      title: Mood Sensors APIs
+      title: #@ data.values.artifactId + "-apis"
     servers:
       - url: mood-sensors.apps.dekt.io/v1
     paths:
