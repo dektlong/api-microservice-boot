@@ -4,7 +4,7 @@
 ### Deploy the workload
 
 ```
-**tanzu apps workload create -f config/tap/workload.yaml -n mydev**
+tanzu apps workload create -f config/tap/workload.yaml -n mydev
 ```
 
 ### Track workload progress
