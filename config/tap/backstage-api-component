@@ -11,5 +11,5 @@ spec:
   owner: dekt-dev-team2
   system:  #@ data.values.parentApp
   definition: |
-    $text: #@ data.values.artifactId + ".sgw.example.com/openapi"
+    $text: #@ "https://" + data.values.artifactId + ".sgw.example.com/openapi"
     
