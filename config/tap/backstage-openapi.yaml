@@ -10,6 +10,6 @@ spec:
   lifecycle: development
   owner: dekt-dev-team2
   system:  #@ data.values.parentApp
-  definition: #@ "|"
-    #@ "https://" + data.values.artifactId + ".sgw.example.com/openapi"
+  definition: 
+    $text: #@ "https://" + data.values.artifactId + ".sgw.example.com/openapi"
     
