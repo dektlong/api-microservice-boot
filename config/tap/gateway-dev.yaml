@@ -16,7 +16,7 @@ metadata:
   name: #@ data.values.artifactId + "-gateway"
 spec:
   api:
-    serverUrl: https://app-name.example.com
+    serverUrl: #@ "https://" + data.values.artifactId + ".sgw.example.com"
     title: #@ data.values.artifactId + " dev micro gateway"
     description: #@ "Micro-gateway for local development of " + data.values.artifactId
   count: 1
