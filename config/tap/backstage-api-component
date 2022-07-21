@@ -1,0 +1,15 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: #@ data.values.artifactId + "-apis"
+  description: #@ "APIs published by the " +  data.values.artifactId + " component"
+spec:
+  type: openapi
+  lifecycle: development
+  owner: dekt-dev-team2
+  system:  #@ data.values.parentApp
+  definition: |
+    $text: #@ data.values.artifactId + ".sgw.example.com/openapi"
+    
