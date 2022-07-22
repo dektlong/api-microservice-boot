@@ -22,24 +22,24 @@ spec:
     #@ if data.values.addDB:
     - name: #@ data.values.dbType + "-claim"
       ref:
-        apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.dbType 
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
         name: #@ data.values.dbName
     #@ end
     
     #@ if data.values.addMsg:
     - name: #@ data.values.msgType + "-claim"
       ref:
-        apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.msgType
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
         name: #@ data.values.msgName
     #@ end
     
     #@ if data.values.addNosql:
     - name: #@ data.values.nosqlType + "-claim"
       ref:
-        apiVersion: services.tanzu.vmware.com/v1alpha1
-        kind: #@ data.values.nosqlType
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
         name: #@ data.values.nosqlName 
      #@ end
   
