@@ -24,7 +24,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.dbType + "-claim"
+        name: #@ data.values.dbType + "-binding"
     #@ end
     
     #@ if data.values.addMsg:
@@ -32,7 +32,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.msgType + "-claim"
+        name: #@ data.values.msgType + "-binding"
     #@ end
     
     #@ if data.values.addNosql:
@@ -40,7 +40,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.nosqlType + "-claim"
+        name: #@ data.values.nosqlType + "-binding"
      #@ end
   
   #@ end
