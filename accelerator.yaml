@@ -54,7 +54,7 @@ accelerator:
     defaultValue: false
   
   - name: dbType
-    label: SQL Database type
+    label: Available SQL service-claims
     dependsOn:
       name: addDB
     inputType: select
@@ -65,7 +65,7 @@ accelerator:
       - value: mariadb
         text: MariaDB
   - name: dbName
-    label: SQL Database instance name
+    label: Name of your DB instance
     defaultValue: inventory
     dependsOn:
       name: addDB
@@ -77,7 +77,7 @@ accelerator:
     dataType: boolean
     defaultValue: false
   - name: msgType
-    label: Messaging broker type
+    label: Available messaging service-claims
     dependsOn:
       name: addMsg
     inputType: select
@@ -88,7 +88,7 @@ accelerator:
       - value: kafka
         text: Kafka
   - name: msgName
-    label: Messaging broker instance name
+    label: Your messaging instance name
     defaultValue: reading
     dependsOn:
       name: addMsg
@@ -101,7 +101,7 @@ accelerator:
     defaultValue: false
     
   - name: nosqlType
-    label: NoSQL datastore type
+    label: Available NoSQL service-claims
     dependsOn:
       name: addNosql
     inputType: select
@@ -112,7 +112,7 @@ accelerator:
       - value: cassandra 
         text: Cassandra
   - name: nosqlName
-    label: NoSQL datastore instance name
+    label: Your NoSQL instance name
     defaultValue: mynosql
     dependsOn:
       name: addNosql
