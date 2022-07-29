@@ -24,7 +24,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@data.values.dbType + "-db"
+        name: #@ data.values.dbType + "-db"
     #@ end
     
     #@ if data.values.addMsg:
