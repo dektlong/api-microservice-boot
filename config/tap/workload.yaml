@@ -20,27 +20,27 @@ spec:
   serviceClaims:
     
     #@ if data.values.addDB:
-    - name: #@ data.values.dbName + "-claim"
+    - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.dbType + "-" + data.values.dbName
+        name: #@ data.values.dbName + "-db"
     #@ end
     
     #@ if data.values.addMsg:
-    - name: #@ data.values.msgName + "-claim"
+    - name: #@ data.values.msgType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.msgType + "-" + data.values.msgName
+        name: #@ data.values.msgName + "-queue"
     #@ end
     
     #@ if data.values.addNosql:
-    - name: #@ data.values.nosqlName + "-claim"
+    - name: #@ data.values.nosqType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: #@ data.values.nosqlType + "-" + data.values.nosqlName
+        name: #@ data.values.nosqlName + "-datastore"
      #@ end
   
   #@ end
