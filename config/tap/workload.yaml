@@ -36,7 +36,7 @@ spec:
     #@ end
     
     #@ if data.values.addNosql:
-    - name: #@ data.values.nosqType + "-claim"
+    - name: #@ data.values.nosqlType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
