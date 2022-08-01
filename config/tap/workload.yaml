@@ -30,8 +30,8 @@ spec:
     #@ if data.values.addMsg:
     - name: #@ data.values.msgType + "-claim"
       ref:
-        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ResourceClaim
+        apiVersion: rabbitmq.com/v1beta1
+        kind: RabbitmqCluster
         name: #@ data.values.msgName + "-queue"
     #@ end
     
