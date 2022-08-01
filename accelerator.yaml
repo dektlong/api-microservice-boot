@@ -66,7 +66,7 @@ accelerator:
         text: MariaDB
   - name: dbName
     label: Name your SQL claim
-    defaultValue: inventory
+    defaultValue: inventory-db
     dependsOn:
       name: addDB
       
@@ -89,7 +89,7 @@ accelerator:
         text: Kafka
   - name: msgName
     label: Name your Messaging claim
-    defaultValue: reading
+    defaultValue: reading-queue
     dependsOn:
       name: addMsg
       
@@ -113,7 +113,7 @@ accelerator:
         text: Cassandra
   - name: nosqlName
     label: Name your NoSQL claim
-    defaultValue: mynosql
+    defaultValue: mynosql-store
     dependsOn:
       name: addNosql
  
