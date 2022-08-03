@@ -11,4 +11,4 @@ spec:
   owner: dekt-dev-team2
   system:  #@ data.values.parentApp
   definition: 
-    $text: #@ "https://github.com/dektlong/" + data.values.artifactId + "blob/dev/apis/" + data.values.artifactId + "-api-definition.yaml"
+    $text: #@ "https://github.com/dektlong/" + data.values.artifactId + "/blob/dev/apis/" + data.values.artifactId + "-api-definition.yaml"
