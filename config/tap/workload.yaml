@@ -48,6 +48,7 @@ spec:
   
   #@ end
   
+ #@ if data.values.newAPIs: 
   params:
     - name: api_descriptor
       value: 
@@ -56,3 +57,4 @@ spec:
           path: "/v3/api-docs"
         owner: #@ data.values.artifactId
         description: test me
+#@ end
