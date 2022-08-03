@@ -8,6 +8,9 @@ metadata:
     app.tanzu.vmware.com/workload-type: dekt-backend
     apps.tanzu.vmware.com/has-tests: "true"
     app.kubernetes.io/part-of: #@ data.values.parentApp
+    #@ if data.values.newAPIs:
+    apis.apps.tanzu.vmware.com/register-api: "true"
+    #@ end
 
 spec:
   source:
@@ -44,3 +47,13 @@ spec:
      #@ end
   
   #@ end
+
+#@ if data.values.newAPIs:
+  params:
+    - name: api_descriptor
+      value:
+        type: openapi
+        location: 
+          path: "/v3/api-docs"
+        owner: #@ data.values.artifactId
+        description: #@ "A set of API endpoints to manage the resources within the " + #@ data.values.artifactId + " app."
