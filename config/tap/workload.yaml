@@ -56,5 +56,5 @@ spec:
         location: 
           path: "/v3/api-docs"
         owner: #@ data.values.artifactId
-        description: test me
+        description: #@ "A set of API endpoints to manage the resources within the " + data.values.artifactId + " app."
 #@ end
