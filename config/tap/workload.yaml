@@ -13,18 +13,6 @@ metadata:
     #@ end
 
 spec:
-
-  #@ if data.values.newAPIs:
-  params:
-    - name: api_descriptor
-      value: 
-        type: openapi
-        location: 
-          path: "/v3/api-docs"
-        owner: #@ data.values.artifactId
-        description: #@ "A set of API endpoints to manage the resources within the " + #@ data.values.artifactId + " app."
-  #@ end
-
   source:
     git:
       url: #@ "https://github.com/dektlong/" + data.values.artifactId
@@ -59,3 +47,12 @@ spec:
      #@ end
   
   #@ end
+  
+  params:
+    - name: api_descriptor
+      value: 
+        type: openapi
+        location: 
+          path: "/v3/api-docs"
+        owner: #@ data.values.artifactId
+        description: #@ "A set of API endpoints to manage the resources within the " + #@ data.values.artifactId + " app."
