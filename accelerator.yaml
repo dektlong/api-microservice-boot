@@ -151,7 +151,16 @@ accelerator:
     dataType: [string]
     defaultValue:
       - activate
-      
+
+  - name: addAPItoWorkload
+    label: Add API definitions to workload
+    inputType: checkbox
+    dependsOn:
+      name: newAPIs
+      value: true
+    dataType: boolean
+    defaultValue: false
+
  #deployment type
   - name: appDeploymentType
     label: Deployment environment
