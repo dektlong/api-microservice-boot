@@ -159,7 +159,7 @@ accelerator:
       name: newAPIs
       value: true
     dataType: boolean
-    defaultValue: true
+    defaultValue: false
 
  #deployment type
   - name: appDeploymentType
