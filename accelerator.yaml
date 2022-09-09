@@ -164,6 +164,8 @@ accelerator:
       name: newAPIs
     inputType: checkbox
     dataType: [string]
+    defaultValue:
+        - readOnly
     choices:
     - value: readOnly
       text: Read only APIs
