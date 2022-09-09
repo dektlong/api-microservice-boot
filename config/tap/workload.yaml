@@ -8,7 +8,7 @@ metadata:
     app.tanzu.vmware.com/workload-type: dekt-backend
     apps.tanzu.vmware.com/has-tests: "true"
     app.kubernetes.io/part-of: #@ data.values.parentApp
-    #@ if data.values.apiAutoRegistration:
+    #@ if data.values.newAPIs:
     apis.apps.tanzu.vmware.com/register-api: "true"
     #@ end
 
@@ -32,7 +32,7 @@ spec:
         kind: RabbitmqCluster
         name: #@ data.values.msgName + "-queue"
   #@ end
-  #@ if data.values.apiAutoRegistration:
+  #@ if data.values.newAPIs:
   params:
     - name: api_descriptor
       value: 
@@ -40,5 +40,6 @@ spec:
         location: 
           path: #@ data.values.apiPath
         owner: #@ data.values.apiOwner
+        system: #@ data.values.parentApp
         description: #@ "A set of API endpoints to manage the resources within the " + data.values.artifactId + " app."
  #@ end
