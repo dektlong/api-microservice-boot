@@ -111,7 +111,7 @@ accelerator:
     label: API definition path
     dependsOn:
       name: newAPIs
-    defaultValue: api-docs
+    defaultValue: config/tap/apis/openpi-definition.yaml
   - name: apiOwner
     label: API owner
     dependsOn:
@@ -136,7 +136,7 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "config/**" , "api-docs/**","src/main/java/backend/connectors/**"]
+      excludes: [ "config/**", "src/main/java/backend/connectors/**"]
       chain:
         - type: ReplaceText
           substitutions:
@@ -148,7 +148,7 @@ engine:
               with: "#parentApp"
   
   #deployment configs per type
-    - includes: [ "config/tap/**"]
+    - includes: [ "config/tap"]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
@@ -165,7 +165,7 @@ engine:
       chain:
         - type: YTT
   #apis
-    - includes: [ "api-docs/**"]
+    - includes: [ "tap/apis/**"]
       condition: "#newAPIs"
       chain:
         - type: YTT
