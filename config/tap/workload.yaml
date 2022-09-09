@@ -8,7 +8,7 @@ metadata:
     app.tanzu.vmware.com/workload-type: dekt-backend
     apps.tanzu.vmware.com/has-tests: "true"
     app.kubernetes.io/part-of: #@ data.values.parentApp
-    #@ if data.values.addAPItoWorkload:
+    #@ if data.values.apiAutoRegistration:
     apis.apps.tanzu.vmware.com/register-api: "true"
     #@ end
 
