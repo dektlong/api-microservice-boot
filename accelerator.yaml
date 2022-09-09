@@ -140,7 +140,7 @@ accelerator:
       - value: gRPC
         text: gRPC
   - name: apiPath
-    label: API definitions path
+    label: API definition path
     dependsOn:
       name: newAPIs
     defaultValue: /api-docs/mood-sensors-apis.yaml
@@ -150,7 +150,7 @@ accelerator:
       name: newAPIs
     defaultValue: dekt-dev-team2
   - name: apiAutoRegistration
-    label: Register APIs automatically in API explorer
+    label: Validate and auto-register the API definition
     inputType: checkbox
     dependsOn:
       name: newAPIs
@@ -158,7 +158,7 @@ accelerator:
     dataType: boolean
     defaultValue: false
   - name: apiMetaData
-    label: APIs metadata examples
+    label: Add APIs metadata examples
     description: Select which APIs metatdata decorations to add to the api definition file
     dependsOn:
       name: newAPIs
@@ -170,7 +170,7 @@ accelerator:
     - value: writeAPIs
       text: Write/Update APIs
     - value: schema
-      text: Schema and error respones
+      text: Schema and error responses
     - value: rateLimit
       text: Rate limits filter 
     - value: sso
