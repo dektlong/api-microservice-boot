@@ -19,7 +19,7 @@ spec:
       ref:
         branch: dev
   
-  #@ if data.values.addDataServices
+  #@ if data.values.addDataServices:
   serviceClaims:
     - name: #@ data.values.dbType + "-claim"
       ref:
