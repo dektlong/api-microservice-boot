@@ -19,33 +19,18 @@ spec:
       ref:
         branch: dev
   
-  #@ if data.values.addNosql or data.values.addMsg or data.values.addDB:
+  #@ if data.values.addDataServices
   serviceClaims:
-    
-    #@ if data.values.addDB:
     - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
         name: #@ data.values.dbName + "-db"
-    #@ end
-    
-    #@ if data.values.addMsg:
     - name: #@ data.values.msgType + "-claim"
       ref:
         apiVersion: rabbitmq.com/v1beta1
         kind: RabbitmqCluster
         name: #@ data.values.msgName + "-queue"
-    #@ end
-    
-    #@ if data.values.addNosql:
-    - name: #@ data.values.nosqlType + "-claim"
-      ref:
-        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ResourceClaim
-        name: #@ data.values.nosqlName + "-datastore"
-     #@ end
-  
   #@ end
   #@ if data.values.apiAutoRegistration:
   params:
