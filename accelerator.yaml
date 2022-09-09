@@ -120,7 +120,7 @@ accelerator:
   #apis 
   - name: newAPIs
     label: Expose new APIs
-    description: EXPLORE EXISTING APIs VAI THE TAP API CATALOG BEFORE EXPOSING NEW ONES
+    description: USE THE TAP API CATALOG TO EXPLORE EXISTING APIs BEFORE EXPOSING NEW ONES
     inputType: checkbox 
     defaultValue: false
     display: true
