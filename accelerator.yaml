@@ -153,7 +153,7 @@ accelerator:
   #apis 
   - name: newAPIs
     label: Expose new APIs
-    description: USE THE TAP API CATALOG TO EXPLORE EXISTING APIs BEFORE EXPOSING NEW ONES
+    description: SEARCH API EXPLORER FOR EXISTING APIs BEFORE EXPOSING NEW ONES
     inputType: checkbox 
     defaultValue: false
     display: true
@@ -181,8 +181,16 @@ accelerator:
     dependsOn:
       name: newAPIs
     defaultValue: dekt-dev-team2
+  - name: apiAutoRegistration
+    label: Register APIs automatically in API explorer
+    inputType: checkbox
+    dependsOn:
+      name: newAPIs
+      value: true
+    dataType: boolean
+    defaultValue: false
   - name: apiMetaData
-    label: APIs metadata 
+    label: APIs metadata examples
     description: Select which APIs metatdata decorations to add to the api definition file
     dependsOn:
       name: newAPIs
@@ -199,14 +207,6 @@ accelerator:
       text: Rate limits filter 
     - value: sso
       text: SSO and token relay filters
-  - name: apiAutoRegistration
-    label: Add API auto registration
-    inputType: checkbox
-    dependsOn:
-      name: newAPIs
-      value: true
-    dataType: boolean
-    defaultValue: false
       
  #deployment type
   - name: appDeploymentType
