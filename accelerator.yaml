@@ -111,7 +111,7 @@ accelerator:
     label: API definition path
     dependsOn:
       name: newAPIs
-    defaultValue: config/tap/apis/openpi-definition.yaml
+    defaultValue: config/tap/apis
   - name: apiOwner
     label: API owner
     dependsOn:
@@ -165,7 +165,7 @@ engine:
       chain:
         - type: YTT
   #apis
-    - includes: [ "tap/apis/**"]
+    - includes: [ "config/tap/apis/*"]
       condition: "#newAPIs"
       chain:
         - type: YTT
