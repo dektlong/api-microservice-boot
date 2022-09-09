@@ -164,6 +164,11 @@ engine:
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
+  #apis
+    - includes: [ "config/apis/**"]
+      condition: "#newAPIs"
+      chain:
+        - type: YTT
     #- includes: [ "config/cf/*.json" ]
     #  condition: "#appDeploymentType == 'cf'"
     #  chain:
