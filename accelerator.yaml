@@ -86,38 +86,6 @@ accelerator:
     dependsOn:
       name: addDataServices
    
-#appSSO
-  - name: appSSO
-    label: Enable single sign-on
-    defaultValue: false
-    inputType: checkbox
-    dataType: boolean
-    required: true
-  - name: appSSOName
-    label: AppSSO instance name
-    defaultValue: appsso-mood-sensors
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
-  - name: appSSOIssuerURI
-    label: Issuer URI of the AppSSO Instance
-    defaultValue: http://authserver.<domainname>
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
-  - label: Redirect URI after successful authentication
-    defaultValue: http://mood-sensors.<domain name>/login/oauth2/code/sso
-    name: appSSORedirectURI
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
- 
   #apis 
   - name: newAPIs
     label: Expose new APIs
@@ -157,26 +125,38 @@ accelerator:
       value: true
     dataType: boolean
     defaultValue: false
-  - name: apiMetaData
-    label: Add APIs metadata examples
-    description: Select which APIs metatdata decorations to add to the api definition file
-    dependsOn:
-      name: newAPIs
+  
+ #appSSO
+  - name: appSSO
+    label: Enable single sign-on
+    defaultValue: false
     inputType: checkbox
-    dataType: [string]
-    defaultValue:
-        - readOnly
-    choices:
-    - value: readOnly
-      text: Read only APIs
-    - value: writeAPIs
-      text: Write/Update APIs
-    - value: schema
-      text: Schema and error responses
-    - value: rateLimit
-      text: Rate limits filter 
-    - value: sso
-      text: SSO and token relay filters
+    dataType: boolean
+    required: true
+  - name: appSSOName
+    label: AppSSO instance name
+    defaultValue: appsso-mood-sensors
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - name: appSSOIssuerURI
+    label: Issuer URI of the AppSSO Instance
+    defaultValue: http://authserver.<domainname>
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - label: Redirect URI after successful authentication
+    defaultValue: http://mood-sensors.<domain name>/login/oauth2/code/sso
+    name: appSSORedirectURI
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
       
  #deployment type
   - name: appDeploymentType
