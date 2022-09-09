@@ -6,9 +6,9 @@ metadata:
   name: #@ data.values.artifactId + "-apis"
   description: #@ "APIs published by the " +  data.values.artifactId + " component"
 spec:
-  type: openapi
+  type: #@ data.values.apiType
   lifecycle: development
-  owner: dekt-dev-team2
+  owner: #@ data.values.apiOwner
   system:  #@ data.values.parentApp
   definition: 
     $text: #@ data.values.apiPath
