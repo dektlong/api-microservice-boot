@@ -47,7 +47,7 @@ accelerator:
   
   #data services
   - name: addDataServices
-    label: Add data services claims
+    label: Request data services
     inputType: checkbox
     display: true
     dataType: boolean
@@ -88,7 +88,7 @@ accelerator:
    
 #appSSO
   - name: appSSO
-    label: Add security configurations 
+    label: Enable single sign-on
     defaultValue: false
     inputType: checkbox
     dataType: boolean
@@ -167,8 +167,8 @@ accelerator:
     choices:
     - value: readOnly
       text: Read only APIs
-    - value: readWrite
-      text: Read and write APIs
+    - value: writeAPIs
+      text: Write/Update APIs
     - value: schema
       text: Schema and error respones
     - value: rateLimit
