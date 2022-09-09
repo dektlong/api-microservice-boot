@@ -47,7 +47,7 @@ accelerator:
   
   #data services
   - name: addDataServices
-    label: Add data services
+    label: Add data services claims
     inputType: checkbox
     display: true
     dataType: boolean
@@ -85,24 +85,7 @@ accelerator:
     defaultValue: reading
     dependsOn:
       name: addDataServices
-  - name: nosqlType
-    label: Available NoSQL service-claims
-    dependsOn:
-      name: addDataServices
-    inputType: select
-    defaultValue: redis
-    choices:
-      - value: redis
-        text: Redis
-      - value: cassandra 
-        text: Cassandra
-  - name: nosqlName
-    label: Name your NoSQL claim
-    defaultValue: mynosql
-    dependsOn:
-      name: addDataServices
-      
-  
+   
 #appSSO
   - name: appSSO
     label: Add security configurations 
