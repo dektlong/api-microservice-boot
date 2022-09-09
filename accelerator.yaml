@@ -119,41 +119,55 @@ accelerator:
  
   #apis 
   - name: newAPIs
-    label: Add APIs definitions. Explore existing APIs *before* adding new ones
-    #description: 
+    label: Expose new APIs
+    description: EXPLORE EXISTING APIs VAI THE TAP API CATALOG BEFORE EXPOSING NEW ONES
     inputType: checkbox 
     defaultValue: false
     display: true
     dataType: boolean
-      
-  - name: readAPIs
-    label: APIs with READ-ONLY functionality 
-    #description: APIs decorations are auto-generated based on DEKT org security guidelines.
+  - name: apiType
+    label: API type
     dependsOn:
       name: newAPIs
-      value: true
-    inputType: multi-text
-    required: false
-    dataType: [string]
-    defaultValue:
-      - measure
-      - medical-history
-      - social-sentiment
-  
-  - name: writeAPIs
-    label: APIs with WRITE/DELETE functionality
-    #description: APIs decorations are auto-generated based on DEKT org security guidelines.
+    inputType: select
+    defaultValue: openAPI
+    choices:
+      - value: openAPI
+        text: Open API
+      - value: swagger
+        text: Swagger
+      - value: gRPC
+        text: gRPC
+  - name: apiPath
+    label: API definitions path
     dependsOn:
       name: newAPIs
-      value: true
-    inputType: multi-text
-    required: false
+    defaultValue: /api-docs/mood-sensors-apis.yaml
+  - name: apiOwner
+    label: API owner
+    dependsOn:
+      name: newAPIs
+    defaultValue: dekt-dev-team2
+  - name: apiMetaData
+    label: APIs metadata 
+    description: Select which APIs metatdata decorations to add to the api definition file
+    dependsOn:
+      name: newAPIs
+    inputType: checkbox
     dataType: [string]
-    defaultValue:
-      - activate
-
-  - name: addAPItoWorkload
-    label: Add API definitions to workload
+    choices:
+    - value: readOnly
+      text: Read only APIs
+    - value: readWrite
+      text: Read and write APIs
+    - value: schema
+      text: Schema and error respones
+    - value: rateLimit
+      text: Rate limits filter 
+    - value: sso
+      text: SSO and token relay filters
+  - name: apiAutoRegistration
+    label: Add API auto registration
     inputType: checkbox
     dependsOn:
       name: newAPIs
@@ -161,6 +175,38 @@ accelerator:
     dataType: boolean
     defaultValue: false
 
+#appSSO
+  - name: appSSO
+    label: Add security configurations 
+    defaultValue: false
+    inputType: checkbox
+    dataType: boolean
+    required: true
+  - name: appSSOName
+    label: AppSSO instance name
+    defaultValue: appsso-mood-sensors
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - name: appSSOIssuerURI
+    label: Issuer URI of the AppSSO Instance
+    defaultValue: http://authserver.<domainname>
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - label: Redirect URI after successful authentication
+    defaultValue: http://mood-sensors.<domain name>/login/oauth2/code/sso
+    name: appSSORedirectURI
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+      
  #deployment type
   - name: appDeploymentType
     label: Deployment environment
