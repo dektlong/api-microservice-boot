@@ -148,7 +148,7 @@ engine:
               with: "#parentApp"
   
   #deployment configs per type
-    - includes: [ "config/tap"]
+    - includes: [ "config/tap/*"]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
