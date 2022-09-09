@@ -111,20 +111,12 @@ accelerator:
     label: API definition path
     dependsOn:
       name: newAPIs
-    defaultValue: /api-docs/mood-sensors-apis.yaml
+    defaultValue: /config/tap/openapi-definition.yaml
   - name: apiOwner
     label: API owner
     dependsOn:
       name: newAPIs
     defaultValue: dekt-dev-team2
-  - name: apiAutoRegistration
-    label: Validate and auto-register the API definition
-    inputType: checkbox
-    dependsOn:
-      name: newAPIs
-      value: true
-    dataType: boolean
-    defaultValue: false
   
   #deployment type
   - name: appDeploymentType
