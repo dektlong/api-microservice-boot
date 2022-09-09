@@ -47,13 +47,13 @@ spec:
      #@ end
   
   #@ end
-  #@ if data.values.addAPItoWorkload:
+  #@ if data.values.apiAutoRegistration:
   params:
     - name: api_descriptor
       value: 
-        type: openapi
+        type: #@ data.values.apiType
         location: 
-          path: "/api-docs"
-        owner: #@ data.values.artifactId
+          path: #@ data.values.apiPath
+        owner: #@ data.values.apiOwner
         description: #@ "A set of API endpoints to manage the resources within the " + data.values.artifactId + " app."
  #@ end
