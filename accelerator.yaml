@@ -116,6 +116,39 @@ accelerator:
     defaultValue: mynosql
     dependsOn:
       name: addNosql
+      
+  
+#appSSO
+  - name: appSSO
+    label: Add security configurations 
+    defaultValue: false
+    inputType: checkbox
+    dataType: boolean
+    required: true
+  - name: appSSOName
+    label: AppSSO instance name
+    defaultValue: appsso-mood-sensors
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - name: appSSOIssuerURI
+    label: Issuer URI of the AppSSO Instance
+    defaultValue: http://authserver.<domainname>
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
+  - label: Redirect URI after successful authentication
+    defaultValue: http://mood-sensors.<domain name>/login/oauth2/code/sso
+    name: appSSORedirectURI
+    inputType: text
+    dataType: string
+    required: true
+    dependsOn: 
+      name: appSSO
  
   #apis 
   - name: newAPIs
@@ -174,38 +207,6 @@ accelerator:
       value: true
     dataType: boolean
     defaultValue: false
-
-#appSSO
-  - name: appSSO
-    label: Add security configurations 
-    defaultValue: false
-    inputType: checkbox
-    dataType: boolean
-    required: true
-  - name: appSSOName
-    label: AppSSO instance name
-    defaultValue: appsso-mood-sensors
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
-  - name: appSSOIssuerURI
-    label: Issuer URI of the AppSSO Instance
-    defaultValue: http://authserver.<domainname>
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
-  - label: Redirect URI after successful authentication
-    defaultValue: http://mood-sensors.<domain name>/login/oauth2/code/sso
-    name: appSSORedirectURI
-    inputType: text
-    dataType: string
-    required: true
-    dependsOn: 
-      name: appSSO
       
  #deployment type
   - name: appDeploymentType
