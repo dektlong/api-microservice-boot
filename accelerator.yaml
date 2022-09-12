@@ -99,9 +99,9 @@ accelerator:
     dependsOn:
       name: newAPIs
     inputType: select
-    defaultValue: openAPI
+    defaultValue: openapi
     choices:
-      - value: openAPI
+      - value: openapi
         text: Open API
       - value: swagger
         text: Swagger
