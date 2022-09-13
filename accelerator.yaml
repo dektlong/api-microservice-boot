@@ -117,6 +117,11 @@ accelerator:
     dependsOn:
       name: newAPIs
     defaultValue: activate
+  - name: paramAPI
+    label: Name of a parameter to pass as API query
+    dependsOn:
+      name: newAPIs
+    defaultValue: sensor_id
   - name: apiOwner
     label: API owner
     dependsOn:
