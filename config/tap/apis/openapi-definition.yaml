@@ -1,6 +1,6 @@
-#@ load("@ytt:data", "data") 
----
 openapi: 3.0.1
+servers:
+  - url: #updated in runtime by TAP supplychain 
 info:
   title: API definition for mood-sensors
   version: 0.0.8
@@ -10,7 +10,7 @@ tags:
   - name: "collect-data"
     description: "Collect data from sensors"
 paths:
-  #@ "/" + data.values.writeAPI + "/{" + data.values.paramAPI + "}:"
+  /activate{sensor_id}:
     post:
       tags:
       - "contorl-sensors"
@@ -27,7 +27,7 @@ paths:
           description: "successful sensor activation"
         "400":
           description: "error activating sensor"
-  #@ "/" data.values.writeAPI + ":"
+  /activate:
     post:
       tags:
       - "contorl-sensors"
@@ -37,7 +37,7 @@ paths:
           description: "successful sensors activation"
         "400":
           description: "error activating sensors"
-  #@ "/" + data.values.readAPI + "/{" + data.values.paramAPI + "}:"
+  /measure/{sensor_id}:
     get:
       tags:
       - "collect-data"
@@ -54,7 +54,7 @@ paths:
           description: "successful sensor data collection"
         "400":
           description: "error collecting data from sensor"
-  #@ "/" + data.values.readAPI + ":"
+  /measure:
     get:
       tags:
       - "collect-data"
