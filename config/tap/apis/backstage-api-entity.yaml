@@ -11,4 +11,4 @@ spec:
   owner: #@ data.values.apiOwner
   system:  #@ data.values.parentApp
   definition: 
-    $text: #@ data.values.apiPath
+    $text: config/tap/apis
