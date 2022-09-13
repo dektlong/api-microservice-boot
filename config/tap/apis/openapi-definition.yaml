@@ -1,6 +1,6 @@
 openapi: 3.0.1
 servers:
-  - url: #updated in runtime by TAP supplychain 
+  - url: mood-sensors.example.com
 info:
   title: API definition for mood-sensors
   version: 0.0.8
