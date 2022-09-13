@@ -38,7 +38,7 @@ spec:
       value: 
         type: #@ data.values.apiType
         location: 
-          path: #@ data.values.apiPath
+          path: tap/config/apis
         owner: #@ data.values.apiOwner
         system: #@ data.values.parentApp
         description: #@ "A set of API endpoints to manage the resources within the " + data.values.artifactId + " app."
