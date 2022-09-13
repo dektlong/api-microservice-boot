@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data") 
+---
 openapi: 3.0.1
 info:
   title: API definition for mood-sensors
@@ -8,7 +10,7 @@ tags:
   - name: "collect-data"
     description: "Collect data from sensors"
 paths:
-  /activate{sensor_id}:
+  #@ "/" + data.values.writeAPI + "/{" + data.values.paramAPI + "}:"
     post:
       tags:
       - "contorl-sensors"
@@ -25,7 +27,7 @@ paths:
           description: "successful sensor activation"
         "400":
           description: "error activating sensor"
-  /activate:
+  #@ "/" data.values.writeAPI + ":"
     post:
       tags:
       - "contorl-sensors"
@@ -35,7 +37,7 @@ paths:
           description: "successful sensors activation"
         "400":
           description: "error activating sensors"
-  /measure/{sensor_id}:
+  #@ "/" + data.values.readAPI + "/{" + data.values.paramAPI + "}:"
     get:
       tags:
       - "collect-data"
@@ -52,7 +54,7 @@ paths:
           description: "successful sensor data collection"
         "400":
           description: "error collecting data from sensor"
-  /measure:
+  #@ "/" + data.values.readAPI + ":"
     get:
       tags:
       - "collect-data"
