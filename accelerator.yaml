@@ -107,11 +107,16 @@ accelerator:
         text: Swagger
       - value: gRPC
         text: gRPC
-  - name: apiPath
-    label: API definition path
+  - name: readAPI
+    label: API with read-only functionality
     dependsOn:
       name: newAPIs
-    defaultValue: config/tap/apis
+    defaultValue: measure
+  - name: writeAPI
+    label: API with write/update functionality
+    dependsOn:
+      name: newAPIs
+    defaultValue: activate
   - name: apiOwner
     label: API owner
     dependsOn:
