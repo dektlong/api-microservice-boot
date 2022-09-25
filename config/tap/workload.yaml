@@ -5,7 +5,7 @@ kind: Workload
 metadata:
   name: #@ data.values.artifactId
   labels:
-    app.tanzu.vmware.com/workload-type: dekt-backend
+    app.tanzu.vmware.com/workload-type: dekt-api
     apps.tanzu.vmware.com/has-tests: "true"
     app.kubernetes.io/part-of: #@ data.values.parentApp
     #@ if data.values.newAPIs:
