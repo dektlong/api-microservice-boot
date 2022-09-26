@@ -1,5 +1,5 @@
 
-## An Accelerator to create API-driven backend with Spring Boot.
+## An Accelerator to create API-driven microservice with Spring Boot.
 
 ### Deploy the workload
 
