@@ -12,6 +12,8 @@ spec:
   lifecycle: development
   owner: my-team
   system: #@ data.values.parentApp
+  #@ if data.values.addDataServices:
   dependsOn: 
     - component: #@ data.values.dbName
     - component: #@ data.values.msgName
+  #@ end
