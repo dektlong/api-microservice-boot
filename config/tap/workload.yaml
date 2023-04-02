@@ -24,12 +24,12 @@ spec:
     - name: #@ data.values.dbType + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ResourceClaim
+        kind: ClassClaim
         name: #@ data.values.dbName + "-db"
     - name: #@ data.values.msgType + "-claim"
       ref:
-        apiVersion: rabbitmq.com/v1beta1
-        kind: RabbitmqCluster
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ClassClaim
         name: #@ data.values.msgName + "-queue"
   #@ end
   #@ if data.values.newAPIs:
