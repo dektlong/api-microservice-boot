@@ -21,8 +21,8 @@ spec:
   
   #@ if data.values.addDataServices:
   serviceClaims:
-    - name: #@ data.values.dbName + "-claim"
-      ref:
+    - name: #@ data.values.dbName + "-claim" 
+      ref: #@ "# test comment" + data.values.dbType
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
         name: #@ data.values.dbName
