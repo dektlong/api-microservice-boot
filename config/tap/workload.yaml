@@ -24,7 +24,7 @@ spec:
     - name: #@ data.values.dbName + "-claim"
       ref: 
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: #@ "ClassClaim # tanzu service class-claim create " + data.values.dbName + " --class " + data.values.dbType + " -n YOUR_DEV_NAMESPACE"
+        kind: ClassClaim
         name: #@ data.values.dbName
     - name: reading-claim
       ref:
