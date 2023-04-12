@@ -21,7 +21,7 @@ spec:
   
   #@ if data.values.addDataServices:
   serviceClaims:
-    - name: #@ data.values.dbName + "-claim" + "# test comment " + data.values.dbType
+    - name: #@ data.values.dbName + "-claim" + " # creating your claim: " tanzu service class-claim create " + data.values.dbName + " --class " + data.values.dbType + " -n YOUR_DEV_NAMESPACE"
       ref: 
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
