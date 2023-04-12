@@ -201,7 +201,7 @@ engine:
               with: "#dbName" 
             - text: CLAIM1_TYPE
               with: "#dbType" 
-            - text: CLAIMw_NAME
+            - text: CLAIM2_NAME
               with: "#msgName" 
             - text: CLAIM2_TYPE
               with: "#msgType" 
