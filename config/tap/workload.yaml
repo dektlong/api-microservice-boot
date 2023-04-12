@@ -26,11 +26,6 @@ spec:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
         name: #@ data.values.dbName
-    - name: reading-claim
-      ref:
-        apiVersion: services.apps.tanzu.vmware.com/v1alpha1          
-        kind: ClassClaim
-        name: reading
     - name: #@ data.values.msgName + "-claim"
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
