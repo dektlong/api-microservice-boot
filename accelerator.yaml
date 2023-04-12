@@ -58,11 +58,11 @@ accelerator:
     dependsOn:
       name: addDataServices
     inputType: select
-    defaultValue: postgres
+    defaultValue: postgres-unmanaged
     choices:
-      - value: postgres
+      - value: postgres-unmanaged 
         text: Postgres
-      - value: mariadb
+      - value: mysql-unmanaged 
         text: MariaDB
   - name: dbName
     label: Name your SQL claim
@@ -74,11 +74,11 @@ accelerator:
     dependsOn:
       name: addDataServices
     inputType: select
-    defaultValue: rabbitmq
+    defaultValue: rabbitmq-unmanaged
     choices:
-      - value: rabbitmq
+      - value: rabbitmq-unmanaged
         text: Rabbitmq
-      - value: kafka
+      - value: kafka-managed
         text: Kafka
   - name: msgName
     label: Name your Messaging claim
@@ -146,7 +146,7 @@ engine:
   merge:
     #generic transformation
     - includes: ["**"]
-      excludes: [ "config/**", "src/main/java/backend/connectors/**"]
+      excludes: [ "config/**", "src/main/java/backend/connectors/**", "config/tap/provision-dev-services.sh"]
       chain:
         - type: ReplaceText
           substitutions:
@@ -191,6 +191,20 @@ engine:
     #      - text: api-group2
     #        with: "#secondApiGroup"
     
+    #dev-services transformation
+    - includes: [ "config/tap/provision-dev-services.sh" ]
+      condition: "#addDataServices"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: CLAIM1_NAME
+              with: "#dbName" 
+            - text: CLAIM1_TYPE
+              with: "#dbType" 
+            - text: CLAIMw_NAME
+              with: "#msgName" 
+            - text: CLAIM2_TYPE
+              with: "#msgType" 
     #data entity transformations
     - includes: [ "src/main/java/backend/connectors/RabbitMQTemplate.java" ]
       condition: "#msgType == 'rabbitmq'"
