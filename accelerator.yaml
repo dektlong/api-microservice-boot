@@ -40,10 +40,12 @@ accelerator:
     defaultValue: "11"
     inputType: select
     choices:
+      - value: "8"
+        text: 8 
       - value: "11"
         text: 11 
       - value: "17"
-        text: 17 (dev only)
+        text: 17
   
   #data services
   - name: addDataServices
@@ -207,7 +209,7 @@ engine:
               with: "#msgType" 
     #data entity transformations
     - includes: [ "src/main/java/backend/connectors/RabbitMQTemplate.java" ]
-      condition: "#msgType == 'rabbitmq'"
+      condition: "#msgType == 'rabbitmq-unmanaged'"
       chain:
         - type: ReplaceText
           substitutions:
@@ -221,7 +223,7 @@ engine:
             - text: mybean
               with: "#cacheName"
     - includes: [ "src/main/java/backend/connectors/PostgresTemplate.java" ]
-      condition: "#dbType == 'postgres'"
+      condition: "#dbType == 'postgres-unmanaged'"
       chain:
         - type: ReplaceText
           substitutions:
