@@ -55,38 +55,41 @@ accelerator:
     dataType: boolean
     defaultValue: false
   
-  - name: dbType
-    label: Available SQL service claims
-    dependsOn:
-      name: addDataServices
-    inputType: select
-    defaultValue: postgres-unmanaged
-    choices:
-      - value: postgres-unmanaged 
-        text: Postgres
-      - value: mysql-unmanaged 
-        text: MariaDB
   - name: dbName
-    label: Name your SQL claim
+    label: SQL databases name
     defaultValue: inventory
     dependsOn:
       name: addDataServices
-  - name: msgType
-    label: Available Messaging service claims
+  - name: dbType
+    label: SQL database type
     dependsOn:
       name: addDataServices
     inputType: select
-    defaultValue: rabbitmq-unmanaged
+    defaultValue: postgres
     choices:
-      - value: rabbitmq-unmanaged
-        text: Rabbitmq
-      - value: kafka-managed
-        text: Kafka
+      - value: postgres 
+        text: Postgres
+      - value: mariadb 
+        text: MariaDB
+  
   - name: msgName
-    label: Name your Messaging claim
+    label: Messaging service name
     defaultValue: reading
     dependsOn:
       name: addDataServices
+
+  - name: msgType
+    label: Messaging service type
+    dependsOn:
+      name: addDataServices
+    inputType: select
+    defaultValue: rabbitmq
+    choices:
+      - value: rabbitmq
+        text: Rabbitmq
+      - value: kafka
+        text: Kafka
+  
    
   #apis 
   - name: newAPIs

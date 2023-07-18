@@ -25,12 +25,12 @@ spec:
       ref: 
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
-        name: #@ data.values.dbType
+        name: #@ data.values.dbType + "-class"
     - name: #@ data.values.msgName
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
-        name: #@ data.values.msgType
+        name: #@ data.values.msgType + "-class"
   #@ end
   #@ if data.values.newAPIs:
   params:
