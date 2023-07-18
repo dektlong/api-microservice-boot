@@ -86,7 +86,7 @@ accelerator:
     defaultValue: rabbitmq
     choices:
       - value: rabbitmq
-        text: Rabbitmq
+        text: RabbitMQ
       - value: kafka
         text: Kafka
   
