@@ -212,7 +212,7 @@ engine:
               with: "#msgType" 
     #data entity transformations
     - includes: [ "src/main/java/backend/connectors/RabbitMQTemplate.java" ]
-      condition: "#msgType == 'rabbitmq-unmanaged'"
+      condition: "#msgType == 'rabbitmq'"
       chain:
         - type: ReplaceText
           substitutions:
@@ -226,7 +226,7 @@ engine:
             - text: mybean
               with: "#cacheName"
     - includes: [ "src/main/java/backend/connectors/PostgresTemplate.java" ]
-      condition: "#dbType == 'postgres-unmanaged'"
+      condition: "#dbType == 'postgres'"
       chain:
         - type: ReplaceText
           substitutions:
